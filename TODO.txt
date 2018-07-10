@@ -5,3 +5,4 @@ bikin profil screen
 bikin isi saldo screen
 hide/show elements ???
 refractor screens
+GESTURES!

@@ -41,7 +41,7 @@ export default class ButtonPrimary extends Component {
                     justifyContent: 'center',
                     borderWidth: 2,
                     borderRadius: 50,
-                    borderColor: 'pink',
+                    bColor: 'pink',
                     width: this.props.width,
                     height: this.props.height,
                 }}

@@ -96,22 +96,19 @@ export default class HomeScreen extends Component {
           title='LIHAT HARGA'
           width={140} 
           height={40} 
-          onPress={moveToDaftarHarga} />
-        </View>
-        <View flexDirection='row' style={{ flex: 1}}>
-          <Button
-          onPress={moveToRiwayat}
-          title='RIWAYAT'
-          color='pink'
-          backgroundColor='white'
-          buttonStyle={{
-            height: 40,
-            width: 120,
-            borderWidth: 2,
-            borderRadius: 50,
-            borderColor: 'pink',
-          }}
+          onPress={moveToDaftarHarga} 
+          icon='right'
+          iconName='chevron-right'
+          iconType='entypo'
           />
+        </View>
+        <View flexDirection='row' style={{ 
+          flex: 1,
+          width: 300,
+          justifyContent: 'space-evenly',
+        }}>
+          <ButtonPrimary title='RIWAYAT' height={40} width={120} onPress={moveToRiwayat} />
+          <ButtonPrimary title='PROFIL' height={40} width={120} onPress={()=>console.log('')} />
         </View>
       </View>
     );
