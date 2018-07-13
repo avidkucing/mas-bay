@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from '../../.cache/typescript/2.9/node_modules/@types/react/.cache/typescript/2.9/node_modules/@types/react';
 import {
   StyleSheet,
   View,
@@ -6,11 +6,11 @@ import {
 } from 'react-native';
 import { Button, Text, FormInput } from 'react-native-elements';
 //our import
-import Contact from './Contact';
-import ButtonPrimary from './ButtonPrimary';
+import Contact from '../Components/Contact';
+import ButtonPrimary from '../Components/ButtonPrimary';
 
 
-export default class SuccessScreen extends Component {
+export default class SuccessSaldoScreen extends Component {
 
   render() {
     moveToHome = () => {
@@ -35,31 +35,7 @@ export default class SuccessScreen extends Component {
             margin: 10,
             textAlign: 'center',
           }}>
-          PULSA KAMU AKAN DIKIRIM SETELAH KAMU TRANSFER</Text>
-          
-          <Text h3 
-          style={{
-            marginBottom: 10,
-          }} 
-          >{this.props.navigation.getParam('tipe', '')}</Text>
-
-          <Text h4 
-          style={{
-            marginBottom: 10,
-          }} 
-          >9971231880 a.n Mas Bay</Text>
-          
-          <Text style={{
-            margin: 10,
-          }}>
-          MAKS
-          </Text>
-
-          <Text h4 
-          style={{
-            marginBottom: 10,
-          }} 
-          >{this.props.navigation.getParam('waktu', '')}</Text>
+          PULSA KAMU AKAN SEGERA DIKIRIM</Text>
         </View>
 
         <View style={{ 

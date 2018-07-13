@@ -7,7 +7,7 @@ import {
 import { Button, Text, FormInput } from 'react-native-elements';
 //our import
 import Contact from './Contact';
-import ButtonPrimary from './ButtonPrimary';
+import ButtonPrimary from '../Components/ButtonPrimary';
 
 
 export default class BeliPulsaScreen extends Component {

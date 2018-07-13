@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from '../../../.cache/typescript/2.9/node_modules/@types/react/../.cache/typescript/2.9/node_modules/@types/react/../.cache/typescript/2.9/node_modules/@types/react/../.cache/typescript/2.9/node_modules/@types/react/../.cache/typescript/2.9/node_modules/@types/react/../.cache/typescript/2.9/node_modules/@types/react';
 import { StyleSheet, View } from 'react-native';
 import { Button, Text, Icon } from 'react-native-elements';
 //our import
-import Contact from './Contact';
-import ButtonPrimary from './ButtonPrimary';
+import Contact from '../Components/Contact';
+import ButtonPrimary from '../ButtonPrimary';
 
 const defaultKontak = {
   nama: 'Avid',

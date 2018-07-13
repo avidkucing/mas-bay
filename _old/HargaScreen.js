@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from '../../.cache/typescript/2.9/node_modules/@types/react/.cache/typescript/2.9/node_modules/@types/react';
 import { TouchableOpacity, View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
-import ButtonPrimary from './ButtonPrimary';
+import ButtonPrimary from '../Components/ButtonPrimary';
 //our import
 
 const operator = {
