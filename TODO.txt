@@ -1,8 +1,6 @@
-text input nomor
-bikin button left icon
-bikin button secondary
+text input nomor - lets try redux for local cache
 bikin profil screen
 bikin isi saldo screen
-hide/show elements ???
+hide/show elements ??? + animation dude
 refractor screens
 GESTURES!

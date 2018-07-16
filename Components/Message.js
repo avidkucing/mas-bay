@@ -24,8 +24,8 @@ export default class Message extends Component {
                 <View
                 style={{
                     backgroundColor: this.props.color,
-                    //borderColor: 'pink',
-                    //borderWidth: 2,
+                    //borderColor: this.props.borderColor,
+                    //borderWidth: 1,
                     borderRadius: 50,
                     marginLeft: 15,
                     marginRight: 15,
@@ -37,6 +37,7 @@ export default class Message extends Component {
                         margin: 10,
                         marginRight: 20,
                         marginLeft: 20,
+                        color: this.props.textColor,
                         }}
                     >
                         {this.props.text}
