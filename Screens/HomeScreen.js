@@ -39,26 +39,9 @@ export default class HomeScreen extends Component {
     }; 
   }
 
-  componentDidMount () {
-    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
-    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
-  }
-
-  componentWillUnmount () {
-    this.keyboardDidShowListener.remove();
-    this.keyboardDidHideListener.remove();
-  }
-
-  _keyboardDidShow () {
-    //return true;
-  }
-
-  _keyboardDidHide () {
-    //return true;
-  }
-
-  addMessage = (message,isUser) => {
+  addChat = (message,isUser) => {
     //console.log('-------------------------------------------------------------------');
+    console.log(message);
     this.setState((prevState) => ({
       messages: [...prevState.messages, <Message key={prevState.mId} text={message} user={isUser} color={white}/>],
       mId: prevState.mId + 1,
@@ -88,7 +71,7 @@ export default class HomeScreen extends Component {
         reply: reply,
         isOptionsShowed: true,
       }))
-      this.addMessage(this.state.reply, false);
+      this.addChat(this.state.reply, false);
     })
     .catch((error) => {
       console.log(error);
@@ -141,6 +124,7 @@ export default class HomeScreen extends Component {
   }
 
   render() {
+
     renderOptionsComponent = () => {
       if (this.state.isOptionsShowed)
       return (<View
@@ -159,7 +143,7 @@ export default class HomeScreen extends Component {
           {this.state.options.map((text)=>
           <TouchableOpacity
               onPress={()=>{
-                this.addMessage(text, true);
+                this.addChat(text, true);
                 this.setState((prevState) => ({
                   isOptionsShowed: false,
                 })); 
@@ -192,7 +176,7 @@ export default class HomeScreen extends Component {
       </View>)
     }
 
-    let optionsComponent = renderOptionsComponent();
+    const optionsComponent = renderOptionsComponent();
 
     return (
       <View style={styles.container}>
@@ -300,7 +284,7 @@ export default class HomeScreen extends Component {
             }}
             onSubmitEditing={() => {
               if(this.state.text!=='') {
-                this.addMessage(this.state.text, true);
+                this.addChat(this.state.text, true);
                 this.getReply(this.state.text);
               }
             }}
@@ -335,7 +319,7 @@ export default class HomeScreen extends Component {
             reverse
             onPress={()=>{
               if(this.state.text!=='') {
-                this.addMessage(this.state.text, true);
+                this.addChat(this.state.text, true);
                 this.getReply(this.state.text);
               }
             }}

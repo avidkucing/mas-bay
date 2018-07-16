@@ -1,9 +1,9 @@
-const ADD_MESSAGE = 'ADD_MESSAGE';
+export const ADD_MESSAGE = 'ADD_MESSAGE';
 
-function addMessage(text) {
+export function addMessage(message) {
     return {
         type: ADD_MESSAGE,
-        text
+        message
     }
 }
 
