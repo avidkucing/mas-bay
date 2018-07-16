@@ -26,7 +26,7 @@ export default class Message extends Component {
                     backgroundColor: this.props.color,
                     //borderColor: this.props.borderColor,
                     //borderWidth: 1,
-                    borderRadius: 50,
+                    borderRadius: 25,
                     marginLeft: 15,
                     marginRight: 15,
                     maxWidth: 280,

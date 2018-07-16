@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { StyleSheet, View, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { Keyboard, StyleSheet, View, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { Avatar, Text, Icon, FormInput } from 'react-native-elements';
 //our import
 import Message from '../Components/Message';
 
-const linkHabib = 'http://b99203d2.ngrok.io/chat';
+const linkHabib = 'https://intense-inlet-67504.herokuapp.com/chat';
 const linkKukuh ='http://8df7379e.ngrok.io/chat';
 
 const mainColor = '#fabc3d';
@@ -22,9 +22,6 @@ const options5 = ['y', 'n'];
 
 const allOptions = [options1, options2, options3, options4, options5];
 
-const optionsComponent = [];
-
-
 export default class HomeScreen extends Component {
   constructor(props) {
     super(props);
@@ -34,10 +31,30 @@ export default class HomeScreen extends Component {
       mId: 1,
       text: '',
       reply: '',
+      intent: '',
       button: 'microphone',
       options: options1,
       optionsNumber: 0,
+      isOptionsShowed: true,
     }; 
+  }
+
+  componentDidMount () {
+    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
+    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
+  }
+
+  componentWillUnmount () {
+    this.keyboardDidShowListener.remove();
+    this.keyboardDidHideListener.remove();
+  }
+
+  _keyboardDidShow () {
+    //return true;
+  }
+
+  _keyboardDidHide () {
+    //return true;
   }
 
   addMessage = (message,isUser) => {
@@ -55,12 +72,23 @@ export default class HomeScreen extends Component {
       text: message,
     })
     .then((response) => {
-      console.log(response);
+      //console.log(response.data);
+      
+      let data = response.data.split('*');
+      let reply = data[0];
+      if (1<data.length) {
+        let intent = data[1];
+        this.setState(() => ({
+          intent: intent,
+        }))
+        this.changeOptions(this.state.intent);
+      }
+      
       this.setState((prevState) => ({
-        reply: response.data,
+        reply: reply,
+        isOptionsShowed: true,
       }))
       this.addMessage(this.state.reply, false);
-      this.nextOptions();
     })
     .catch((error) => {
       console.log(error);
@@ -75,80 +103,80 @@ export default class HomeScreen extends Component {
     }));
   }
 
-  nextOptions = () => {
-    if (this.state.optionsNumber>allOptions.length-2) {
-      this.setState((prevState) => ({
-        optionsNumber: 0,
-      }));
-    } else {
-      this.setState((prevState) => ({
-        optionsNumber: prevState.optionsNumber + 1,
-      }));
+  changeOptions = (intent) => {
+    switch (intent) {
+      case 'nmr': 
+        this.setState(() => ({
+          optionsNumber: 1,
+        }));
+        break;
+      case 'nom': 
+        this.setState(() => ({
+          optionsNumber: 2,
+        }));
+        break;
+      case 'bay': 
+        this.setState(() => ({
+          optionsNumber: 3,
+        }));
+        break;
+      case 'yn': 
+        this.setState(() => ({
+          optionsNumber: 4,
+        }));
+        break;
+      case 'n':
+        this.setState(() => ({
+          optionsNumber: 0,
+        }));
+        this.getReply('reset');
+      default:
+        this.setState((prevState) => ({
+          optionsNumber: prevState.optionsNumber,
+        }));
     }
-    this.setState((prevState) => ({
+    this.setState(() => ({
       options: allOptions[this.state.optionsNumber],
     }));
   }
 
-  renderOptionsComponent = () => {
-    optionsComponent = this.state.options.map((text)=>
-      <TouchableOpacity
-          onPress={()=>{
-            this.addMessage(text, true);
-            this.setState((prevState) => ({
-              options: [],
-            })); 
-            this.getReply(text); 
-          }}
-          key={text}
-      > 
-          <View
-              style={{
-                  backgroundColor: 'white',
-                  borderRadius: 50,
-                  marginLeft: 15,
-                  alignSelf: 'flex-start',
-                  elevation: 1,
-                  marginBottom: 5,
-              }}
-          >
-              <Text
-                  style={{
-                    margin: 10,
-                    marginRight: 20,
-                    marginLeft: 20,
-                  }}
-              >
-                  {text}
-              </Text>          
-          </View>
-      </TouchableOpacity>
-    );
-  }
-
   render() {
-    //this.renderOptionsComponent();
-    optionsComponent = this.state.options.map((text)=>
-      <TouchableOpacity
-          onPress={()=>{
-            this.addMessage(text, true);
-            this.setState((prevState) => ({
-              options: [],
-            })); 
-            this.getReply(text); 
-          }}
-          key={text}
-      > 
-          <View
+    renderOptionsComponent = () => {
+      if (this.state.isOptionsShowed)
+      return (<View
+        flexDirection='row' 
+        style={{ 
+          height: 60,
+          flexDirection: 'row',
+          alignItems: 'flex-end',
+          backgroundColor: shadeColor,
+        }}
+        >
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+        >
+          {this.state.options.map((text)=>
+          <TouchableOpacity
+              onPress={()=>{
+                this.addMessage(text, true);
+                this.setState((prevState) => ({
+                  isOptionsShowed: false,
+                })); 
+                this.getReply(text); 
+              }}
+              key={text}
+          > 
+            <View
               style={{
                   backgroundColor: 'white',
-                  borderRadius: 50,
+                  borderRadius: 25,
                   marginLeft: 15,
                   alignSelf: 'flex-start',
                   elevation: 1,
                   marginBottom: 5,
               }}
-          >
+            >
               <Text
                   style={{
                     margin: 10,
@@ -158,9 +186,13 @@ export default class HomeScreen extends Component {
               >
                   {text}
               </Text>          
-          </View>
-      </TouchableOpacity>
-    );
+            </View>
+          </TouchableOpacity>)}
+        </ScrollView> 
+      </View>)
+    }
+
+    let optionsComponent = renderOptionsComponent();
 
     return (
       <View style={styles.container}>
@@ -235,22 +267,7 @@ export default class HomeScreen extends Component {
             {this.state.messages}
           </ScrollView> 
         </View>
-        <View
-          flexDirection='row' 
-          style={{ 
-            height: 60,
-            flexDirection: 'row',
-            alignItems: 'flex-end',
-            backgroundColor: shadeColor,
-          }}
-        >
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-          >
-            {optionsComponent}
-          </ScrollView>
-        </View>
+        {optionsComponent}
         <View 
           flexDirection='row' 
           style={{ 
@@ -265,7 +282,7 @@ export default class HomeScreen extends Component {
             ref={input => this.input = input}
             onFocus={()=>{
               this.setState((prevState) => ({
-                options: [],
+                isOptionsShowed: false,
               }));
             }}
             onChangeText={(text) => {
@@ -292,7 +309,7 @@ export default class HomeScreen extends Component {
                 button: 'microphone',
               });
               this.setState((prevState) => ({
-                options: allOptions[this.state.optionsNumber],
+                isOptionsShowed: true,
               }));
             }}
             placeholder='Ketik disini...'
