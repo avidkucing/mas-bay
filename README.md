@@ -1,7 +1,9 @@
 # mas-bay
 v.0.0.4
 
-Aplikasi untuk membeli pulsa dengan UI chatbot.
+Aplikasi Android untuk membeli pulsa dengan UI chatbot.
+
+Currently used libraries: react-navigation, react-native-elements, and axios.
 
 ## Implemented features:
 - Chatting dengan bot menggunakan text.
