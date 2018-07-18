@@ -1,10 +1,51 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Icon, FormInput } from 'react-native-elements';
+import Voice from 'react-native-voice';
 //our import
 import { inputComponents } from '../styles';
 
-const InputPanel = ({ state, addMessage, showHint, hideHint, setInputValue, getReply }) => {
+class InputPanel extends Component {
+    constructor(props) {
+        super(props);
+
+        //Voice.onSpeechResults = this.onSpeechResults.bind(this);
+        Voice.onSpeechPartialResults = this.onSpeechPartialResults.bind(this);
+    }
+
+    componentWillUnmount() {
+        Voice.destroy().then(Voice.removeAllListeners);
+    }
+
+    /*onSpeechResults(e) {
+        this.props.addResult(e.value);
+    }*/
+    
+    onSpeechPartialResults(e) {
+        this.props.addPartialResult(e.value);
+    }
+
+    async _startRecognizing(e) {
+        this.props.startRecognizing();
+        try {
+          await Voice.start('id-ID');
+        } catch (e) {
+          console.error(e);
+        }
+    }
+    
+    async _stopRecognizing(e) {
+        this.props.startRecognizing();
+        this.props.addMessage(this.props.state.inputValue, true);
+        this.props.getReply(this.props.state.inputValue);
+        try {
+          await Voice.stop();
+        } catch (e) {
+          console.error(e);
+        }
+    }
+
+    render() {
         return (
             <View 
                 flexDirection='row' 
@@ -12,20 +53,20 @@ const InputPanel = ({ state, addMessage, showHint, hideHint, setInputValue, getR
             >
                 <FormInput 
                     ref={input => this.input = input}
-                    value={state.inputValue}
+                    value={this.props.state.inputValue}
                     onFocus={()=>{
-                        hideHint();
+                        this.props.hideHint();
                     }}
                     onChangeText={(text) => {
-                        setInputValue(text);
+                        this.props.setInputValue(text);
                     }}
                     onSubmitEditing={() => {
-                        addMessage(state.inputValue, true);
-                        setInputValue('');
-                        getReply(state.inputValue);
+                        this.props.addMessage(this.props.state.inputValue, true);
+                        this.props.setInputValue('');
+                        this.props.getReply(this.props.state.inputValue);
                     }}
                     onEndEditing={()=>{
-                        showHint();                  
+                        this.props.showHint();                  
                     }}
                     placeholder='Ketik disini...'
                     underlineColorAndroid='transparent'
@@ -36,13 +77,17 @@ const InputPanel = ({ state, addMessage, showHint, hideHint, setInputValue, getR
                 <Icon
                     reverse
                     onPress={() => {
-                        if (state.inputValue!=='') {
-                            addMessage(state.inputValue, true);
-                            setInputValue('');
-                            getReply(state.inputValue);
+                        if (this.props.state.inputValue==='') {
+                            this._startRecognizing();
+                        } else if (this.props.state.isRecognizing) {
+                            this._stopRecognizing();
+                        } else {
+                            this.props.addMessage(this.props.state.inputValue, true);
+                            this.props.setInputValue('');
+                            this.props.getReply(this.props.state.inputValue);
                         }
                     }}
-                    name='send'
+                    name={this.props.state.isRecognizing ? 'stop' : this.props.state.inputValue==='' ? 'microphone' : 'send'}
                     type='font-awesome'
                     color='#fabc3d'
                     reverseColor='#3e3e3f'
@@ -52,5 +97,6 @@ const InputPanel = ({ state, addMessage, showHint, hideHint, setInputValue, getR
             </View>
         );
     }
+}
 
 export default InputPanel;

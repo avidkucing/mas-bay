@@ -1,10 +1,21 @@
-import { ADD_MESSAGE, RECEIVE_REPLY, SET_INPUT_VALUE, ADD_MESSAGE_FROM_INPUT, SHOW_HINT, HIDE_HINT } from './actions';
+import { 
+    ADD_MESSAGE, 
+    RECEIVE_REPLY, 
+    SET_INPUT_VALUE, 
+    SHOW_HINT, 
+    HIDE_HINT, 
+    START_RECOGNIZING,
+    ADD_PARTIAL_RESULT,
+    ADD_RESULT
+} from './actions';
 
 const initialState = {
     messages: [],
     intent: '',
     showHint: true,
     inputValue: '',
+    isRecognizing: false,
+    result: [],
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -47,6 +58,24 @@ const rootReducer = (state = initialState, action) => {
                     }
                 ] 
             }
+        case START_RECOGNIZING:
+            return {
+                ...state,
+                inputValue: '',
+                isRecognizing: !state.isRecognizing,
+                partialResult: [],
+                result: [],
+            }
+        case ADD_PARTIAL_RESULT:
+            return {
+                ...state,
+                inputValue: action.result.toString(),
+            }
+        /*case ADD_RESULT:
+            return {
+                ...state,
+                result: [...state.result, action.result],
+            }*/
         default:
             return state;
         }

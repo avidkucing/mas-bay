@@ -6,6 +6,10 @@ export const SHOW_HINT = 'SHOW_HINT';
 export const HIDE_HINT = 'HIDE_HINT';
 export const SET_INPUT_VALUE = 'SET_INPUT_VALUE';
 export const RECEIVE_REPLY = 'RECEIVE_REPLY';
+export const START_RECOGNIZING = 'START_RECOGNIZING';
+export const ADD_PARTIAL_RESULT = 'ADD_PARTIAL_RESULT';
+//export const ADD_RESULT = 'ADD_RESULT';
+
 
 let nextId = 1;
 
@@ -46,6 +50,28 @@ export const receiveReply = (text) => {
     }
 }
 
+export const startRecognizing = () => {
+    return {
+        type: START_RECOGNIZING,
+    }
+}
+
+export const addPartialResult = (result) => {
+    return {
+        type: ADD_PARTIAL_RESULT,
+        result
+    }
+}
+
+/*export const addResult = (result) => {
+    return {
+        type: ADD_RESULT,
+        result
+    }
+}*/
+
+
+//redux-thunk actions
 export const getReply = (text, isShowHint = true) => dispatch => {
     const url = 'https://intense-inlet-67504.herokuapp.com/chat';
     const uniqueId = DeviceInfo.getUniqueID();
