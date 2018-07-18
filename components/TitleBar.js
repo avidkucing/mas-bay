@@ -1,66 +1,41 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import { Text, Icon } from 'react-native-elements';
+//our import
+import { titleBar } from '../styles';
 
 const TitleBar = () => {
         return (
             <View 
-                style={{
-                    flexDirection:'row',
-                    elevation: 5,
-                    height: 50,
-                    width: 360,
-                    backgroundColor: '#fabc3d',
-                }}
+                style={titleBar.mainContainer}
             >
                 <View
-                    style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    }}
+                    style={titleBar.leftContainer}
                 >
                     <Image
-                    source= {require('../Man-05.png')}
-                    style={{
-                        width: 60,
-                        height: 60,
-                    }}
+                        source= {require('../Man-05.png')}
+                        style={titleBar.leftImage}
                     />
                     <Text
-                    style={{
-                        fontSize: 20,
-                        color: '#3e3e3f',
-                        fontWeight: 'bold',
-                    }}
+                        style={titleBar.leftText}
                     >
-                    Mas Bay
+                        Mas Bay
                     </Text>
                 </View>
                 <View
-                    style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'flex-end',
-                    }}
+                    style={titleBar.rightContainer}
                 >
                     <Text
-                    style={{
-                        fontWeight: 'bold',
-                        color: '#3e3e3f',
-                    }}
+                        style={titleBar.rightText}
                     >
-                    Menu
+                        Menu
                     </Text>
                     <Icon 
                     name='keyboard-arrow-right'
                     type='material-icons'
                     color={'#3e3e3f'}
                     size={36}
-                    containerStyle={{
-                        marginRight: 10,
-                    }}
+                    containerStyle={titleBar.rightIcon}
                     />
                 </View>
             </View>

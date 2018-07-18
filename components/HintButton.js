@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { Text } from 'react-native-elements';
+//our import
+import { hintComponents } from '../styles';
 
 const HintButton = ({ text, onPress }) => {
         return (
@@ -9,22 +11,10 @@ const HintButton = ({ text, onPress }) => {
                 key={text}
             > 
                 <View
-                style={{
-                    backgroundColor: 'white',
-                    borderRadius: 25,
-                    marginLeft: 15,
-                    alignSelf: 'flex-start',
-                    elevation: 1,
-                    marginTop: 10,
-                    marginBottom: 5,
-                }}
+                style={hintComponents.hintButtonContainer}
                 >
                 <Text
-                    style={{
-                        margin: 10,
-                        marginRight: 20,
-                        marginLeft: 20,
-                    }}
+                    style={hintComponents.hintButtonText}
                 >
                     {text}
                 </Text>          

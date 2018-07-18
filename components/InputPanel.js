@@ -1,18 +1,14 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Icon, FormInput } from 'react-native-elements';
+//our import
+import { inputComponents } from '../styles';
 
 const InputPanel = ({ state, addMessage, showHint, hideHint, setInputValue, getReply }) => {
         return (
             <View 
                 flexDirection='row' 
-                style={{ 
-                    height: 60,
-                    flexDirection: 'row',
-                    width: 360,
-                    alignItems: 'center',
-                    backgroundColor: '#fddea0',
-                }}
+                style={inputComponents.inputPanel}
             >
                 <FormInput 
                     ref={input => this.input = input}
@@ -34,19 +30,8 @@ const InputPanel = ({ state, addMessage, showHint, hideHint, setInputValue, getR
                     placeholder='Ketik disini...'
                     underlineColorAndroid='transparent'
                     returnKeyLabel='send'
-                    containerStyle={{
-                        width: 280,
-                        height: 40,
-                        borderRadius: 50,
-                        justifyContent: 'center',
-                        marginRight: 3,
-                        elevation: 1,
-                        backgroundColor: 'white',
-                    }}
-                    inputStyle={{
-                        margin: 10,
-                        width: 240,
-                    }} 
+                    containerStyle={inputComponents.formContainer}
+                    inputStyle={inputComponents.formInput} 
                 />
                 <Icon
                     reverse
@@ -62,10 +47,7 @@ const InputPanel = ({ state, addMessage, showHint, hideHint, setInputValue, getR
                     color='#fabc3d'
                     reverseColor='#3e3e3f'
                     size={20}
-                    containerStyle={{
-                        elevation: 1,
-                        marginBottom: 10,
-                    }}
+                    containerStyle={inputComponents.iconContainer}
                 />
             </View>
         );

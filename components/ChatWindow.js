@@ -1,15 +1,14 @@
 import React from 'react';
 import { View, ScrollView } from 'react-native';
+//our import
+import { chatComponents } from '../styles';
 import Message from './Message';
 
 const ChatWindow = state => {
     
     return (
     
-    <View style={{ 
-        flex: 10,
-        backgroundColor: '#fddea0',
-    }}>
+    <View style={chatComponents.chatWindow}>
         <ScrollView 
             ref={chat => this.chat = chat}
             onContentSizeChange={(contentWidth, contentHeight)=>{        

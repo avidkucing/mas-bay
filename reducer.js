@@ -1,13 +1,7 @@
 import { ADD_MESSAGE, RECEIVE_REPLY, SET_INPUT_VALUE, ADD_MESSAGE_FROM_INPUT, SHOW_HINT, HIDE_HINT } from './actions';
 
 const initialState = {
-    messages: [
-        {
-            id: 0,
-            text: 'Mau beli apa hari ini?',
-            isUser: false,
-        },
-    ],
+    messages: [],
     intent: '',
     showHint: true,
     inputValue: '',

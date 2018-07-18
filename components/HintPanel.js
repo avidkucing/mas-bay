@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, ScrollView } from 'react-native';
+//our import
+import { hintComponents } from '../styles';
 import HintButton from './HintButton';
 
 const options1 = ['pulsa'];
@@ -54,12 +56,7 @@ const HintPanel = ({ intent, addMessage ,getReply , isShowHint, showHint}) => {
 
     return (
         <View
-            flexDirection='row' 
-            style={{ 
-                flexDirection: 'row',
-                alignItems: 'flex-end',
-                backgroundColor: '#fddea0',
-            }}
+            style={hintComponents.hintPanel}
         >
             {content}
         </View>

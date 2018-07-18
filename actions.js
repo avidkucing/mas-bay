@@ -1,7 +1,7 @@
 import axios from 'axios';
+import DeviceInfo from 'react-native-device-info';
 
 export const ADD_MESSAGE = 'ADD_MESSAGE';
-//export const ADD_MESSAGE_FROM_INPUT = 'ADD_MESSAGE_FROM_INPUT';
 export const SHOW_HINT = 'SHOW_HINT';
 export const HIDE_HINT = 'HIDE_HINT';
 export const SET_INPUT_VALUE = 'SET_INPUT_VALUE';
@@ -16,13 +16,6 @@ export const addMessage = (text, isUser) => {
         text, isUser
     }
 }
-
-/*export const addMessageFromInput = () => {
-    return {
-        type: ADD_MESSAGE_FROM_INPUT,
-        id: nextId++
-    }
-}*/
 
 
 export const showHint = () => {
@@ -53,9 +46,13 @@ export const receiveReply = (text) => {
     }
 }
 
-export const getReply = (text, isShowHint) => dispatch => {
-    var url = 'https://intense-inlet-67504.herokuapp.com/chat';
-    var data = {text: text};
+export const getReply = (text, isShowHint = true) => dispatch => {
+    const url = 'https://intense-inlet-67504.herokuapp.com/chat';
+    const uniqueId = DeviceInfo.getUniqueID();
+    const data = {
+        deviceId: uniqueId,
+        text: text,
+    };
 
     dispatch(hideHint());
     axios.post(url, data)
