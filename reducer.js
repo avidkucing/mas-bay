@@ -1,4 +1,4 @@
-import { ADD_MESSAGE, TOGGLE_HINT, RECEIVE_REPLY, SET_INPUT_VALUE, ADD_MESSAGE_FROM_INPUT } from './actions';
+import { ADD_MESSAGE, RECEIVE_REPLY, SET_INPUT_VALUE, ADD_MESSAGE_FROM_INPUT, SHOW_HINT, HIDE_HINT } from './actions';
 
 const initialState = {
     messages: [
@@ -26,21 +26,15 @@ const rootReducer = (state = initialState, action) => {
                     }
                 ]
             }
-        /*case ADD_MESSAGE_FROM_INPUT:
+        case SHOW_HINT:
             return {
                 ...state, 
-                messages: [...state.messages, 
-                    {
-                        id: action.id,
-                        text: state.inputValue,
-                        isUser: true,
-                    }
-                ]
-            }*/
-        case TOGGLE_HINT:
+                showHint: true,
+            }
+        case HIDE_HINT:
             return {
                 ...state, 
-                showHint: !state.showHint,
+                showHint: false,
             }
         case SET_INPUT_VALUE:
             return {

@@ -25,12 +25,12 @@ const getNumber = (intent) => {
     }
 }
 
-const HintPanel = ({ intent, addMessage ,getReply , showHint}) => {
+const HintPanel = ({ intent, addMessage ,getReply , isShowHint, showHint}) => {
 
     const optionNumber = getNumber(intent);
 
     const renderContent = () => {
-        if (showHint) 
+        if (isShowHint) 
             return (
                 <ScrollView
                     horizontal
@@ -42,7 +42,7 @@ const HintPanel = ({ intent, addMessage ,getReply , showHint}) => {
                         text={text}
                         onPress={() => {
                             addMessage(text, true);
-                            getReply(text);
+                            getReply(text, true);
                         }}
                     />
                 )}

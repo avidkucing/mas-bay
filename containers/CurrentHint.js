@@ -1,16 +1,17 @@
 import { connect } from 'react-redux';
 
-import { addMessage, getReply } from '../actions';
+import { addMessage, getReply, showHint } from '../actions';
 import HintPanel from '../components/HintPanel';
 
 const mapStateToProps = state => ({
     intent: state.intent,
-    showHint: state.showHint,
+    isShowHint: state.showHint,
 })
 
 const mapDispatchToProps = dispatch => ({
     addMessage: (text, isUser) => dispatch(addMessage(text, isUser)),
-    getReply: text => dispatch(getReply(text)),
+    getReply: (text, isShowHint) => dispatch(getReply(text, isShowHint)),
+    showHint: () => showHint(),
 })
 
 const CurrentHint = connect(

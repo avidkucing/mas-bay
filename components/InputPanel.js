@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { Icon, FormInput } from 'react-native-elements';
 
-const InputPanel = ({ state, addMessage, toggleHint, setInputValue, getReply }) => {
+const InputPanel = ({ state, addMessage, showHint, hideHint, setInputValue, getReply }) => {
         return (
             <View 
                 flexDirection='row' 
@@ -18,7 +18,7 @@ const InputPanel = ({ state, addMessage, toggleHint, setInputValue, getReply }) 
                     ref={input => this.input = input}
                     value={state.inputValue}
                     onFocus={()=>{
-                        toggleHint();
+                        hideHint();
                     }}
                     onChangeText={(text) => {
                         setInputValue(text);
@@ -29,7 +29,7 @@ const InputPanel = ({ state, addMessage, toggleHint, setInputValue, getReply }) 
                         getReply(state.inputValue);
                     }}
                     onEndEditing={()=>{
-                        toggleHint();                  
+                        showHint();                  
                     }}
                     placeholder='Ketik disini...'
                     underlineColorAndroid='transparent'
@@ -55,7 +55,6 @@ const InputPanel = ({ state, addMessage, toggleHint, setInputValue, getReply }) 
                             addMessage(state.inputValue, true);
                             setInputValue('');
                             getReply(state.inputValue);
-                            toggleHint();
                         }
                     }}
                     name='send'

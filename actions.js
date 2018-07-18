@@ -2,7 +2,8 @@ import axios from 'axios';
 
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 //export const ADD_MESSAGE_FROM_INPUT = 'ADD_MESSAGE_FROM_INPUT';
-export const TOGGLE_HINT = 'TOGGLE_HINT';
+export const SHOW_HINT = 'SHOW_HINT';
+export const HIDE_HINT = 'HIDE_HINT';
 export const SET_INPUT_VALUE = 'SET_INPUT_VALUE';
 export const RECEIVE_REPLY = 'RECEIVE_REPLY';
 
@@ -24,9 +25,15 @@ export const addMessage = (text, isUser) => {
 }*/
 
 
-export const toggleHint = () => {
+export const showHint = () => {
     return {
-        type: TOGGLE_HINT,
+        type: SHOW_HINT,
+    }
+}
+
+export const hideHint = () => {
+    return {
+        type: HIDE_HINT,
     }
 }
 
@@ -46,12 +53,16 @@ export const receiveReply = (text) => {
     }
 }
 
-export const getReply = (text) => dispatch => {
+export const getReply = (text, isShowHint) => dispatch => {
     var url = 'https://intense-inlet-67504.herokuapp.com/chat';
     var data = {text: text};
 
-    dispatch(toggleHint());
+    dispatch(hideHint());
     axios.post(url, data)
-      .then((response) => dispatch(receiveReply(response.data)));
+      .then((response) => {
+            dispatch(receiveReply(response.data));
+            if (isShowHint) dispatch(showHint());
+        }
+    );
 }
 
