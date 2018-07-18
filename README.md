@@ -1,9 +1,10 @@
 # mas-bay
+<<<<<<< HEAD
 v.0.0.8
+=======
+>>>>>>> b999240075621b725da002135e0ccfbb5e556ce1
 
 Aplikasi Android untuk membeli pulsa dengan UI chatbot.
-
-Currently used libraries: react-navigation, react-native-elements, and axios.
 
 ## Implemented features:
 - Chatting dengan bot menggunakan text.
