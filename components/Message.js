@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
-import { View, TouchableOpacity } from 'react-native';
-import { Text, Icon } from 'react-native-elements';
+import React from 'react';
+import { View } from 'react-native';
+import { Text } from 'react-native-elements';
 
-export default class Message extends Component {
-
-    render() {
+const Message = ({text, isUser}) => {
         let align = 'flex-start';
         
-        if (this.props.user) {
+        if (isUser) {
             align = 'flex-end';
         }
 
@@ -23,7 +21,7 @@ export default class Message extends Component {
             >
                 <View
                 style={{
-                    backgroundColor: this.props.color,
+                    backgroundColor: 'white',
                     //borderColor: this.props.borderColor,
                     //borderWidth: 1,
                     borderRadius: 25,
@@ -37,13 +35,14 @@ export default class Message extends Component {
                         margin: 10,
                         marginRight: 20,
                         marginLeft: 20,
-                        color: this.props.textColor,
+                        //color: this.props.textColor,
                         }}
                     >
-                        {this.props.text}
+                        {text}
                     </Text>          
                 </View>
             </View>
         );
     }
-}
+
+export default Message;

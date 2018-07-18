@@ -1,18 +1,67 @@
-import { ADD_MESSAGE } from './actions';
+import { ADD_MESSAGE, TOGGLE_HINT, RECEIVE_REPLY, SET_INPUT_VALUE, ADD_MESSAGE_FROM_INPUT } from './actions';
 
 const initialState = {
-    messages : [],
+    messages: [
+        {
+            id: 0,
+            text: 'Mau beli apa hari ini?',
+            isUser: false,
+        },
+    ],
+    intent: '',
+    showHint: true,
+    inputValue: '',
 }
 
-function chatApp (state = initialState, action) {
+const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE:
-            return Object.assign({}, state, {
-                messages: [...state.messages, action.message],
-            })
+            return {
+                ...state, 
+                messages: [...state.messages, 
+                    {
+                        id: action.id,
+                        text: action.text,
+                        isUser: action.isUser,
+                    }
+                ]
+            }
+        /*case ADD_MESSAGE_FROM_INPUT:
+            return {
+                ...state, 
+                messages: [...state.messages, 
+                    {
+                        id: action.id,
+                        text: state.inputValue,
+                        isUser: true,
+                    }
+                ]
+            }*/
+        case TOGGLE_HINT:
+            return {
+                ...state, 
+                showHint: !state.showHint,
+            }
+        case SET_INPUT_VALUE:
+            return {
+                ...state, 
+                inputValue: action.text,
+            }
+        case RECEIVE_REPLY: 
+            return {
+                ...state,
+                intent: action.intent,
+                messages: [
+                    ...state.messages, {
+                        id: action.id,
+                        text: action.text,
+                        isUser: false,
+                    }
+                ] 
+            }
         default:
             return state;
         }
 }
 
-export default chatApp;
+export default rootReducer;
