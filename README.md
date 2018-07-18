@@ -1,5 +1,4 @@
 # mas-bay
-v.0.0.4
 
 Aplikasi Android untuk membeli pulsa dengan UI chatbot.
 
