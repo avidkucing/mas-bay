@@ -1,35 +1,59 @@
 import React, { Component } from 'react';
-import { createStackNavigator } from 'react-navigation';
+import { Animated, Easing } from 'react-native';
+import { createStackNavigator, createMaterialTopTabNavigator } from 'react-navigation';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 //our import
 import rootReducer from './reducer';
 import { addMessage, receiveReply, getReply } from './actions';
-import HomeScreen from './screens/HomeScreen';
+import ChatScreen from './screens/ChatScreen';
+import ProfilScreen from './screens/ProfilScreen';
+import RiwayatScreen from './screens/RiwayatScreen';
+import { mainColor, shadeColor, backgroundColor, tintColor } from './styles';
 
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
-const RootStack = createStackNavigator(
+const RootStack = createMaterialTopTabNavigator(
   {
-    Home: { 
-      screen: HomeScreen, 
+    Profil: {
+      screen: ProfilScreen,
     },
+    Chat: { 
+      screen: ChatScreen, 
+    },
+    Riwayat: {
+      screen: RiwayatScreen,
+    }
   },
   {
-    headerMode: 'none',
-    initialRouteName: 'Home',
-    navigationOptions: () => ({
-    
-    }),
+    initialRouteName: 'Profil',
+    tabBarOptions: {
+      upperCaseLabel: false,
+      activeTintColor: mainColor,
+      inactiveTintColor: shadeColor,
+      indicatorStyle: {
+        backgroundColor: mainColor,
+      },
+      labelStyle: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        fontFamily: 'roboto',
+      },
+      style: {
+        height: 60,
+        backgroundColor: backgroundColor,
+        elevation: 0,
+      }
+    }
+
   }
 );
 
 export default class App extends Component {
 
   render() {
-    store.dispatch(getReply('reset'));
 
     return (
       <Provider store={store}>

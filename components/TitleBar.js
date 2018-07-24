@@ -12,31 +12,19 @@ const TitleBar = () => {
                 <View
                     style={titleBar.leftContainer}
                 >
-                    <Image
-                        source= {require('../Man-05.png')}
-                        style={titleBar.leftImage}
-                    />
-                    <Text
-                        style={titleBar.leftText}
+                    
+                </View>
+                <View style={titleBar.centerContainer}>
+                    <Text 
+                        style={titleBar.centerText}
                     >
-                        Mas Bay
+                        Chat
                     </Text>
                 </View>
                 <View
                     style={titleBar.rightContainer}
                 >
-                    <Text
-                        style={titleBar.rightText}
-                    >
-                        Menu
-                    </Text>
-                    <Icon 
-                    name='keyboard-arrow-right'
-                    type='material-icons'
-                    color={'#3e3e3f'}
-                    size={36}
-                    containerStyle={titleBar.rightIcon}
-                    />
+
                 </View>
             </View>
         );

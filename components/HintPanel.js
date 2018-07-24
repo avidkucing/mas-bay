@@ -34,11 +34,8 @@ const HintPanel = ({ intent, addMessage ,getReply , isShowHint, showHint}) => {
     const renderContent = () => {
         if (isShowHint) 
             return (
-                <ScrollView
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                >
-                {allOptions[optionNumber].map((text)=>
+
+                allOptions[optionNumber].map((text)=>
                     <HintButton
                         key={text} 
                         text={text}
@@ -47,8 +44,7 @@ const HintPanel = ({ intent, addMessage ,getReply , isShowHint, showHint}) => {
                             getReply(text, true);
                         }}
                     />
-                )}
-                </ScrollView> 
+                )
             )
     }
 

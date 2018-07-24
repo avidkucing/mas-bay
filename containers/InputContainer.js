@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 
 import { addMessage, showHint, hideHint, 
-    setInputValue, getReply, startRecognizing,
-    addPartialResult, addResult } from '../actions';
+    setInputValue, getReply, toggleTitle } from '../actions';
 import InputPanel from '../components/InputPanel';
 
 const mapStateToProps = state => ({
@@ -15,9 +14,7 @@ const mapDispatchToProps = dispatch => ({
     hideHint: () => dispatch(hideHint()),
     setInputValue: (text) => dispatch(setInputValue(text)),
     getReply: (text) => dispatch(getReply(text)),
-    startRecognizing: () => dispatch(startRecognizing()),
-    addPartialResult: (result) => dispatch(addPartialResult(result)),
-    addResult: (result) => dispatch(addResult(result)),
+    toggleTitle: () => dispatch(toggleTitle()),
 })
 
 const InputContainer = connect(

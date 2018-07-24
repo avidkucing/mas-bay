@@ -1,110 +1,43 @@
 import { StyleSheet } from 'react-native';
 
 export const mainColor = '#fabc3d';
-export const secondaryColor = '#3e3e3f';
+export const backgroundColor = '#000000d0';//'#3e3e3f';
 export const tintColor= '#f37a10';
-export const shadeColor= '#fddea0';
+export const shadeColor= '#fabc3daa';
 export const white= 'white';
+
+const fontSize = 14;
 
 export const screens = StyleSheet.create({
     homeContainer: {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#fddea0',
+      backgroundColor: backgroundColor,
     },
-    
-});
-
-export const chatComponents = StyleSheet.create({
-    chatWindow: { 
-        flex: 10,
-        backgroundColor: '#fddea0',
-    },
-    messageContainerUser: {
-        width: 360,
-        justifyContent: 'flex-end',
-        flexDirection: 'row',
-        marginTop: 10,
-    },
-    messageContainerBot: {
-        width: 360,
-        justifyContent: 'flex-start',
-        flexDirection: 'row',
-        marginTop: 10,
-    },
-    messageBubble: {
-        backgroundColor: 'white',
-        borderRadius: 25,
-        marginLeft: 15,
-        marginRight: 15,
-        maxWidth: 280,
-    },
-    messageText: {
-        margin: 10,
-        marginRight: 20,
-        marginLeft: 20,
-        color: secondaryColor,
-    },
-});
-
-export const hintComponents = StyleSheet.create({
-    hintPanel: { 
-        flexDirection: 'row',
-        alignItems: 'flex-end',
-        backgroundColor: '#fddea0',
-    },
-    hintButtonContainer: {
-        backgroundColor: 'white',
-        borderRadius: 25,
-        marginLeft: 15,
-        alignSelf: 'flex-start',
-        elevation: 1,
-        marginTop: 10,
-        marginBottom: 5,
-    },
-    hintButtonText: {
-        margin: 10,
-        marginRight: 20,
-        marginLeft: 20,
-    },
-    
-});
-
-export const inputComponents = StyleSheet.create ({
-    inputPanel: { 
-        height: 60,
-        flexDirection: 'row',
-        width: 360,
-        alignItems: 'center',
-        backgroundColor: '#fddea0',
-    },
-    formContainer: {
-        width: 280,
-        height: 40,
-        borderRadius: 50,
+    loginContainer: {
+        flex: 1,
         justifyContent: 'center',
-        marginRight: 3,
-        elevation: 1,
-        backgroundColor: 'white',
-    },
-    formInput: {
-        margin: 10,
-        width: 240,
-    },
-    iconContainer: {
-        elevation: 1,
-        marginBottom: 10,
-    },
+        alignItems: 'center',
+        backgroundColor: backgroundColor,
+      },
+    inputContainer: {
+        flexDirection: 'row',
+        //width: 360,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 80,
+    }
 });
 
 export const titleBar = StyleSheet.create({
     mainContainer: {
         flexDirection:'row',
+        alignItems: 'center',
         elevation: 5,
-        height: 50,
+        height: 60,
         width: 360,
-        backgroundColor: '#fabc3d',
+        //backgroundColor: mainColor,
     },
     leftContainer: {
         flex: 1,
@@ -115,9 +48,13 @@ export const titleBar = StyleSheet.create({
         width: 60,
         height: 60,
     },
-    leftText: {
-        fontSize: 20,
-        color: '#3e3e3f',
+    centerContainer: {
+        flex: 3,
+        alignItems: 'center',
+    },
+    centerText: {
+        fontSize: 36,
+        color: mainColor,
         fontWeight: 'bold',
     },
     rightContainer: {
@@ -134,3 +71,110 @@ export const titleBar = StyleSheet.create({
         marginRight: 10,
     },
 });
+
+export const chatComponents = StyleSheet.create({
+    chatWindow: { 
+        flex: 10,
+        
+    },
+    messageContainerUser: {
+        width: 360,
+        justifyContent: 'flex-end',
+        flexDirection: 'row',
+        marginTop: 10,
+    },
+    messageContainerBot: {
+        width: 360,
+        justifyContent: 'flex-start',
+        flexDirection: 'row',
+    },
+    messageBubbleUser: {
+        backgroundColor: 'white',
+        borderRadius: 25,
+        marginLeft: 15,
+        marginRight: 15,
+        maxWidth: 280,
+    },
+    messageBubbleBot: {
+        backgroundColor: mainColor,
+        borderRadius: 25,
+        marginTop: 10,
+        marginRight: 15,
+        maxWidth: 280,
+        justifyContent: 'center',
+    },
+    messageTextUser: {
+        margin: 10,
+        marginRight: 20,
+        marginLeft: 20,
+        color: backgroundColor,
+        fontSize: fontSize,
+    },
+    messageTextBot: {
+        margin: 10,
+        marginRight: 20,
+        marginLeft: 20,
+        color: backgroundColor,
+        fontSize: fontSize,
+    },
+});
+
+export const hintComponents = StyleSheet.create({
+    hintPanel: { 
+        flexDirection: 'row',
+        alignItems: 'flex-end',
+        height: 60,
+    },
+    hintButtonContainer: {
+        backgroundColor: 'white',
+        borderRadius: 25,
+        marginLeft: 15,
+        alignSelf: 'flex-start',
+        elevation: 1,
+        marginTop: 10,
+        marginBottom: 5,
+    },
+    hintButtonText: {
+        margin: 10,
+        marginRight: 20,
+        marginLeft: 20,
+        color: backgroundColor,
+        fontSize: fontSize,
+    },
+    
+});
+
+export const inputComponents = StyleSheet.create ({
+    formContainer: {
+        width: 240,
+        borderRadius: 25,
+        justifyContent: 'center',
+        elevation: 1,
+        backgroundColor: 'white',
+    },
+    formInput: {
+        marginLeft: 10,
+        width: 300,
+        fontSize: fontSize,
+    },
+    iconContainer: {
+        elevation: 1,
+        marginBottom: 10,
+        marginRight: 10,
+    },
+    loginContainer: {
+        borderRadius: 25,
+        width: 240,
+        backgroundColor: '#00000022',
+    },
+    loginInput: {
+        marginLeft: 10,
+        fontSize: fontSize,
+        color: mainColor,
+    },
+    loginButtonContainer: {
+        marginTop: 20,
+    },
+    
+});
+
