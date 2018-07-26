@@ -25,9 +25,10 @@ const mapDispatchToProps = dispatch => ({
 class Chat extends Component {
 
   componentDidMount() {
-    this.props.addMessage('Hai '+this.props.state.name+'!', false);
+    //this.props.addMessage('Hai '+this.props.state.name+'!', false);
     this.props.getReply('reset');
   }
+
 
   render() {
 

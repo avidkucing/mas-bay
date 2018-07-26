@@ -14,11 +14,13 @@ import {
     SET_SESSION,
     SET_SALDO,
     SET_NAME,
+    SET_RIWAYAT,
+    ADD_RIWAYAT,
 } from './actions';
 
 const initialState = {
     baseURL: 'https://intense-inlet-67504.herokuapp.com',
-    isLoggedIn: true,
+    isLoggedIn: false,
     name: '',
     session: '',
     saldo: '',
@@ -27,8 +29,7 @@ const initialState = {
     showHint: true,
     inputValue: '',
     isRecognizing: false,
-    result: [],
-    isTitleShown: true,
+    riwayat: [],
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -42,6 +43,9 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 isLoggedIn: false,
+                name: '',
+                session: '',
+                saldo: '',
             }
         case SET_NAME:
             return {
@@ -57,6 +61,16 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 saldo: action.text,
+            }
+        case SET_RIWAYAT:
+            return {
+                ...state, 
+                riwayat: action.array
+            }
+        case ADD_RIWAYAT:
+            return {
+                ...state, 
+                riwayat: [...state.messages, action.array]
             }
         case ADD_MESSAGE:
             return {
@@ -118,11 +132,6 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 inputValue: action.result.toString(),
-            }
-        case TOOGLE_TITLE:
-            return {
-                ...state,
-                isTitleShown: !state.isTitleShown,
             }
         default:
             return state;

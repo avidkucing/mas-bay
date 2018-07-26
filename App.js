@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Animated, Easing } from 'react-native';
+import { Animated, Easing, ImageBackground } from 'react-native';
 import { createStackNavigator, createMaterialTopTabNavigator } from 'react-navigation';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -28,7 +28,7 @@ const RootStack = createMaterialTopTabNavigator(
     }
   },
   {
-    initialRouteName: 'Profil',
+    initialRouteName: 'Chat',
     tabBarOptions: {
       upperCaseLabel: false,
       activeTintColor: mainColor,
@@ -57,7 +57,14 @@ export default class App extends Component {
 
     return (
       <Provider store={store}>
+        <ImageBackground
+          source={require('./Man-02.jpg')}
+          style={{
+            flex: 1,
+          }}
+        >
         <RootStack />
+        </ImageBackground>
       </Provider>
     );
   }

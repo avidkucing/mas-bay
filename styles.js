@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export const mainColor = '#fabc3d';
-export const backgroundColor = '#000000d0';//'#3e3e3f';
+export const backgroundColor = '#00000070';//'#3e3e3f';
 export const tintColor= '#f37a10';
 export const shadeColor= '#fabc3daa';
 export const white= 'white';
@@ -75,7 +75,7 @@ export const titleBar = StyleSheet.create({
 export const chatComponents = StyleSheet.create({
     chatWindow: { 
         flex: 10,
-        
+        marginTop: 10,        
     },
     messageContainerUser: {
         width: 360,
@@ -107,14 +107,14 @@ export const chatComponents = StyleSheet.create({
         margin: 10,
         marginRight: 20,
         marginLeft: 20,
-        color: backgroundColor,
+        color: 'black',
         fontSize: fontSize,
     },
     messageTextBot: {
         margin: 10,
         marginRight: 20,
         marginLeft: 20,
-        color: backgroundColor,
+        color: 'black',
         fontSize: fontSize,
     },
 });
@@ -138,7 +138,7 @@ export const hintComponents = StyleSheet.create({
         margin: 10,
         marginRight: 20,
         marginLeft: 20,
-        color: backgroundColor,
+        color: 'black',
         fontSize: fontSize,
     },
     
@@ -150,12 +150,13 @@ export const inputComponents = StyleSheet.create ({
         borderRadius: 25,
         justifyContent: 'center',
         elevation: 1,
-        backgroundColor: 'white',
+        backgroundColor: '#ffffffaa',
     },
     formInput: {
         marginLeft: 10,
         width: 300,
         fontSize: fontSize,
+        color: 'black',
     },
     iconContainer: {
         elevation: 1,
@@ -165,12 +166,13 @@ export const inputComponents = StyleSheet.create ({
     loginContainer: {
         borderRadius: 25,
         width: 240,
-        backgroundColor: '#00000022',
+        backgroundColor: '#ffffffaa',
+        marginBottom: 20,
     },
     loginInput: {
         marginLeft: 10,
         fontSize: fontSize,
-        color: mainColor,
+        color: 'black',
     },
     loginButtonContainer: {
         marginTop: 20,

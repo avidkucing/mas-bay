@@ -6,7 +6,7 @@ import Message from './Message';
 
 const ChatWindow = state => {
 
-    _keyExtractor = (item, index) => item.id;
+    _keyExtractor = (item) => item.id;
     
     return (
     

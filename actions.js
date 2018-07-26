@@ -10,12 +10,13 @@ export const SET_EMAIL_VALUE = 'SET_EMAIL_VALUE';
 export const RECEIVE_REPLY = 'RECEIVE_REPLY';
 export const START_RECOGNIZING = 'START_RECOGNIZING';
 export const ADD_PARTIAL_RESULT = 'ADD_PARTIAL_RESULT';
-export const TOOGLE_TITLE = 'TOOGLE_TITLE';
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const SET_SESSION = 'SET_SESSION';
 export const SET_SALDO = 'SET_SALDO';
 export const SET_NAME = 'SET_NAME';
+export const SET_RIWAYAT = 'SET_RIWAYAT';
+export const ADD_RIWAYAT = 'ADD_RIWAYAT';
 
 
 let nextId = 1;
@@ -50,6 +51,20 @@ export const setSaldo = (text) => {
     return {
         type: SET_SALDO,
         text
+    }
+}
+
+export const setRiwayat = (array) => {
+    return {
+        type: SET_RIWAYAT,
+        array
+    }
+}
+
+export const addRiwayat = (array) => {
+    return {
+        type: ADD_RIWAYAT,
+        array
     }
 }
 
@@ -117,13 +132,6 @@ export const addPartialResult = (result) => {
     }
 }
 
-export const toggleTitle = () => {
-    return {
-        type: TOOGLE_TITLE,
-    }
-}
-
-
 //redux-thunk actions
 export const getReply = (text, isShowHint = true) => dispatch => {
     const url = 'https://intense-inlet-67504.herokuapp.com/chat';
@@ -155,3 +163,17 @@ export const getSaldo = (text) => dispatch => {
     );
 }
 
+export const getRiwayat = (session) => dispatch => {
+    const url = 'https://intense-inlet-67504.herokuapp.com/riwayattransaksi';
+    const uniqueId = DeviceInfo.getUniqueID();
+    const data = {
+        session: session,
+        deviceId: uniqueId,
+    };
+
+    axios.post(url, data)
+      .then((response) => {
+            dispatch(setRiwayat(response.data));
+        }
+    );
+}
