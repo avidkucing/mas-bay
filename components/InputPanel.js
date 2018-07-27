@@ -5,7 +5,7 @@ import Voice from 'react-native-voice';
 //our import
 import { inputComponents } from '../styles';
 
-const InputPanel = ({ state, showHint, hideHint, setInputValue, addMessage, getReply, toggleTitle }) => {
+const InputPanel = ({ state, showHint, hideHint, setInputValue, addMessage, getReply }) => {
     return (
         <View>
             <FormInput 
@@ -13,7 +13,6 @@ const InputPanel = ({ state, showHint, hideHint, setInputValue, addMessage, getR
                 value={state.inputValue}
                 onFocus={()=>{
                     hideHint();
-                    if (state.isTitleShown) toggleTitle();
                 }}
                 onChangeText={(text) => {
                     setInputValue(text);

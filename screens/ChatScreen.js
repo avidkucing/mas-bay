@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import { View, ImageBackground } from 'react-native';
-import { Button } from 'react-native-elements';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
-import * as Animatable from 'react-native-animatable';
 //our import
 import { screens } from '../styles';
-import TitleBar from '../components/TitleBar';
 import CurrentChat from '../containers/CurrentChat';
-import CurrentHint from '../containers/CurrentHint';
 import InputContainer from '../containers/InputContainer';
 import ButtonContainer from '../containers/ButtonContainer';
 import { addMessage, getReply } from '../actions';
+import LoadingIndicator from '../containers/LoadingIndicator';
+
 
 
 const mapStateToProps = state => ({
@@ -34,6 +32,7 @@ class Chat extends Component {
 
     return (
       <View style={screens.homeContainer}>
+        <LoadingIndicator />
         <CurrentChat />
         <View style={screens.inputContainer}>
           <InputContainer />

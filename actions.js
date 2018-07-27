@@ -1,3 +1,4 @@
+import { ToastAndroid } from 'react-native';
 import axios from 'axios';
 import DeviceInfo from 'react-native-device-info';
 
@@ -17,9 +18,16 @@ export const SET_SALDO = 'SET_SALDO';
 export const SET_NAME = 'SET_NAME';
 export const SET_RIWAYAT = 'SET_RIWAYAT';
 export const ADD_RIWAYAT = 'ADD_RIWAYAT';
+export const TOGGLE_LOADING = 'TOGGLE_LOADING';
 
 
 let nextId = 1;
+
+export const toggleLoading = () => {
+    return {
+        type: TOGGLE_LOADING,
+    }
+}
 
 export const login = () => {
     return {
@@ -141,11 +149,13 @@ export const getReply = (text, isShowHint = true) => dispatch => {
         text: text,
     };
 
+    dispatch(toggleLoading());
     dispatch(hideHint());
     axios.post(url, data)
       .then((response) => {
         if (isShowHint) dispatch(showHint());
             dispatch(receiveReply(response.data));
+            dispatch(toggleLoading());
         }
     );
 }
@@ -156,24 +166,52 @@ export const getSaldo = (text) => dispatch => {
         session: text,
     };
 
+    dispatch(toggleLoading());
     axios.post(url, data)
       .then((response) => {
             dispatch(setSaldo(response.data));
+            dispatch(toggleLoading());
         }
     );
 }
 
-export const getRiwayat = (session) => dispatch => {
+export const getRiwayat = (session, date) => dispatch => {
     const url = 'https://intense-inlet-67504.herokuapp.com/riwayattransaksi';
     const uniqueId = DeviceInfo.getUniqueID();
     const data = {
-        session: session,
+        session: session || '',
         deviceId: uniqueId,
+        date: date || '',
     };
 
+    dispatch(toggleLoading());
     axios.post(url, data)
       .then((response) => {
             dispatch(setRiwayat(response.data));
+            dispatch(toggleLoading());
         }
     );
+}
+
+export const getLoginStatus = (userId, password, session) => dispatch => {
+    const url = 'https://intense-inlet-67504.herokuapp.com/login';
+    const data = {
+        userId: userId,
+        password: password,
+    };
+
+    dispatch(toggleLoading());
+
+    axios.post(url, data)
+        .then((response) => {
+            ToastAndroid.show(response.data.isloggedin.toString(), ToastAndroid.SHORT);
+            if (response.data.isloggedin) {
+                dispatch(login());
+                dispatch(setSession(response.data.session));
+                dispatch(setName(response.data.name));
+                dispatch(getSaldo(session));
+                dispatch(getRiwayat(session));
+                dispatch(toggleLoading());
+            }
+        });
 }

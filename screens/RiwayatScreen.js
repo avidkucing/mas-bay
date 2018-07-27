@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
-import { View, FlatList, ScrollView } from 'react-native';
-import { FormInput, Text } from 'react-native-elements';
+import { View, FlatList } from 'react-native';
+import { Text } from 'react-native-elements';
 import { connect } from 'react-redux';
-import * as Animatable from 'react-native-animatable';
 //our import
-import { screens, inputComponents } from '../styles';
-import TitleBar from '../components/TitleBar';
-import CurrentChat from '../containers/CurrentChat';
-import CurrentHint from '../containers/CurrentHint';
-import InputContainer from '../containers/InputContainer';
-import Message from '../components/Message';
-import ButtonContainer from '../containers/ButtonContainer';
-import { setEmailValue, setPasswordValue, login, logout, getSaldo, setSession, setName, getRiwayat } from '../actions';
+import { screens, backgroundColor, mainColor } from '../styles';
+import { getRiwayat } from '../actions';
+import LoadingIndicator from '../containers/LoadingIndicator';
 import TextPrimary from '../components/TextPrimary';
 
 const mapStateToProps = state => ({
@@ -39,6 +33,7 @@ class Riwayat extends Component {
 
         return (
             <View style={screens.homeContainer}>
+                <LoadingIndicator />
                 <FlatList
                 keyExtractor={this._keyExtractor}
                 data={riwayat}
@@ -50,41 +45,46 @@ class Riwayat extends Component {
                         marginTop={20}
                         marginBottom={30}                        
                     >
-                        <TextPrimary
-                            text={item.fullDate}
-                        />
-                        <TextPrimary
-                            text={item.status.substr(0,7)}
-                            type='bold'
-                            mb={10}
-                        />
                         <View
                             flexDirection='row'
+                            alignItems='center'
+                            backgroundColor={backgroundColor}
+                            height={80}
                         >
-                        
                             <View
                                 alignItems='center'
-                                marginRight={50}
+                                width={180}
+                            >
+                                <TextPrimary
+                                    text={item.fullDate}
+                                    mb={5}
+                                />
+                                <View
+                                    backgroundColor={mainColor}
+                                    borderRadius={25}
+                                >
+                                    <Text
+                                        style={{
+                                            color: 'black',
+                                            margin: 5,
+                                            marginLeft: 10,
+                                            marginRight: 10,
+                                        }}
+                                    >{item.status.substr(0,7)}</Text>
+                                </View>
+                                
+                            </View>
+                            <View
+                                width={180}
+                                alignItems='center'
                             >
                                 <TextPrimary
                                     text={'Pulsa '+item.denom}
                                     type='bold'
-                                    size={20}
+                                    size={24}
                                 />
                                 <TextPrimary
                                     text={item.phone}
-                                />
-                            </View>
-                            <View
-                                alignItems='center'
-                            >
-                                <TextPrimary
-                                    text={'Seharga '+item.price}
-                                    type='bold'
-                                    size={20}
-                                />
-                                <TextPrimary
-                                    text={item.channel.charAt(0).toUpperCase()+item.channel.slice(1)}
                                 />
                             </View>
                         </View>

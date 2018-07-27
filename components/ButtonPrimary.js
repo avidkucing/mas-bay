@@ -5,7 +5,7 @@ import { Button } from 'react-native-elements';
 import { mainColor, backgroundColor } from '../styles';
 
 
-const ButtonPrimary = ({ text, onPress, mb }) => {
+const ButtonPrimary = ({ text, onPress, m }) => {
         return (
             <Button
                 title={text}
@@ -17,7 +17,7 @@ const ButtonPrimary = ({ text, onPress, mb }) => {
                     color: 'black',
                     fontSize: 14,
                     fontWeight: 'bold',
-                    margin: 5,
+                    margin: m || 5,
                 }}
                 buttonStyle={{
                     borderRadius: 25,

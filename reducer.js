@@ -6,7 +6,6 @@ import {
     HIDE_HINT, 
     START_RECOGNIZING,
     ADD_PARTIAL_RESULT,
-    TOOGLE_TITLE,
     SET_EMAIL_VALUE,
     SET_PASSWORD_VALUE,
     LOGIN,
@@ -16,11 +15,14 @@ import {
     SET_NAME,
     SET_RIWAYAT,
     ADD_RIWAYAT,
+    TOGGLE_LOADING,
 } from './actions';
 
 const initialState = {
     baseURL: 'https://intense-inlet-67504.herokuapp.com',
     isLoggedIn: false,
+    emailValue: '',
+    passwordValue: '',
     name: '',
     session: '',
     saldo: '',
@@ -30,6 +32,7 @@ const initialState = {
     inputValue: '',
     isRecognizing: false,
     riwayat: [],
+    isLoading: false,
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -38,6 +41,8 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 isLoggedIn: true,
+                emailValue: '',
+                passwordValue: '',
             }
         case LOGOUT:
             return {
@@ -132,6 +137,11 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 inputValue: action.result.toString(),
+            }
+        case TOGGLE_LOADING: 
+            return {
+                ...state,
+                isLoading: !state.isLoading,
             }
         default:
             return state;

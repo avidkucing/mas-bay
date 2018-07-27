@@ -1,24 +1,45 @@
 import React, { Component } from 'react';
-import { Animated, Easing, ImageBackground } from 'react-native';
+import { ImageBackground } from 'react-native';
 import { createStackNavigator, createMaterialTopTabNavigator } from 'react-navigation';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 //our import
 import rootReducer from './reducer';
-import { addMessage, receiveReply, getReply } from './actions';
 import ChatScreen from './screens/ChatScreen';
 import ProfilScreen from './screens/ProfilScreen';
 import RiwayatScreen from './screens/RiwayatScreen';
-import { mainColor, shadeColor, backgroundColor, tintColor } from './styles';
+import LoginScreen from './screens/LoginScreen';
+import { mainColor, shadeColor, backgroundColor } from './styles';
 
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
-const RootStack = createMaterialTopTabNavigator(
+const ProfilStack = createStackNavigator(
   {
     Profil: {
       screen: ProfilScreen,
+    },
+    Login: { 
+      screen: LoginScreen, 
+    },
+  },
+  {
+    initialRouteName: 'Login',
+    headerMode: 'none',
+    cardStyle: {
+      backgroundColor: 'transparent',
+    },
+    navigationOptions: {
+      
+    }
+  }
+)
+
+const RootStack = createMaterialTopTabNavigator(
+  {
+    Profil: {
+      screen: ProfilStack,
     },
     Chat: { 
       screen: ChatScreen, 
