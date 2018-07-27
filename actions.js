@@ -211,7 +211,7 @@ export const getLoginStatus = (userId, password, session) => dispatch => {
                 dispatch(setName(response.data.name));
                 dispatch(getSaldo(session));
                 dispatch(getRiwayat(session));
-                dispatch(toggleLoading());
             }
+            dispatch(toggleLoading());
         });
 }

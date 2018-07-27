@@ -11,6 +11,7 @@ import ProfilScreen from './screens/ProfilScreen';
 import RiwayatScreen from './screens/RiwayatScreen';
 import LoginScreen from './screens/LoginScreen';
 import { mainColor, shadeColor, backgroundColor } from './styles';
+import LoadingIndicator from './containers/LoadingIndicator';
 
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
@@ -85,6 +86,7 @@ export default class App extends Component {
           }}
         >
         <RootStack />
+        <LoadingIndicator />
         </ImageBackground>
       </Provider>
     );

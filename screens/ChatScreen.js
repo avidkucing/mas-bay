@@ -32,7 +32,6 @@ class Chat extends Component {
 
     return (
       <View style={screens.homeContainer}>
-        <LoadingIndicator />
         <CurrentChat />
         <View style={screens.inputContainer}>
           <InputContainer />

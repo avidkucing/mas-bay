@@ -33,7 +33,6 @@ class Riwayat extends Component {
 
         return (
             <View style={screens.homeContainer}>
-                <LoadingIndicator />
                 <FlatList
                 keyExtractor={this._keyExtractor}
                 data={riwayat}

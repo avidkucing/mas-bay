@@ -43,7 +43,6 @@ class Login extends Component {
 
     return (
       <View style={screens.loginContainer}>
-        <LoadingIndicator />
         <View 
             style={{
                 alignItems: 'center',

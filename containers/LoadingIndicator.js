@@ -23,6 +23,7 @@ const Loading = ({ state }) => {
           left={0}
           width={360}
           height={480}
+          backgroundColor={backgroundColor}
         >
           <ActivityIndicator size='large' color={mainColor} />        
         </View>
@@ -39,7 +40,6 @@ const Loading = ({ state }) => {
           left={0}
           width={360}
           height={480}
-          backgroundColor={backgroundColor}
         >
             {loading}
         </View>
