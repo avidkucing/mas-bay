@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { ImageBackground } from 'react-native';
-import { createStackNavigator, createMaterialTopTabNavigator } from 'react-navigation';
+import { createStackNavigator,  } from 'react-navigation';
+import { Icon } from 'react-native-elements';
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
@@ -10,11 +12,31 @@ import ChatScreen from './screens/ChatScreen';
 import ProfilScreen from './screens/ProfilScreen';
 import RiwayatScreen from './screens/RiwayatScreen';
 import LoginScreen from './screens/LoginScreen';
+import HomeScreen from './screens/HomeScreen';
+
 import { mainColor, shadeColor, backgroundColor } from './styles';
 import LoadingIndicator from './containers/LoadingIndicator';
 
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
+
+const HomeStack = createStackNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+    },
+  },
+  {
+    initialRouteName: 'Home',
+    headerMode: 'none',
+    cardStyle: {
+      //backgroundColor: 'transparent',
+    },
+    navigationOptions: {
+      
+    }
+  }
+)
 
 const ProfilStack = createStackNavigator(
   {
@@ -37,38 +59,52 @@ const ProfilStack = createStackNavigator(
   }
 )
 
-const RootStack = createMaterialTopTabNavigator(
+const RootStack = createMaterialBottomTabNavigator(
   {
+    Chat: {
+      screen: ChatScreen,
+      navigationOptions: {
+        tabBarIcon: (
+          <Icon
+            name='chat-bubble'
+            type='material-icons'
+            color='black'
+          />
+        )
+      } 
+    },
+    Home: { 
+      screen: HomeStack,
+      navigationOptions: {
+        tabBarIcon: (
+          <Icon
+            name='home'
+            type='material-icons'
+            color='black'
+          />
+        )
+      } 
+    },
     Profil: {
       screen: ProfilStack,
-    },
-    Chat: { 
-      screen: ChatScreen, 
-    },
-    Riwayat: {
-      screen: RiwayatScreen,
+      navigationOptions: {
+        tabBarIcon: (
+          <Icon
+            name='person'
+            type='material-icons'
+            color='black'
+          />
+        )
+      } 
     }
   },
   {
-    initialRouteName: 'Chat',
-    //swipeEnabled: true,
-    tabBarOptions: {
-      upperCaseLabel: false,
-      activeTintColor: mainColor,
-      inactiveTintColor: shadeColor,
-      indicatorStyle: {
-        backgroundColor: mainColor,
-      },
-      labelStyle: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        //fontFamily: 'roboto',
-      },
-      style: {
-        height: 60,
-        backgroundColor: backgroundColor,
-        elevation: 0,
-      }
+    initialRouteName: 'Home',
+    swipeEnabled: true,
+    shifting: true,
+    //labeled: false,
+    barStyle: {
+      backgroundColor: 'white',
     }
 
   }
@@ -81,7 +117,7 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <ImageBackground
-          source={require('./Man-02.jpg')}
+          //source={require('./Man-02.jpg')}
           style={{
             flex: 1,
           }}
