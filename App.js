@@ -51,6 +51,7 @@ const RootStack = createMaterialTopTabNavigator(
   },
   {
     initialRouteName: 'Chat',
+    //swipeEnabled: true,
     tabBarOptions: {
       upperCaseLabel: false,
       activeTintColor: mainColor,
@@ -61,7 +62,7 @@ const RootStack = createMaterialTopTabNavigator(
       labelStyle: {
         fontSize: 24,
         fontWeight: 'bold',
-        fontFamily: 'roboto',
+        //fontFamily: 'roboto',
       },
       style: {
         height: 60,
