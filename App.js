@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ImageBackground } from 'react-native';
 import { createStackNavigator,  } from 'react-navigation';
-import { Icon } from 'react-native-elements';
+import { Icon, Text } from 'react-native-elements';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -69,6 +69,9 @@ const RootStack = createMaterialBottomTabNavigator(
             name='chat-bubble'
             type='material-icons'
             color='black'
+            containerStyle={{
+              marginTop: 5,
+            }}
           />
         )
       } 
@@ -81,7 +84,16 @@ const RootStack = createMaterialBottomTabNavigator(
             name='home'
             type='material-icons'
             color='black'
+            containerStyle={{
+              marginTop: 5,
+            }}
           />
+        ),
+        tabBarLabel: (
+          <Text
+          >
+            Home
+          </Text>
         )
       } 
     },
@@ -93,6 +105,9 @@ const RootStack = createMaterialBottomTabNavigator(
             name='person'
             type='material-icons'
             color='black'
+            containerStyle={{
+              marginTop: 5,
+            }}
           />
         )
       } 
@@ -105,8 +120,8 @@ const RootStack = createMaterialBottomTabNavigator(
     //labeled: false,
     barStyle: {
       backgroundColor: 'white',
-    }
-
+      height: 64,
+    },
   }
 );
 
@@ -117,7 +132,7 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <ImageBackground
-          //source={require('./Man-02.jpg')}
+          source={require('./Man-02.jpg')}
           style={{
             flex: 1,
           }}

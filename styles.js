@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export const mainColor = '#fabc3d';
-export const backgroundColor = 'white';//'#00000070';
+export const backgroundColor = '#00000070';
 export const tintColor= '#f37a10';
 export const shadeColor= '#fabc3daa';
 export const white= 'white';
