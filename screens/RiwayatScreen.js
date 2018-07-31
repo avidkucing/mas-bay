@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { styles, backgroundColor, mainColor } from '../styles/chat';
 import { getRiwayat } from '../actions';
 import TextPrimary from '../components/TextPrimary';
+import TitleBar from '../components/TitleBar';
 
 const mapStateToProps = state => ({
   state: state,
@@ -32,6 +33,7 @@ class Riwayat extends Component {
 
         return (
             <View style={styles.rootContainer}>
+                <TitleBar text='Riwayat' />
                 <FlatList
                 keyExtractor={this._keyExtractor}
                 data={riwayat}

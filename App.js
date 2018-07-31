@@ -51,7 +51,8 @@ const RootStack = createMaterialTopTabNavigator(
             size={focused ? 28 : 24}
             color={tintColor}
           />
-        )}
+        )},
+        tabBarVisible: false,
       } 
     },
     /*Home: { 
@@ -79,7 +80,8 @@ const RootStack = createMaterialTopTabNavigator(
             size={focused ? 28 : 24}
             color={tintColor}
           />)
-        }
+        },
+        tabBarVisible: false,
       } 
     }
   },
@@ -107,7 +109,7 @@ const RootStack = createMaterialTopTabNavigator(
         width: 100,
       },
       style: {
-        backgroundColor: '#eee',
+        backgroundColor: '#fff',
         //borderTopWidth: 1,
         //borderColor: '#ddd'
         elevation: 5,

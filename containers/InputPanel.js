@@ -53,7 +53,7 @@ const MyInput = ({ state, showHint, hideHint, setInputValue, addMessage, getRepl
             alignItems= 'center'
             flexDirection='row'
             elevation={5}
-            backgroundColor='#eee'
+            backgroundColor='#fff'
         >
             <TextInput
                 flex={1}

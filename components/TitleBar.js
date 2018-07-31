@@ -9,7 +9,7 @@ const TitleBar = ({ text }) => {
                 flexDirection='row'
                 alignItems='center'
                 height={56}
-                backgroundColor='#eee'
+                backgroundColor='#fff'
                 elevation={3}
             >
                 <View
