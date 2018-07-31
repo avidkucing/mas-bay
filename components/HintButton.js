@@ -2,7 +2,7 @@ import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { Text } from 'react-native-elements';
 //our import
-import { hintComponents } from '../styles';
+import { hintComponents } from '../styles/chat';
 
 const HintButton = ({ text, onPress }) => {
         return (
@@ -11,7 +11,7 @@ const HintButton = ({ text, onPress }) => {
                 key={text}
             > 
                 <View
-                style={hintComponents.hintButtonContainer}
+                    style={hintComponents.hintButtonContainer}
                 >
                 <Text
                     style={hintComponents.hintButtonText}

@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
+import { Text } from 'react-native-elements';
 import { connect } from 'react-redux';
 //our import
-import { screens } from '../styles';
-import CurrentChat from '../containers/CurrentChat';
-import InputContainer from '../containers/InputContainer';
-import ButtonContainer from '../containers/ButtonContainer';
+import { styles } from '../styles/chat';
+import ChatWindow from '../containers/ChatWindow';
 import { addMessage, getReply } from '../actions';
-import LoadingIndicator from '../containers/LoadingIndicator';
+import InputPanel from '../containers/InputPanel';
+import HintPanel from '../containers/HintPanel';
+import TitleBar from '../components/TitleBar';
+
 
 
 
@@ -31,12 +33,11 @@ class Chat extends Component {
   render() {
 
     return (
-      <View style={screens.homeContainer}>
-        <CurrentChat />
-        <View style={screens.inputContainer}>
-          <InputContainer />
-          <ButtonContainer />
-        </View>
+      <View style={styles.rootContainer}>
+        <TitleBar text='Chat' />
+        <ChatWindow />
+        <HintPanel />
+        <InputPanel />
       </View>
     );
   }

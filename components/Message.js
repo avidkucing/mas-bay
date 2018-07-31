@@ -3,7 +3,7 @@ import { View, Image } from 'react-native';
 import { Text } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
 //our import
-import { chatComponents } from '../styles';
+import { styles } from '../styles/chat';
 
 
     
@@ -14,6 +14,7 @@ const Message = ({text, isUser}) => {
         return (<Image
             source= {require('../Man-05.png')}
             style={{
+                marginTop: 10,
                 width: 60,
                 height: 60,
             }}
@@ -32,14 +33,14 @@ const Message = ({text, isUser}) => {
                 >
                     {image}
                     <View
-                        style={isUser ? chatComponents.messageContainerUser : chatComponents.messageContainerBot}
+                        style={isUser ? styles.messageContainerUser : styles.messageContainerBot}
                     >
                     
                         <View
-                        style={isUser ? chatComponents.messageBubbleUser : chatComponents.messageBubbleBot}
+                        style={isUser ? styles.messageBubbleUser : styles.messageBubbleBot}
                         >
                             <Text
-                                style={isUser ? chatComponents.messageTextUser : chatComponents.messageTextBot}
+                                style={isUser ? styles.messageTextUser : styles.messageTextBot}
                             >
                                 {text}
                             </Text>          

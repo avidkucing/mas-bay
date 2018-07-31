@@ -28,7 +28,7 @@ const initialState = {
     saldo: '',
     messages: [],
     intent: '',
-    showHint: true,
+    showHint: false,
     inputValue: '',
     isRecognizing: false,
     riwayat: [],

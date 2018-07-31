@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export const mainColor = '#fabc3d';
-export const backgroundColor = '#00000070';
+export const backgroundColor = 'white'//'#00000070';
 export const tintColor= '#f37a10';
 export const shadeColor= '#fabc3daa';
 export const white= 'white';
@@ -94,6 +94,7 @@ export const chatComponents = StyleSheet.create({
         marginLeft: 15,
         marginRight: 15,
         maxWidth: 280,
+        elevation: 1,
     },
     messageBubbleBot: {
         backgroundColor: mainColor,
@@ -102,6 +103,8 @@ export const chatComponents = StyleSheet.create({
         marginRight: 15,
         maxWidth: 280,
         justifyContent: 'center',
+        elevation: 5,
+
     },
     messageTextUser: {
         margin: 10,

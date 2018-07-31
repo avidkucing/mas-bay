@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from '../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
 import { View, ToastAndroid, TouchableOpacity } from 'react-native';
-import { connect } from 'react-redux';
+import { connect } from '../../../../Library/Caches/typescript/2.9/node_modules/@types/react-redux';
 
 //our import
-import { screens } from '../styles';
+import { screens } from '../styles/chat';
 import { setEmailValue, setPasswordValue, login, logout, getSaldo, setSession, setName, getRiwayat } from '../actions';
 import TextPrimary from '../components/TextPrimary';
 import ButtonPrimary from '../components/ButtonPrimary';

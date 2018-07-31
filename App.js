@@ -1,44 +1,23 @@
 import React, { Component } from 'react';
 import { ImageBackground } from 'react-native';
-import { createStackNavigator,  } from 'react-navigation';
+import { createStackNavigator, createMaterialTopTabNavigator } from 'react-navigation';
 import { Icon, Text } from 'react-native-elements';
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 //our import
 import rootReducer from './reducer';
 import ChatScreen from './screens/ChatScreen';
-import ProfilScreen from './screens/ProfilScreen';
 import RiwayatScreen from './screens/RiwayatScreen';
-import LoginScreen from './screens/LoginScreen';
-import HomeScreen from './screens/HomeScreen';
 
-import { mainColor, shadeColor, backgroundColor } from './styles';
+import { mainColor, shadeColor, backgroundColor } from './styles/chat';
 import LoadingIndicator from './containers/LoadingIndicator';
+
 
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
-const HomeStack = createStackNavigator(
-  {
-    Home: {
-      screen: HomeScreen,
-    },
-  },
-  {
-    initialRouteName: 'Home',
-    headerMode: 'none',
-    cardStyle: {
-      //backgroundColor: 'transparent',
-    },
-    navigationOptions: {
-      
-    }
-  }
-)
-
-const ProfilStack = createStackNavigator(
+/*const ProfilStack = createStackNavigator(
   {
     Profil: {
       screen: ProfilScreen,
@@ -57,71 +36,84 @@ const ProfilStack = createStackNavigator(
       
     }
   }
-)
+)*/
 
-const RootStack = createMaterialBottomTabNavigator(
+const RootStack = createMaterialTopTabNavigator(
   {
     Chat: {
       screen: ChatScreen,
       navigationOptions: {
-        tabBarIcon: (
-          <Icon
+        tabBarIcon: ({focused, tintColor}) => {
+          return (<Icon
+            //reverse={focused ? true : false}
             name='chat-bubble'
             type='material-icons'
-            color='black'
-            containerStyle={{
-              marginTop: 5,
-            }}
+            size={focused ? 28 : 24}
+            color={tintColor}
           />
-        )
+        )}
       } 
     },
-    Home: { 
-      screen: HomeStack,
+    /*Home: { 
+      screen: HomeScreen,
       navigationOptions: {
-        tabBarIcon: (
-          <Icon
+        tabBarIcon: ({focused, tintColor}) => {
+          return (<Icon
+            reverse={focused ? true : false}
             name='home'
             type='material-icons'
-            color='black'
-            containerStyle={{
-              marginTop: 5,
-            }}
+            size={focused ? 20 : 24}
+            color={tintColor}
           />
-        ),
-        tabBarLabel: (
-          <Text
-          >
-            Home
-          </Text>
-        )
+        )}
       } 
-    },
-    Profil: {
-      screen: ProfilStack,
+    },*/
+    Riwayat: {
+      screen: RiwayatScreen,
       navigationOptions: {
-        tabBarIcon: (
-          <Icon
-            name='person'
+        tabBarIcon: ({focused, tintColor}) => {
+          return (<Icon
+            //reverse={focused ? true : false}
+            name='history'
             type='material-icons'
-            color='black'
-            containerStyle={{
-              marginTop: 5,
-            }}
-          />
-        )
+            size={focused ? 28 : 24}
+            color={tintColor}
+          />)
+        }
       } 
     }
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Chat',
     swipeEnabled: true,
-    shifting: true,
-    //labeled: false,
-    barStyle: {
-      backgroundColor: 'white',
-      height: 64,
-    },
+    tabBarPosition: 'bottom',
+    tabBarOptions: {
+      upperCaseLabel: false,
+      showLabel: false,
+      showIcon: true,
+      activeTintColor: mainColor,
+      inactiveTintColor: '#666',
+      tabStyle: {
+        height: 64,
+      },
+      labelStyle: {
+        margin: 5,
+      },
+      indicatorStyle: {
+        backgroundColor: mainColor,
+      },
+      iconStyle: {
+        height: 100,
+        width: 100,
+      },
+      style: {
+        backgroundColor: '#fff',
+        //borderTopWidth: 1,
+        //borderColor: '#ddd'
+        elevation: 5,
+        marginTop: 0,
+      }
+    }
   }
 );
 
@@ -132,7 +124,7 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <ImageBackground
-          source={require('./Man-02.jpg')}
+          //source={require('./Man-02.jpg')}
           style={{
             flex: 1,
           }}

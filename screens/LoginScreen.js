@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from '../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
 import { View, TouchableWithoutFeedback, ToastAndroid, TouchableOpacity } from 'react-native';
 import { FormInput, Text, Button, FormLabel } from 'react-native-elements';
-import { connect } from 'react-redux';
+import { connect } from '../../../../Library/Caches/typescript/2.9/node_modules/@types/react-redux';
 import * as Animatable from 'react-native-animatable';
 import axios from 'axios';
 
 //our import
-import { screens, inputComponents, mainColor, backgroundColor } from '../styles';
+import { screens, inputComponents, mainColor, backgroundColor } from '../styles/chat';
 import TitleBar from '../components/TitleBar';
 import CurrentChat from '../containers/CurrentChat';
 import CurrentHint from '../containers/CurrentHint';

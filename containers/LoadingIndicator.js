@@ -3,7 +3,7 @@ import { View, ActivityIndicator } from 'react-native';
 import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 //our import
-import { mainColor, backgroundColor } from '../styles';
+import { mainColor, backgroundColor } from '../styles/chat';
 
 const mapStateToProps = state => ({
     state:  state,
@@ -23,7 +23,7 @@ const Loading = ({ state }) => {
           left={0}
           width={360}
           height={480}
-          backgroundColor={backgroundColor}
+          backgroundColor='transparent'
         >
           <ActivityIndicator size='large' color={mainColor} />        
         </View>

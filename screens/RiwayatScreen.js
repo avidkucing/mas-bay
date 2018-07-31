@@ -3,9 +3,8 @@ import { View, FlatList } from 'react-native';
 import { Text } from 'react-native-elements';
 import { connect } from 'react-redux';
 //our import
-import { screens, backgroundColor, mainColor } from '../styles';
+import { styles, backgroundColor, mainColor } from '../styles/chat';
 import { getRiwayat } from '../actions';
-import LoadingIndicator from '../containers/LoadingIndicator';
 import TextPrimary from '../components/TextPrimary';
 
 const mapStateToProps = state => ({
@@ -32,7 +31,7 @@ class Riwayat extends Component {
         const riwayat = this.props.state.riwayat;
 
         return (
-            <View style={screens.homeContainer}>
+            <View style={styles.rootContainer}>
                 <FlatList
                 keyExtractor={this._keyExtractor}
                 data={riwayat}

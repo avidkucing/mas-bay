@@ -141,7 +141,7 @@ export const addPartialResult = (result) => {
 }
 
 //redux-thunk actions
-export const getReply = (text, isShowHint = true) => dispatch => {
+export const getReply = (text, isHideHint = true) => dispatch => {
     const url = 'https://intense-inlet-67504.herokuapp.com/chat';
     const uniqueId = DeviceInfo.getUniqueID();
     const data = {
@@ -150,12 +150,12 @@ export const getReply = (text, isShowHint = true) => dispatch => {
     };
 
     dispatch(toggleLoading());
-    dispatch(hideHint());
+    if (isHideHint) dispatch(hideHint());
     axios.post(url, data)
       .then((response) => {
-        if (isShowHint) dispatch(showHint());
             dispatch(receiveReply(response.data));
             dispatch(toggleLoading());
+            setTimeout(()=>dispatch(showHint()), 1000);
         }
     );
 }

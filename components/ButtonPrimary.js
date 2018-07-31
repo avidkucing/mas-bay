@@ -1,8 +1,8 @@
-import React from 'react';
+import React from '../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
 import {  } from 'react-native';
 import { Button } from 'react-native-elements';
 //our import
-import { mainColor, backgroundColor } from '../styles';
+import { mainColor, backgroundColor } from '../styles/chat';
 
 
 const ButtonPrimary = ({ text, onPress, m }) => {
