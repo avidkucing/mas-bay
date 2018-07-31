@@ -54,14 +54,14 @@ export const styles = StyleSheet.create({
         margin: 10,
         marginRight: 20,
         marginLeft: 20,
-        color: 'black',
+        color: '#666',
         fontSize: fontSize,
     },
     messageTextBot: {
         margin: 10,
         marginRight: 20,
         marginLeft: 20,
-        color: 'black',
+        color: '#666',
         fontSize: fontSize,
     },
     inputContainer: {
@@ -90,7 +90,7 @@ export const hintComponents = StyleSheet.create({
         margin: 10,
         marginRight: 20,
         marginLeft: 20,
-        color: 'black',
+        color: '#666',
         fontSize: fontSize,
     },
     

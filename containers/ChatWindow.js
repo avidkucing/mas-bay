@@ -35,6 +35,7 @@ const MyView = ({ state, showHint, hideHint }) => {
                     this.chat.scrollToEnd({animated: true});
                 }}
                 onLayout={(contentWidth, contentHeight)=>{        
+                    //if (!state.showHint) 
                     this.chat.scrollToEnd({animated: true});
                 }}
                 onScrollBeginDrag={()=>{

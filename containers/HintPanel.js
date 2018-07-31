@@ -47,11 +47,8 @@ const MyComponent = ({ state, addMessage ,getReply , hideHint}) => {
     const renderContent = () => {
         if (state.showHint) 
             return (
-                <Animatable.View
-                    animation='slideInUp'
-                    style={hintComponents.hintPanel}
-                >
-                {allOptions[optionNumber].map((text)=>
+                
+                allOptions[optionNumber].map((text)=>
                 
                     <HintButton
                         key={text} 
@@ -61,17 +58,19 @@ const MyComponent = ({ state, addMessage ,getReply , hideHint}) => {
                             getReply(text, true);
                         }}
                     />
-                )}
-                </Animatable.View>
+                )
             )
     }
 
     const content = renderContent();
 
     return (
-        <View>
+        <Animatable.View
+            animation='slideInUp'
+            style={hintComponents.hintPanel}
+        >
             {content}
-        </View>
+        </Animatable.View>
     );
 }
 

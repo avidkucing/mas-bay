@@ -107,7 +107,7 @@ const RootStack = createMaterialTopTabNavigator(
         width: 100,
       },
       style: {
-        backgroundColor: '#fff',
+        backgroundColor: '#eee',
         //borderTopWidth: 1,
         //borderColor: '#ddd'
         elevation: 5,

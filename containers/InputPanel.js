@@ -46,14 +46,14 @@ const MyInput = ({ state, showHint, hideHint, setInputValue, addMessage, getRepl
     return (
         <View
             flexDirection='row'
-            height={64}
+            height={56}
         >
         <View
             flex= {1}
             alignItems= 'center'
             flexDirection='row'
             elevation={5}
-            backgroundColor='#fff'
+            backgroundColor='#eee'
         >
             <TextInput
                 flex={1}
