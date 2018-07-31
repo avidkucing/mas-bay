@@ -43,7 +43,7 @@ class Riwayat extends Component {
                         key={item._id}
                         alignItems='center'
                         marginTop={20}
-                        marginBottom={30}                        
+                        margcd inBottom={30}                        
                     >
                         <View
                             flexDirection='row'
