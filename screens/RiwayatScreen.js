@@ -3,7 +3,7 @@ import { View, FlatList } from 'react-native';
 import { Text } from 'react-native-elements';
 import { connect } from 'react-redux';
 //our import
-import { styles, backgroundColor, mainColor } from '../styles/chat';
+import { styles, backgroundColor, mainColor } from '../styles';
 import { getRiwayat } from '../actions';
 import TextPrimary from '../components/TextPrimary';
 import TitleBar from '../components/TitleBar';

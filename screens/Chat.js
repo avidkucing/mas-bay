@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
-import { Text } from 'react-native-elements';
+import { View, Platform, ScrollView } from 'react-native';
+import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 //our import
-import { styles } from '../styles/chat';
+import { styles } from '../styles';
 import ChatWindow from '../containers/ChatWindow';
 import { addMessage, getReply } from '../actions';
 import InputPanel from '../containers/InputPanel';
-import HintPanel from '../containers/HintPanel';
-import TitleBar from '../components/TitleBar';
 
 
 
@@ -22,31 +20,30 @@ const mapDispatchToProps = dispatch => ({
   getReply: (text) => dispatch(getReply(text)),  
 })
 
-class Chat extends Component {
+class MyComponent extends Component {
 
   componentDidMount() {
-    //this.props.addMessage('Hai '+this.props.state.name+'!', false);
-    this.props.getReply('reset');
+    if(this.props.state.welcome) {
+      this.props.addMessage('Hai! Aku Mas Bay. Aku bisa beliin kamu macem-macem lho. Bisa pulsa, kuota internet, token listrik, dll.', false);
+      this.props.getReply('reset');
+    }
   }
-
 
   render() {
 
     return (
       <View style={styles.rootContainer}>
-        <TitleBar text='Chat' />
         <ChatWindow />
-        <HintPanel />
-        <InputPanel />
+        <InputPanel onPress={()=>this.props.navigation.goBack()}/>
       </View>
     );
   }
 }
 
-const ChatScreen = connect(
+const Chat = connect(
   mapStateToProps, mapDispatchToProps
-)(Chat)
+)(MyComponent)
 
-export default ChatScreen;
+export default Chat;
 
 

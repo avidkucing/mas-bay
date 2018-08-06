@@ -3,7 +3,7 @@ import { View, TextInput, Keyboard } from 'react-native';
 import { Icon, FormInput } from 'react-native-elements';
 import { connect } from 'react-redux';
 //our import
-import { inputComponents } from '../styles/chat';
+import { inputComponents, mainColor } from '../styles';
 import RecordButton from './RecordButton';
 
 import { addMessage, showHint, hideHint, 
@@ -22,13 +22,14 @@ const mapDispatchToProps = dispatch => ({
     toggleTitle: () => dispatch(toggleTitle()),
 })
 
-const MyInput = ({ state, showHint, hideHint, setInputValue, addMessage, getReply }) => {
+const MyInput = ({ onPress, state, showHint, hideHint, setInputValue, addMessage, getReply }) => {
     const renderSendButton = ()=> {if (!state.isRecognizing) return (<Icon
         name='send'
         type='material-icons'
         size={24}
-        color='#aaa'
+        color='#666'
         containerStyle={{
+            marginLeft: 20,
             marginRight: 20,
         }}
         onPress={() => {
@@ -46,15 +47,30 @@ const MyInput = ({ state, showHint, hideHint, setInputValue, addMessage, getRepl
     return (
         <View
             flexDirection='row'
-            height={56}
+            height={64}
         >
         <View
             flex= {1}
             alignItems= 'center'
             flexDirection='row'
-            elevation={5}
+            elevation={10}
+            shadowOffset= {{ height: -1 }}
+            shadowColor= 'black'
+            shadowOpacity= {0.3}
             backgroundColor='#fff'
         >
+            <Icon
+                reverse
+                name='home'
+                type='material-icons'
+                size={24}
+                color={mainColor}
+                reverseColor='#666'
+                containerStyle={{
+                    marginLeft: 10,
+                }}
+                onPress={onPress}
+            />
             <TextInput
                 flex={1}
                 ref={input => this.input = input}
@@ -74,10 +90,16 @@ const MyInput = ({ state, showHint, hideHint, setInputValue, addMessage, getRepl
                     showHint();
                 }}
                 placeholder='Ketik disini...'
+                placeholderTextColor='#666'
+                paddingLeft={10}
                 underlineColorAndroid='transparent'
                 returnKeyLabel='send'
                 style={{
-                    marginLeft: 10,
+                    //marginLeft: 10,
+                    //marginRight: 20,
+                    backgroundColor: '#eee',
+                    height: 48,
+                    borderRadius: 15,
                 }}
             />
             {sendButton}

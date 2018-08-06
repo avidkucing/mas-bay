@@ -1,44 +1,42 @@
 import React, { Component } from 'react';
 import { ImageBackground } from 'react-native';
-import { createStackNavigator, createMaterialTopTabNavigator } from 'react-navigation';
-import { Icon, Text } from 'react-native-elements';
+import { createStackNavigator } from 'react-navigation';
+import {  } from 'react-native-elements';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 //our import
 import rootReducer from './reducer';
-import ChatScreen from './screens/ChatScreen';
-import RiwayatScreen from './screens/RiwayatScreen';
-
-import { mainColor, shadeColor, backgroundColor } from './styles/chat';
+import Chat from './screens/Chat';
 import LoadingIndicator from './containers/LoadingIndicator';
+import Home from './screens/Home';
 
 
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
-/*const ProfilStack = createStackNavigator(
+const RootStack = createStackNavigator(
   {
-    Profil: {
-      screen: ProfilScreen,
+    Home: {
+      screen: Home,
     },
-    Login: { 
-      screen: LoginScreen, 
+    Chat: { 
+      screen: Chat, 
     },
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'Home',
     headerMode: 'none',
     cardStyle: {
       backgroundColor: 'transparent',
     },
     navigationOptions: {
-      
+
     }
   }
-)*/
+)
 
-const RootStack = createMaterialTopTabNavigator(
+/*const RootStack = createMaterialTopTabNavigator(
   {
     Chat: {
       screen: ChatScreen,
@@ -55,20 +53,6 @@ const RootStack = createMaterialTopTabNavigator(
         tabBarVisible: false,
       } 
     },
-    /*Home: { 
-      screen: HomeScreen,
-      navigationOptions: {
-        tabBarIcon: ({focused, tintColor}) => {
-          return (<Icon
-            reverse={focused ? true : false}
-            name='home'
-            type='material-icons'
-            size={focused ? 20 : 24}
-            color={tintColor}
-          />
-        )}
-      } 
-    },*/
     Riwayat: {
       screen: RiwayatScreen,
       navigationOptions: {
@@ -117,7 +101,7 @@ const RootStack = createMaterialTopTabNavigator(
       }
     }
   }
-);
+);*/
 
 export default class App extends Component {
 

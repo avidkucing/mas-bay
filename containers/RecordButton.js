@@ -4,7 +4,7 @@ import { Icon, FormInput } from 'react-native-elements';
 import Voice from 'react-native-voice';
 import { connect } from 'react-redux';
 //our import
-import { inputComponents } from '../styles/chat';
+import { inputComponents, mainColor } from '../styles';
 import { addMessage, getReply, startRecognizing,
     addPartialResult,
     setInputValue, } from '../actions';
@@ -80,7 +80,7 @@ class MyButton extends Component {
                     }}
                     name={this.props.state.isRecognizing ? 'stop' : 'microphone'}
                     type='font-awesome'
-                    color='#aaa'
+                    color='#666'
                     size={24}
                     containerStyle={{
                         marginRight: 20,

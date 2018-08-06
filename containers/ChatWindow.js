@@ -2,7 +2,7 @@ import React from 'react';
 import { View, ImageBackground, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 //our import
-import { styles } from '../styles/chat';
+import { styles } from '../styles';
 import Message from '../components/Message';
 import { showHint, hideHint } from '../actions';
 

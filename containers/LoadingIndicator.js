@@ -3,7 +3,7 @@ import { View, ActivityIndicator } from 'react-native';
 import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 //our import
-import { mainColor, backgroundColor } from '../styles/chat';
+import { mainColor, backgroundColor } from '../styles';
 
 const mapStateToProps = state => ({
     state:  state,

@@ -19,13 +19,21 @@ export const SET_NAME = 'SET_NAME';
 export const SET_RIWAYAT = 'SET_RIWAYAT';
 export const ADD_RIWAYAT = 'ADD_RIWAYAT';
 export const TOGGLE_LOADING = 'TOGGLE_LOADING';
+export const CHANGE_TAB = 'CHANGE_TAB';
 
 
-let nextId = 1;
+let nextId = 0;
 
 export const toggleLoading = () => {
     return {
         type: TOGGLE_LOADING,
+    }
+}
+
+export const changeTab = (number) => {
+    return {
+        type: CHANGE_TAB,
+        number
     }
 }
 

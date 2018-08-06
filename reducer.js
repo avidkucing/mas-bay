@@ -16,10 +16,12 @@ import {
     SET_RIWAYAT,
     ADD_RIWAYAT,
     TOGGLE_LOADING,
+    CHANGE_TAB
 } from './actions';
 
 const initialState = {
     baseURL: 'https://intense-inlet-67504.herokuapp.com',
+    welcome: true,
     isLoggedIn: false,
     emailValue: '',
     passwordValue: '',
@@ -33,10 +35,16 @@ const initialState = {
     isRecognizing: false,
     riwayat: [],
     isLoading: false,
+    focusedTab: 1,
 }
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
+        case CHANGE_TAB:
+            return {
+                ...state,
+                focusedTab: action.number,
+            }
         case LOGIN:
             return {
                 ...state, 
@@ -80,6 +88,7 @@ const rootReducer = (state = initialState, action) => {
         case ADD_MESSAGE:
             return {
                 ...state, 
+                welcome: false,
                 messages: [...state.messages, 
                     {
                         id: action.id,
