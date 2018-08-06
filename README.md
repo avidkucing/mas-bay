@@ -1,5 +1,5 @@
 # mas-bay
-v.0.1.1
+v.0.2.0
 =======
 
 Aplikasi Android untuk membeli pulsa dengan UI chatbot.
@@ -10,5 +10,6 @@ Aplikasi Android untuk membeli pulsa dengan UI chatbot.
 - Voice recognition!
 
 ## To do soon:
-- Penambahan fitur isi saldo dan daftar.
+- Implementasi Profil Screen.
+- Revamp UX pembelian dengan chat.
 - etc will be updated soon.
