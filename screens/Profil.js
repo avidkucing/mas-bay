@@ -12,6 +12,10 @@ class Profil extends Component {
   render() {
     const list = [
       {
+        title: 'Notifikasi',
+        icon: 'notifications'
+      },
+      {
         title: 'Riwayat Pembelian',
         icon: 'history'
       },
@@ -45,16 +49,16 @@ class Profil extends Component {
               height: 100,
               width: 100,
               borderRadius: 50,
-              elevation: 10,
-              shadowOffset: { height: 3, width: 5 },
-              shadowColor: 'black',
-              shadowOpacity: 0.3,
             }}
             containerStyle={{
               height: 100,
               width: 100,
               borderRadius: 50,
               marginTop: Platform.OS==='ios' ? 50 : 40,
+              elevation: 10,
+              shadowOffset: { height: 3, width: 5 },
+              shadowColor: 'black',
+              shadowOpacity: 0.3,
             }}
             avatarStyle={{
               height: 100,

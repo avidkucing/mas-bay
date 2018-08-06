@@ -29,7 +29,6 @@ const MyInput = ({ onPress, state, showHint, hideHint, setInputValue, addMessage
         size={24}
         color='#666'
         containerStyle={{
-            marginLeft: 20,
             marginRight: 20,
         }}
         onPress={() => {
@@ -96,7 +95,7 @@ const MyInput = ({ onPress, state, showHint, hideHint, setInputValue, addMessage
                 returnKeyLabel='send'
                 style={{
                     //marginLeft: 10,
-                    //marginRight: 20,
+                    marginRight: 20,
                     backgroundColor: '#eee',
                     height: 48,
                     borderRadius: 15,

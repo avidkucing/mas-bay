@@ -30,8 +30,8 @@ class WhatsNew extends Component {
             }}
           >Welcome to Mas Bay!</Text>
           <View
-            marginTop={20}
-            height={Platform.OS==='ios' ? 300 : 270}
+            marginTop={10}
+            height={Platform.OS==='ios' ? 310 : 280}
             width={360}
           >
             <Pages
@@ -45,12 +45,12 @@ class WhatsNew extends Component {
               }}
             >
               <NewsItem
-                ml={20}
                 height={Platform.OS==='ios' ? 270 : 240}
                 width={320}
                 image={require('../assets/news1.jpeg')}
                 title= 'Mas Bay Release Event'
                 subtitle= 'Join now to get all the fun and our interesting offers!'
+                onPress={this.props.onPressNews}
               />
             </View>
             <View 
@@ -60,12 +60,12 @@ class WhatsNew extends Component {
               }}
             >
               <NewsItem
-                ml={20}
-                height={240}
+                height={Platform.OS==='ios' ? 270 : 240}
                 width={320}
                 image={require('../assets/news2.jpg')}
                 title= 'Daftar Harga Pulsa'
                 subtitle= 'Update 08 Agustus 2018'
+                onPress={this.props.onPressNews}
               />
             </View>
             <View 
@@ -75,12 +75,12 @@ class WhatsNew extends Component {
               }}
             >
               <NewsItem
-                ml={20}
-                height={240}
+                height={Platform.OS==='ios' ? 270 : 240}
                 width={320}
                 image={require('../assets/news3.jpg')}
                 title= 'Feature Survey'
                 subtitle= 'Fitur apa yang kamu inginkan?'
+                onPress={this.props.onPressNews}
               />
             </View>
             </Pages>
@@ -99,27 +99,27 @@ class WhatsNew extends Component {
                 name='perm-phone-msg'
                 type='material-icons'
                 text='Pulsa'
-                onPress={this.props.onPress}
+                onPress={this.props.onPressProduct}
               />
               <ProductIcon
                 name='cellphone-wireless'
                 type='material-community'
                 text='Kuota Internet'
-                onPress={this.props.onPress}
+                onPress={this.props.onPressProduct}
 
               />
               <ProductIcon
                 name='thunder-cloud'
                 type='entypo'
                 text='Token Listrik'
-                onPress={this.props.onPress}
+                onPress={this.props.onPressProduct}
 
               />
               <ProductIcon
                 name='water'
                 type='material-community'
                 text='PDAM'
-                onPress={this.props.onPress}
+                onPress={this.props.onPressProduct}
 
               />
             </View>
@@ -131,28 +131,28 @@ class WhatsNew extends Component {
                 name='cart-plus'
                 type='material-community'
                 text='BPJS'
-                onPress={this.props.onPress}
+                onPress={this.props.onPressProduct}
 
               />
               <ProductIcon
                 name='google-play'
                 type='material-community'
                 text='Voucer GPlay'
-                onPress={this.props.onPress}
+                onPress={this.props.onPressProduct}
 
               />
               <ProductIcon
                 name='nature-people'
                 type='material-community'
                 text='Paket Travel'
-                onPress={this.props.onPress}
+                onPress={this.props.onPressProduct}
 
               />
               <ProductIcon
                 name='airplane-takeoff'
                 type='material-community'
                 text='Umroh'
-                onPress={this.props.onPress}
+                onPress={this.props.onPressProduct}
 
               />
             </View>
@@ -164,7 +164,7 @@ class WhatsNew extends Component {
                 name='plus-circle'
                 type='material-community'
                 text='Coming Soon'
-                onPress={this.props.onPress}
+                onPress={this.props.onPressProduct}
 
               />
             </View>

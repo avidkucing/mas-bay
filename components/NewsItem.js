@@ -1,16 +1,21 @@
 import React from 'react';
-import { View, ImageBackground, Platform } from 'react-native';
+import { View, ImageBackground, TouchableWithoutFeedback } from 'react-native';
 import { Text } from 'react-native-elements';
 //our import
 
 
-const NewsItem = ({ height, width, image, title, subtitle }) => {
+const NewsItem = ({ height, width, image, title, subtitle, onPress }) => {
         return (
-            <View
+          <TouchableWithoutFeedback
+            onPress={onPress}
+          >
+          <View
             height={height}
             width={width}
             style={{
+              marginTop: 10,
               borderRadius: 25,
+              marginBottom: 20,
             }}
             elevation={10}
             shadowOffset= {{ height: 3, width: 5 }}
@@ -30,7 +35,7 @@ const NewsItem = ({ height, width, image, title, subtitle }) => {
             >
               <View
                 backgroundColor='#333333aa'
-                height={100}
+                //height={100}
                 borderBottomLeftRadius={25}
                 borderBottomRightRadius={25}
               >
@@ -40,21 +45,22 @@ const NewsItem = ({ height, width, image, title, subtitle }) => {
                     fontSize: 24,
                     fontWeight: 'bold',
                     marginTop: 10,
-                    marginLeft: 10,
+                    marginLeft: 20,
                   }}
                 >{title}</Text>
                 <Text
                   style={{
                     color: '#fff',
                     fontSize: 16,
-                    marginLeft: 10,
+                    marginLeft: 20,
                     marginRight: 10,
-                    marginBottom: 20,
+                    marginBottom: 10,
                   }}
                 >{subtitle}</Text>
               </View>
             </ImageBackground>
           </View>
+          </TouchableWithoutFeedback>
         );
     }
 

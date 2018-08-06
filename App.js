@@ -7,9 +7,11 @@ import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 //our import
 import rootReducer from './reducer';
-import Chat from './screens/Chat';
 import LoadingIndicator from './containers/LoadingIndicator';
 import Home from './screens/Home';
+import Chat from './screens/Chat';
+import News from './screens/News';
+
 
 
 
@@ -22,6 +24,9 @@ const RootStack = createStackNavigator(
     },
     Chat: { 
       screen: Chat, 
+    },
+    News: { 
+      screen: News,
     },
   },
   {

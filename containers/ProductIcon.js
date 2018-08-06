@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import { Icon, Text } from 'react-native-elements';
 import { connect } from 'react-redux';
 //our import
@@ -17,49 +17,55 @@ const mapDispatchToProps = dispatch => ({
 
 
 const MyComponent = ({ name, type, text, onPress, addMessage, getReply }) => {
-        return (
-            <View
-              style={{
-                width: 80,
-                backgroundColor: '#fff',
-                borderRadius: 25,
-                marginTop: 10,
-                marginLeft: 5,
-                marginRight: 5,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <Icon
-                name={name}
-                type={type}
-                size={40}
-                color={mainColor}
-                containerStyle={{
 
-                }}
-                onPress={()=>{
-                    onPress();
-                    addMessage(text, true);
-                    getReply(text);
-                }}
-                />
-              <View
-                height={50}
-              >
-              <Text
-                style={{
-                  fontSize: 14,
-                  color: '#333',
-                  marginTop: 10,
-                  textAlign: 'center',
-                  textAlignVertical: 'top',
-                }}
-              >{text}</Text>
-              </View>
-            </View>
-        );
-    }
+  return (
+    <TouchableOpacity
+      onPress={()=>{
+        onPress();
+        addMessage(text, true);
+        getReply(text);
+      }}
+    >
+    <View
+      style={{
+        width: 80,
+        backgroundColor: '#fff',
+        borderRadius: 25,
+        marginTop: 10,
+        marginLeft: 5,
+        marginRight: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Icon
+        name={name}
+        type={type}
+        size={40}
+        color={mainColor}
+        containerStyle={{
+
+        }}
+        
+        />
+      <View
+        height={50}
+      >
+      <Text
+        style={{
+          fontSize: 14,
+          color: '#333',
+          marginTop: 10,
+          textAlign: 'center',
+          textAlignVertical: 'top',
+        }}
+      >{text}</Text>
+      </View>
+    </View>
+    </TouchableOpacity>
+
+  );
+}
 
 const ProductIcon = connect(
   mapStateToProps, mapDispatchToProps
