@@ -18,7 +18,37 @@ const mapDispatchToProps = dispatch => ({
 class MyComponent extends Component {
 
   render() {
-    const news = require('../dummy_database/news1.json');
+    let image = '';
+    let title = '';
+    let contentAndroid = '';
+    let contentIOS = '';
+
+
+    const renderNews = () => {
+      switch (this.props.state.currentNewsIndex) {
+        case 1: {
+          image = require('../assets/news1.jpeg');
+          title = 'Mas Bay Release Event';
+          contentAndroid = require('../dummy_database/news1.html');
+          contentIOS = require('../dummy_database/news1.json');
+          break;
+        }
+        case 2: {
+          image = require('../assets/news2.jpg');
+          title = 'Daftar Harga Pulsa';
+          contentAndroid = require('../dummy_database/news2.html');
+          contentIOS = require('../dummy_database/news2.json');
+          break;
+        }
+        case 3: {
+          image = require('../assets/news3.jpg');
+          title = 'Feature Survey';
+          contentAndroid = require('../dummy_database/news3.html');
+          contentIOS = require('../dummy_database/news3.json');
+          break;
+        }
+      }
+    }
 
     const renderText = () => {
         if (Platform.OS==='ios') {return (
@@ -32,7 +62,7 @@ class MyComponent extends Component {
                     marginTop: 20,
                 }}
             >
-                {news.text}
+                {contentIOS.text}
             </Text>
         )} else {return (
             <MyWebView 
@@ -42,12 +72,13 @@ class MyComponent extends Component {
                     marginRight: 10,
                     marginTop : 10,
                 }}
-                source={require('../dummy_database/news1.html')} 
+                source={contentAndroid} 
                 startInLoadingState={true}
             />
         )}
     }
 
+    const news = renderNews();
     const text = renderText();
 
     return (
@@ -58,7 +89,7 @@ class MyComponent extends Component {
             }}
         >
             <ImageBackground
-              source={require('../assets/news1.jpeg')}
+              source={image}
               style={{
                   flex: 1,
                   height: Platform.OS==='ios' ? 300 : 270,
@@ -80,7 +111,7 @@ class MyComponent extends Component {
                     marginLeft: 10,
                     marginBottom: 10,
                   }}
-                >Mas Bay Release Event</Text>
+                >{title}</Text>
               </View>
             </ImageBackground>
             {text}

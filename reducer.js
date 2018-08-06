@@ -16,10 +16,12 @@ import {
     SET_RIWAYAT,
     ADD_RIWAYAT,
     TOGGLE_LOADING,
-    CHANGE_TAB
+    CHANGE_TAB,
+    CHANGE_NEWS
 } from './actions';
 
 const initialState = {
+    currentNewsIndex: 1,
     baseURL: 'https://intense-inlet-67504.herokuapp.com',
     welcome: true,
     isLoggedIn: false,
@@ -40,6 +42,11 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
+        case CHANGE_NEWS:
+            return {
+                ...state,
+                currentNewsIndex: action.number,
+            }
         case CHANGE_TAB:
             return {
                 ...state,

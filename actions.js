@@ -20,9 +20,17 @@ export const SET_RIWAYAT = 'SET_RIWAYAT';
 export const ADD_RIWAYAT = 'ADD_RIWAYAT';
 export const TOGGLE_LOADING = 'TOGGLE_LOADING';
 export const CHANGE_TAB = 'CHANGE_TAB';
+export const CHANGE_NEWS = 'CHANGE_NEWS';
 
 
 let nextId = 0;
+
+export const changeNews = (number) => {
+    return {
+        type: CHANGE_NEWS,
+        number
+    }
+}
 
 export const toggleLoading = () => {
     return {

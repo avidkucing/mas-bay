@@ -3,7 +3,7 @@ import { View, Platform, Text, ScrollView } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { Pages } from 'react-native-pages';
 //our import
-import NewsItem from '../components/NewsItem';
+import NewsItem from '../containers/NewsItem';
 import ProductIcon from '../containers/ProductIcon';
 import { mainColor } from '../styles';
 
@@ -45,6 +45,7 @@ class WhatsNew extends Component {
               }}
             >
               <NewsItem
+                index={1}
                 height={Platform.OS==='ios' ? 270 : 240}
                 width={320}
                 image={require('../assets/news1.jpeg')}
@@ -60,6 +61,7 @@ class WhatsNew extends Component {
               }}
             >
               <NewsItem
+                index={2}
                 height={Platform.OS==='ios' ? 270 : 240}
                 width={320}
                 image={require('../assets/news2.jpg')}
@@ -75,6 +77,7 @@ class WhatsNew extends Component {
               }}
             >
               <NewsItem
+                index={3}
                 height={Platform.OS==='ios' ? 270 : 240}
                 width={320}
                 image={require('../assets/news3.jpg')}

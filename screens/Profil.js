@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { View, Platform, TouchableOpacity } from 'react-native';
 import { Avatar, Text, List, ListItem } from 'react-native-elements';
-
 //our import
-import NewsItem from '../components/NewsItem';
 import { mainColor } from '../styles';
 
 
