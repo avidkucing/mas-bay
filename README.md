@@ -2,7 +2,7 @@
 v.0.2.0
 =======
 
-Aplikasi Android untuk membeli pulsa dengan UI chatbot.
+Aplikasi Android dan iOS untuk membeli pulsa dengan UI chatbot.
 
 ## Implemented features:
 - Chatting dengan bot menggunakan text.
