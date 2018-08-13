@@ -91,7 +91,9 @@ class WhatsNew extends Component {
           </View>
           <ScrollView
             contentContainerStyle={{
-              width: 360,//Platform.OS==='ios' ? 365 : 360,
+              backgroundColor: '#fff',
+              width: Platform.OS==='ios' ? 370 : 360,
+              borderRadius: 25,
             }}
           >
             <View
@@ -172,7 +174,6 @@ class WhatsNew extends Component {
               />
             </View>
           </ScrollView>
-          
         </View>
     );
   }

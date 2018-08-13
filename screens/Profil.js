@@ -1,29 +1,44 @@
 import React, { Component } from 'react';
 import { View, Platform, TouchableOpacity } from 'react-native';
 import { Avatar, Text, List, ListItem } from 'react-native-elements';
+import { connect } from 'react-redux';
 //our import
 import { mainColor } from '../styles';
+import { addMessage, getReply } from '../actions';
 
 
-class Profil extends Component {
+const mapStateToProps = state => ({
+  state: state,
+})
+
+const mapDispatchToProps = dispatch => ({
+  addMessage: (text, isUser) => dispatch(addMessage(text, isUser)),
+  getReply: (text) => dispatch(getReply(text)),  
+})
+
+class MyComponent extends Component {
 
   render() {
     const list = [
       {
         title: 'Notifikasi',
-        icon: 'notifications'
+        icon: 'notifications',
+        onPress: ()=>this.props.onPressNotif(),
       },
       {
         title: 'Riwayat Pembelian',
-        icon: 'history'
+        icon: 'history',
+        onPress: ()=>this.props.onPressRiwayat(),
       },
       {
         title: 'Pengaturan',
-        icon: 'settings'
+        icon: 'settings',
+        onPress: ()=>this.props.onPressSettings(),
       },
       {
         title: 'Logout',
-        icon: 'power-settings-new'
+        icon: 'power-settings-new',
+        onPress: ()=>this.props.onPressLogout(),
       },
     ]
 
@@ -86,7 +101,13 @@ class Profil extends Component {
               color: '#333',
             }}
           >Rp 576,988</Text>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={()=>{
+              this.props.onPressTopUp();
+              this.props.addMessage('Top up', true);
+              this.props.getReply('Top up');
+            }}
+          >
             <View
               style={{
                 height: 40,
@@ -124,6 +145,7 @@ class Profil extends Component {
                     leftIcon={{
                       name: item.icon,
                     }}
+                    onPress={()=>item.onPress()}
                   />
                 ))
               }
@@ -134,6 +156,10 @@ class Profil extends Component {
     );
   }
 }
+
+const Profil = connect(
+  mapStateToProps, mapDispatchToProps
+)(MyComponent)
 
 export default Profil;
 

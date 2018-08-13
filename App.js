@@ -11,7 +11,11 @@ import LoadingIndicator from './containers/LoadingIndicator';
 import Home from './screens/Home';
 import Chat from './screens/Chat';
 import News from './screens/News';
-
+import Riwayat from './screens/Riwayat';
+import Notif from './screens/Notif';
+import Setting from './screens/Setting';
+import Login from './screens/Login';
+import Daftar from './screens/Daftar';
 
 
 
@@ -28,9 +32,24 @@ const RootStack = createStackNavigator(
     News: { 
       screen: News,
     },
+    Notif: {
+      screen: Notif,
+    },
+    Riwayat: {
+      screen: Riwayat,
+    },
+    Setting: {
+      screen: Setting,
+    },
+    Login: {
+      screen: Login,
+    },
+    Daftar: {
+      screen: Daftar,
+    },
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Daftar',
     headerMode: 'none',
     cardStyle: {
       backgroundColor: 'transparent',
@@ -40,73 +59,6 @@ const RootStack = createStackNavigator(
     }
   }
 )
-
-/*const RootStack = createMaterialTopTabNavigator(
-  {
-    Chat: {
-      screen: ChatScreen,
-      navigationOptions: {
-        tabBarIcon: ({focused, tintColor}) => {
-          return (<Icon
-            //reverse={focused ? true : false}
-            name='chat-bubble'
-            type='material-icons'
-            size={focused ? 28 : 24}
-            color={tintColor}
-          />
-        )},
-        tabBarVisible: false,
-      } 
-    },
-    Riwayat: {
-      screen: RiwayatScreen,
-      navigationOptions: {
-        tabBarIcon: ({focused, tintColor}) => {
-          return (<Icon
-            //reverse={focused ? true : false}
-            name='history'
-            type='material-icons'
-            size={focused ? 28 : 24}
-            color={tintColor}
-          />)
-        },
-        tabBarVisible: false,
-      } 
-    }
-  },
-  {
-    initialRouteName: 'Chat',
-    swipeEnabled: true,
-    tabBarPosition: 'bottom',
-    tabBarOptions: {
-      upperCaseLabel: false,
-      showLabel: false,
-      showIcon: true,
-      activeTintColor: mainColor,
-      inactiveTintColor: '#666',
-      tabStyle: {
-        height: 64,
-      },
-      labelStyle: {
-        margin: 5,
-      },
-      indicatorStyle: {
-        backgroundColor: mainColor,
-      },
-      iconStyle: {
-        height: 100,
-        width: 100,
-      },
-      style: {
-        backgroundColor: '#fff',
-        //borderTopWidth: 1,
-        //borderColor: '#ddd'
-        elevation: 5,
-        marginTop: 0,
-      }
-    }
-  }
-);*/
 
 export default class App extends Component {
 

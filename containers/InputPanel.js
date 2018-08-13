@@ -88,7 +88,7 @@ const MyInput = ({ onPress, state, showHint, hideHint, setInputValue, addMessage
                 onEndEditing={()=>{
                     showHint();
                 }}
-                placeholder='Ketik disini...'
+                placeholder={state.isRecognizing ? 'Mendengarkan...' : 'Ketik disini...'}
                 placeholderTextColor='#666'
                 paddingLeft={10}
                 underlineColorAndroid='transparent'

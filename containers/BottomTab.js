@@ -35,7 +35,7 @@ const MyComponent = ({ state, changeTab, onPress, onPressLeft, onPressRight }) =
                 backgroundColor='#fff'
             >
                 <Icon
-                name='home-outline'
+                name={'home'+(state.focusedTab===1 ? '' : '-outline')}
                 type='material-community'
                 size={state.focusedTab===1 ? 36 : 30}
                 color={state.focusedTab===1 ? mainColor : '#666'}
@@ -61,7 +61,7 @@ const MyComponent = ({ state, changeTab, onPress, onPressLeft, onPressRight }) =
                 />
                 </TouchableOpacity>
                 <Icon
-                name='person-outline'
+                name={'person'+(state.focusedTab===2 ? '' : '-outline')}
                 type='material-icons'
                 size={state.focusedTab===2 ? 36 : 30}
                 color={state.focusedTab===2 ? mainColor : '#666'}
