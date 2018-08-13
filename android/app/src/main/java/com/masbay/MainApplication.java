@@ -3,6 +3,7 @@ package com.masbay;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.streem.selectcontact.SelectContactPackage;
 import com.wenkesj.voice.VoicePackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -26,6 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new SelectContactPackage(),
             new VoicePackage(),
             new RNDeviceInfo(),
             new VectorIconsPackage()

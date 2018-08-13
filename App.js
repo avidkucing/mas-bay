@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ImageBackground } from 'react-native';
+import { ImageBackground, StatusBar } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import {  } from 'react-native-elements';
 import { createStore, applyMiddleware } from 'redux';
@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 //our import
 import rootReducer from './reducer';
-import LoadingIndicator from './containers/LoadingIndicator';
+import LoadingIndicator from './components/LoadingIndicator';
 import Home from './screens/Home';
 import Chat from './screens/Chat';
 import News from './screens/News';
@@ -16,6 +16,8 @@ import Notif from './screens/Notif';
 import Setting from './screens/Setting';
 import Login from './screens/Login';
 import Daftar from './screens/Daftar';
+import Welcome from './screens/Welcome';
+import { mainColor } from './styles';
 
 
 
@@ -47,6 +49,9 @@ const RootStack = createStackNavigator(
     Daftar: {
       screen: Daftar,
     },
+    Welcome: {
+      screen: Welcome,
+    },
   },
   {
     initialRouteName: 'Daftar',
@@ -72,6 +77,10 @@ export default class App extends Component {
             flex: 1,
           }}
         >
+        <StatusBar
+          backgroundColor={mainColor}
+          barStyle='dark-content'
+        />
         <RootStack />
         <LoadingIndicator />
         </ImageBackground>

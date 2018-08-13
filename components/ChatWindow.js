@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ImageBackground, FlatList } from 'react-native';
+import { View, ImageBackground, FlatList, Platform } from 'react-native';
 import { connect } from 'react-redux';
 //our import
 import { styles } from '../styles';
@@ -27,7 +27,13 @@ const MyView = ({ state, showHint, hideHint }) => {
             flex: 1,
         }}
     >
-        <View style={styles.chatWindow}>
+        <View 
+            style={{
+                flex: 1,
+                marginTop: Platform.OS==='ios' ? 10 : 0,
+                height: Platform.OS==='ios' ? 400 : 350,
+            }}
+        >
             <FlatList
                 showsVerticalScrollIndicator={false}
                 ref={chat => this.chat = chat}

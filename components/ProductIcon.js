@@ -4,7 +4,7 @@ import { Icon, Text } from 'react-native-elements';
 import { connect } from 'react-redux';
 //our import
 import { mainColor } from '../styles';
-import { addMessage, getReply } from '../actions';
+import { addMessage, getReply, changeHint } from '../actions';
 
 const mapStateToProps = state => ({
   state: state,
@@ -13,17 +13,19 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   addMessage: (text, isUser) => dispatch(addMessage(text, isUser)),      
   getReply: (text) => dispatch(getReply(text)),      
+  changeHint: (number) => dispatch(changeHint(number)),
 })
 
 
-const MyComponent = ({ name, type, text, onPress, addMessage, getReply }) => {
+const MyComponent = ({ name, type, text, changeHint, addMessage, getReply }) => {
 
   return (
     <TouchableOpacity
       onPress={()=>{
-        onPress();
+        //onPress();
         addMessage(text, true);
         getReply(text);
+        if (text==='Pulsa') changeHint();
       }}
     >
     <View
@@ -43,7 +45,7 @@ const MyComponent = ({ name, type, text, onPress, addMessage, getReply }) => {
         type={type}
         size={40}
         color={mainColor}
-        containerStyle={{
+        componentstyle={{
 
         }}
         
@@ -53,6 +55,7 @@ const MyComponent = ({ name, type, text, onPress, addMessage, getReply }) => {
       >
       <Text
         style={{
+          fontFamily: 'Lato-Regular',
           fontSize: 14,
           color: '#333',
           marginTop: 10,

@@ -3,8 +3,8 @@ import { View, Platform, Text, ScrollView } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { Pages } from 'react-native-pages';
 //our import
-import NewsItem from '../containers/NewsItem';
-import ProductIcon from '../containers/ProductIcon';
+import NewsItem from '../components/NewsItem';
+import ProductIcon from '../components/ProductIcon';
 import { mainColor } from '../styles';
 
 class WhatsNew extends Component {

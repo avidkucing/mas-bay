@@ -17,7 +17,9 @@ import {
     ADD_RIWAYAT,
     TOGGLE_LOADING,
     CHANGE_TAB,
-    CHANGE_NEWS
+    CHANGE_NEWS,
+    CLEAR_MESSAGE,
+    CHANGE_HINT
 } from './actions';
 
 const initialState = {
@@ -33,6 +35,7 @@ const initialState = {
     messages: [],
     intent: '',
     showHint: false,
+    hint: 0,
     inputValue: '',
     isRecognizing: false,
     riwayat: [],
@@ -47,10 +50,20 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 currentNewsIndex: action.number,
             }
+        case CHANGE_HINT:
+            return {
+                ...state,
+                hint: action.number,
+            }
         case CHANGE_TAB:
             return {
                 ...state,
                 focusedTab: action.number,
+            }
+        case CLEAR_MESSAGE:
+            return {
+                ...state,
+                messages: [],
             }
         case LOGIN:
             return {
@@ -94,7 +107,7 @@ const rootReducer = (state = initialState, action) => {
             }
         case ADD_MESSAGE:
             return {
-                ...state, 
+                ...state,
                 welcome: false,
                 messages: [...state.messages, 
                     {

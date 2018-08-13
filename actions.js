@@ -21,9 +21,12 @@ export const ADD_RIWAYAT = 'ADD_RIWAYAT';
 export const TOGGLE_LOADING = 'TOGGLE_LOADING';
 export const CHANGE_TAB = 'CHANGE_TAB';
 export const CHANGE_NEWS = 'CHANGE_NEWS';
+export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
+export const CHANGE_HINT = 'CHANGE_HINT';
 
 
 let nextId = 0;
+let nextHint = 1;
 
 export const changeNews = (number) => {
     return {
@@ -32,9 +35,22 @@ export const changeNews = (number) => {
     }
 }
 
+export const changeHint = () => {
+    return {
+        type: CHANGE_HINT,
+        number: nextHint++,
+    }
+}
+
 export const toggleLoading = () => {
     return {
         type: TOGGLE_LOADING,
+    }
+}
+
+export const clearMessage = () => {
+    return {
+        type: CLEAR_MESSAGE,
     }
 }
 
@@ -165,13 +181,16 @@ export const getReply = (text, isHideHint = true) => dispatch => {
         text: text,
     };
 
+    if (text==='reset') dispatch(clearMessage());
+
     dispatch(toggleLoading());
     if (isHideHint) dispatch(hideHint());
     axios.post(url, data)
       .then((response) => {
             dispatch(receiveReply(response.data));
             dispatch(toggleLoading());
-            setTimeout(()=>dispatch(showHint()), 1000);
+            setTimeout(()=>dispatch(showHint()), 500);
+            //dispatch(showHint());
         }
     );
 }

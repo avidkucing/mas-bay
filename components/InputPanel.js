@@ -86,7 +86,7 @@ const MyInput = ({ onPress, state, showHint, hideHint, setInputValue, addMessage
                     getReply(state.inputValue);
                 }}
                 onEndEditing={()=>{
-                    showHint();
+                    //setTimeout(()=>showHint(), 1000);
                 }}
                 placeholder={state.isRecognizing ? 'Mendengarkan...' : 'Ketik disini...'}
                 placeholderTextColor='#666'

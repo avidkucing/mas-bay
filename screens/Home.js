@@ -4,7 +4,7 @@ import {  } from 'react-native-elements';
 import { connect } from 'react-redux';
 //our import
 import { styles } from '../styles';
-import BottomTab from '../containers/BottomTab';
+import BottomTab from '../components/BottomTab';
 import WhatsNew from './WhatsNew';
 import Profil from './Profil';
 import { addMessage, getReply } from '../actions';
@@ -25,7 +25,7 @@ class MyComponent extends Component {
   componentDidMount() {
     if(this.props.state.welcome) {
       //this.props.addMessage('Hai! Aku Mas Bay. Aku bisa beliin kamu macem-macem lho. Bisa pulsa, kuota internet, token listrik, dll.', false);
-      this.props.getReply('reset');
+      //this.props.getReply('reset');
       this.page.scrollTo({ x: Platform.OS==='ios' ? 5 : 0});
     }
   }

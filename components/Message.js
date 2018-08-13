@@ -24,7 +24,9 @@ const Message = ({id, isShowImage, text, isUser}) => {
     const image = isImage();
     
         return (
-            <View>
+            <Animatable.View
+                animation='pulse'
+            >
                 <View 
                     style={{
                         flexDirection: 'row',
@@ -47,14 +49,21 @@ const Message = ({id, isShowImage, text, isUser}) => {
                         style={isUser ? styles.messageBubbleUser : styles.messageBubbleBot}
                         >
                             <Text
-                                style={isUser ? styles.messageTextUser : styles.messageTextBot}
+                                style={{
+                                    margin: 10,
+                                    marginRight: 20,
+                                    marginLeft: 20,
+                                    color: '#666',
+                                    fontSize: 14,
+                                    fontFamily: 'Lato-Regular',
+                                }}
                             >
                                 {text}
                             </Text>          
                         </View>
                     </View>
                 </View>
-            </View>
+            </Animatable.View>
             
         );
     }

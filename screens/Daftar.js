@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 //our import
 import { styles, backgroundColor, mainColor, tintColor } from '../styles';
 import {  } from '../actions';
-import IconedInput from '../containers/IconedInput';
+import IconedInput from '../components/IconedInput';
 
 
 

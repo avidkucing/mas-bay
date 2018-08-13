@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator, Platform } from 'react-native';
 import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 //our import
@@ -21,8 +21,8 @@ const Loading = ({ state }) => {
           position='absolute'
           top={0}
           left={0}
-          width={360}
-          height={480}
+          width={Platform.OS==='ios' ? 380 : 360}
+          height={Platform.OS==='ios' ? 720 : 640}
           backgroundColor='transparent'
         >
           <ActivityIndicator size='large' color={mainColor} />        

@@ -62,6 +62,8 @@
 		0CFA2858C15A4AF29BF65542 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE06534305FE4BEF9F46E475 /* Lato-Light.ttf */; };
 		EB31D35FD53E41B1A5B3E1E6 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7F3CC3E61F5F4F48B4881FD5 /* Lato-LightItalic.ttf */; };
 		63315C34B8344B2AB6433FC6 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4BEC85128BEB4AF4A9AE935D /* Lato-Regular.ttf */; };
+		6BDA56D33A07451EAC1CCF56 /* libRCTSelectContact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4DF3643E1D4483A6E7FADB /* libRCTSelectContact.a */; };
+		0A6D697977EC4B638612F862 /* lato_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD8D1BA3C20A4A2EB69A7D13 /* lato_regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -395,6 +397,9 @@
 		FE06534305FE4BEF9F46E475 /* Lato-Light.ttf */ = {isa = PBXFileReference; name = "Lato-Light.ttf"; path = "../assets/fonts/Lato-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		7F3CC3E61F5F4F48B4881FD5 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; name = "Lato-LightItalic.ttf"; path = "../assets/fonts/Lato-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		4BEC85128BEB4AF4A9AE935D /* Lato-Regular.ttf */ = {isa = PBXFileReference; name = "Lato-Regular.ttf"; path = "../assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		791A54EF1D7C4153B8F2A57B /* SelectContact.xcodeproj */ = {isa = PBXFileReference; name = "SelectContact.xcodeproj"; path = "../node_modules/react-native-select-contact/ios/SelectContact.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		0D4DF3643E1D4483A6E7FADB /* libRCTSelectContact.a */ = {isa = PBXFileReference; name = "libRCTSelectContact.a"; path = "libRCTSelectContact.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		AD8D1BA3C20A4A2EB69A7D13 /* lato_regular.ttf */ = {isa = PBXFileReference; name = "lato_regular.ttf"; path = "../assets/fonts/lato_regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -426,6 +431,7 @@
 				27C94B1A68A94B488DAC2F1C /* libRNVectorIcons.a in Frameworks */,
 				16A14FA003734E2BB3B3D979 /* libRNDeviceInfo.a in Frameworks */,
 				A7AE20310D344B37A3C1E10F /* libVoice.a in Frameworks */,
+				6BDA56D33A07451EAC1CCF56 /* libRCTSelectContact.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,6 +623,7 @@
 				9ADA8800A81F4393A1055D68 /* RNVectorIcons.xcodeproj */,
 				0F74BD659A2B40D5B38798AE /* RNDeviceInfo.xcodeproj */,
 				453D6B3608374A57906945AA /* Voice.xcodeproj */,
+				791A54EF1D7C4153B8F2A57B /* SelectContact.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -689,6 +696,7 @@
 				FE06534305FE4BEF9F46E475 /* Lato-Light.ttf */,
 				7F3CC3E61F5F4F48B4881FD5 /* Lato-LightItalic.ttf */,
 				4BEC85128BEB4AF4A9AE935D /* Lato-Regular.ttf */,
+				AD8D1BA3C20A4A2EB69A7D13 /* lato_regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1161,6 +1169,7 @@
 				0CFA2858C15A4AF29BF65542 /* Lato-Light.ttf in Resources */,
 				EB31D35FD53E41B1A5B3E1E6 /* Lato-LightItalic.ttf in Resources */,
 				63315C34B8344B2AB6433FC6 /* Lato-Regular.ttf in Resources */,
+				0A6D697977EC4B638612F862 /* lato_regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1297,12 +1306,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-voice/ios/Voice",
+					"$(SRCROOT)/../node_modules/react-native-select-contact/ios/RCTSelectContact",
 				);
 			};
 			name = Debug;
@@ -1326,12 +1337,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-voice/ios/Voice",
+					"$(SRCROOT)/../node_modules/react-native-select-contact/ios/RCTSelectContact",
 				);
 			};
 			name = Release;
@@ -1356,6 +1369,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-voice/ios/Voice",
+					"$(SRCROOT)/../node_modules/react-native-select-contact/ios/RCTSelectContact",
 				);
 			};
 			name = Debug;
@@ -1379,6 +1393,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-voice/ios/Voice",
+					"$(SRCROOT)/../node_modules/react-native-select-contact/ios/RCTSelectContact",
 				);
 			};
 			name = Release;
@@ -1411,12 +1426,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-voice/ios/Voice",
+					"$(SRCROOT)/../node_modules/react-native-select-contact/ios/RCTSelectContact",
 				);
 			};
 			name = Debug;
@@ -1449,12 +1466,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-voice/ios/Voice",
+					"$(SRCROOT)/../node_modules/react-native-select-contact/ios/RCTSelectContact",
 				);
 			};
 			name = Release;
@@ -1486,12 +1505,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-voice/ios/Voice",
+					"$(SRCROOT)/../node_modules/react-native-select-contact/ios/RCTSelectContact",
 				);
 			};
 			name = Debug;
@@ -1523,12 +1544,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-voice/ios/Voice",
+					"$(SRCROOT)/../node_modules/react-native-select-contact/ios/RCTSelectContact",
 				);
 			};
 			name = Release;
