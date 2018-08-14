@@ -3,7 +3,7 @@ import { View, Platform, TouchableOpacity } from 'react-native';
 import { Avatar, Text, List, ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
 //our import
-import { mainColor } from '../styles';
+import { styles, mainColor } from '../styles';
 import { addMessage, getReply } from '../actions';
 
 
@@ -23,70 +23,35 @@ class MyComponent extends Component {
       {
         title: 'Notifikasi',
         icon: 'notifications',
-        onPress: ()=>this.props.onPressNotif(),
+        onPress: ()=>this.props.navigation.navigate('Notif')
       },
       {
         title: 'Riwayat Pembelian',
         icon: 'history',
-        onPress: ()=>this.props.onPressRiwayat(),
+        onPress: ()=>this.props.navigation.navigate('Riwayat')
       },
       {
         title: 'Pengaturan',
         icon: 'settings',
-        onPress: ()=>this.props.onPressSettings(),
+        onPress: ()=>this.props.navigation.navigate('Setting')
       },
       {
         title: 'Logout',
         icon: 'power-settings-new',
-        onPress: ()=>this.props.onPressLogout(),
+        onPress: ()=>this.props.navigation.navigate('Daftar')
       },
     ]
 
     return (
-      <View
+      <View style={styles.rootContainer}>    
+        <View
           style={{
             flex: 1,
             alignItems: 'center',
+            justifyContent: 'center',
             width: 360,
-            //marginLeft: Platform.OS==='ios' ? 8 : 0,
-            marginRight: Platform.OS==='ios' ? 8 : 0,
-            //opacity: 0,
           }}
         >
-          <Avatar
-            rounded
-            source={require('../assets/news1.jpeg')}
-            onPress={() => console.log("Works!")}
-            activeOpacity={0.7}
-            overlayContainerStyle={{
-              height: 100,
-              width: 100,
-              borderRadius: 50,
-            }}
-            containerStyle={{
-              height: 100,
-              width: 100,
-              borderRadius: 50,
-              marginTop: Platform.OS==='ios' ? 50 : 40,
-              elevation: 10,
-              shadowOffset: { height: 3, width: 5 },
-              shadowColor: 'black',
-              shadowOpacity: 0.3,
-            }}
-            avatarStyle={{
-              height: 100,
-              width: 100,
-              borderRadius: 50,
-            }}
-          />
-          <Text
-            style={{
-              fontSize: 30,
-              fontWeight: 'bold',
-              color: '#333',
-              marginTop: 10,
-            }}
-          >Avid</Text>
           <Text
             style={{
               marginTop: 20,
@@ -103,7 +68,7 @@ class MyComponent extends Component {
           >Rp 576,988</Text>
           <TouchableOpacity
             onPress={()=>{
-              this.props.onPressTopUp();
+              this.props.navigation.navigate('Chat');
               this.props.addMessage('Top up', true);
               this.props.getReply('Top up');
             }}
@@ -128,31 +93,31 @@ class MyComponent extends Component {
               >TOP UP</Text>
             </View>
           </TouchableOpacity>
-          <View
-            style={{
-              flex: 1,
-              width: 360,
-              justifyContent: 'flex-end',
-              //marginBottom: 5,
-            }}
-          >
-            <List>
-              {
-                list.map((item, i) => (
-                  <ListItem
-                    key={i}
-                    title={item.title}
-                    leftIcon={{
-                      name: item.icon,
-                    }}
-                    onPress={()=>item.onPress()}
-                  />
-                ))
-              }
-            </List>
-          </View>
-          
         </View>
+        <View
+          style={{
+            flex: 1,
+            width: 360,
+            justifyContent: 'flex-end',
+            //marginBottom: 5,
+          }}
+        >
+          <List>
+            {
+              list.map((item, i) => (
+                <ListItem
+                  key={i}
+                  title={item.title}
+                  leftIcon={{
+                    name: item.icon,
+                  }}
+                  onPress={()=>item.onPress()}
+                />
+              ))
+            }
+          </List>
+        </View>
+      </View>
     );
   }
 }

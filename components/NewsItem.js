@@ -23,17 +23,17 @@ const MyComponent = ({ index, height, width, image, title, subtitle, onPress, ch
       }}
     >
     <View
-      height={height}
-      width={width}
       style={{
+        height: height,
+        width: width,
         marginTop: 10,
-        borderRadius: 25,
+        borderRadius: 5,
         marginBottom: 20,
+        elevation: 5,
+        shadowOffset: { height: 2, width: 2 },
+        shadowColor: 'black',
+        shadowOpacity: 0.3,
       }}
-      elevation={10}
-      shadowOffset= {{ height: 3, width: 5 }}
-      shadowColor= 'black'
-      shadowOpacity= {0.3}
     >
       <ImageBackground
         source={image}
@@ -43,14 +43,14 @@ const MyComponent = ({ index, height, width, image, title, subtitle, onPress, ch
             justifyContent: 'flex-end'
         }}
         imageStyle={{
-          borderRadius: 25,
+          borderRadius: 5,
         }}
       >
         <View
           backgroundColor='#333333aa'
           //height={100}
-          borderBottomLeftRadius={25}
-          borderBottomRightRadius={25}
+          borderBottomLeftRadius={5}
+          borderBottomRightRadius={5}
         >
           <Text
             style={{

@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { View, Platform, ScrollView, StatusBar } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
+import { AndroidBackHandler } from 'react-navigation-backhandler';
 //our import
 import { styles } from '../styles';
 import ChatWindow from '../components/ChatWindow';
 import InputPanel from '../components/InputPanel';
 import ProductIcon from '../components/ProductIcon';
 import Hint from '../components/Hint';
-import { addMessage, getReply } from '../actions';
+import { addMessage, getReply, changeTab } from '../actions';
 
 
 const mapStateToProps = state => ({
@@ -18,6 +19,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   addMessage: (text, isUser) => dispatch(addMessage(text, isUser)),
   getReply: (text) => dispatch(getReply(text)),  
+  changeTab: (number) => dispatch(changeTab(number)),  
 })
 
 class MyComponent extends Component {
@@ -29,10 +31,16 @@ class MyComponent extends Component {
     this.props.getReply('reset');
   }
 
+  onBackButtonPressAndroid = () => {
+    this.props.navigation.goBack();
+    return true;
+  };
+
   render() {
 
     return (
       <View style={styles.rootContainer}>
+      <AndroidBackHandler onBackPress={this.onBackButtonPressAndroid}>
       <StatusBar
         backgroundColor='#fff'
         barStyle='dark-content'
@@ -46,6 +54,7 @@ class MyComponent extends Component {
         {this.props.state.showHint ? <Hint /> : null}
           </View>
         <InputPanel onPress={()=>this.props.navigation.goBack()}/>
+        </AndroidBackHandler>
       </View>
     );
   }

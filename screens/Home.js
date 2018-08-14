@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 //our import
 import { styles } from '../styles';
 import BottomTab from '../components/BottomTab';
-import WhatsNew from './WhatsNew';
+import News from '../components/News';
 import Profil from './Profil';
-import { addMessage, getReply } from '../actions';
+import { addMessage, getReply, changeTab } from '../actions';
 
 
 const mapStateToProps = state => ({
@@ -16,7 +16,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   addMessage: (text, isUser) => dispatch(addMessage(text, isUser)),
-  getReply: (text) => dispatch(getReply(text)),  
+  getReply: (text) => dispatch(getReply(text)),
+  changeTab: (number) => dispatch(changeTab(number)),
 })
 
 
@@ -26,7 +27,6 @@ class MyComponent extends Component {
     if(this.props.state.welcome) {
       //this.props.addMessage('Hai! Aku Mas Bay. Aku bisa beliin kamu macem-macem lho. Bisa pulsa, kuota internet, token listrik, dll.', false);
       //this.props.getReply('reset');
-      this.page.scrollTo({ x: Platform.OS==='ios' ? 5 : 0});
     }
   }
 
@@ -34,31 +34,15 @@ class MyComponent extends Component {
 
     return (
       <View style={styles.rootContainer}>
-        <ScrollView
-          ref={page => this.page = page}
-          scrollEnabled={false}
-          overScrollMode='never'
-          horizontal
-          pagingEnabled
-          showsHorizontalScrollIndicator={false}
-        >
-          <WhatsNew 
-            onPressNews={()=>this.props.navigation.navigate('News')} 
-            onPressProduct={()=>this.props.navigation.navigate('Chat')} 
-          />
-          <Profil 
-            onPressTopUp={()=>this.props.navigation.navigate('Chat')}
-            onPressNotif={()=>this.props.navigation.navigate('Notif')}
-            onPressRiwayat={()=>this.props.navigation.navigate('Riwayat')}
-            onPressSettings={()=>this.props.navigation.navigate('Setting')}
-            onPressLogout={()=>this.props.navigation.navigate('Daftar')}
-          />
-        </ScrollView>
-        <BottomTab 
-          onPress={()=>this.props.navigation.navigate('Chat')}
-          onPressRight={()=>this.page.scrollToEnd()}//({ x: 360 })}
-          onPressLeft={()=>this.page.scrollTo({ x: Platform.OS==='ios' ? 5 : 0})}
-        />
+          <View
+            style={{
+              marginTop: Platform.OS==='ios' ? 20 : 10,
+            }}
+          >
+            <News 
+              onPressNews={()=>this.props.navigation.navigate('News')} 
+            />
+          </View>
       </View>
     );
   }
