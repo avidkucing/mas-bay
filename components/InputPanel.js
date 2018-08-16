@@ -58,18 +58,6 @@ const MyInput = ({ onPress, state, showHint, hideHint, setInputValue, addMessage
             shadowOpacity= {0.3}
             backgroundColor='#fff'
         >
-            <Icon
-                reverse
-                name='home'
-                type='material-icons'
-                size={24}
-                color={mainColor}
-                reverseColor='#666'
-                containerStyle={{
-                    marginLeft: 10,
-                }}
-                onPress={onPress}
-            />
             <TextInput
                 flex={1}
                 ref={input => this.input = input}

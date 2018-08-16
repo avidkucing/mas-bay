@@ -13,69 +13,104 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    changeTab: (number) => dispatch(changeTab(number)),      
+    changeTab: (text) => dispatch(changeTab(text)),      
 })
 
 const MyComponent = ({ state, changeTab, onPress, onPressLeft, onPressRight }) => {
         return (
             <View
                 flexDirection='row'
-                height={64}
-            >
-            <View
-                flex= {1}
-                alignItems= 'center'
-                flexDirection='row'
+                height={56}
                 width={360}
-                justifyContent='space-evenly'
                 elevation={10}
-                shadowOffset= {{ height: -1 }}
+                shadowOffset= {{ height: -2 }}
                 shadowColor= 'black'
                 shadowOpacity= {0.3}
                 backgroundColor='#fff'
+                //alignItems='center'
+            >
+            <View
+                flex={1}
+                justifyContent='center'
+                backgroundColor={state.activeTab==='home' ? mainColor : '#fff'}
             >
                 <Icon
-                name={'home'+(state.focusedTab===1 ? '' : '-outline')}
+                name='home'
                 type='material-community'
-                size={state.focusedTab===1 ? 36 : 30}
-                color={state.focusedTab===1 ? mainColor : '#666'}
+                size={30}
+                color={state.activeTab==='home' ? '#fff' : '#666'}
                 containerStyle={{
-                    marginRight: state.focusedTab===1 ? -6 : 0,
+
                 }}
                 onPress={()=>{
-                    changeTab(1);
+                    changeTab('home');
                     onPressLeft();
                 }}
                 />
-                <TouchableOpacity
-                    onPress={onPress}
-                >
-                <Image 
-                    source={require('../Man-05.png')}
-                    style={{
-                        //marginRight: 10,
-                        width: 80,
-                        height: 80,
-                    }}
-                    
-                />
-                </TouchableOpacity>
+            </View>
+            <View
+                height={64}
+                width={64}
+                flexDirection='row'
+            >
+                <View
+                    height={64}
+                    width={32}
+                    backgroundColor={state.activeTab==='home' ? mainColor : '#fff'}
+                ></View>
+                <View
+                    height={64}
+                    width={32}
+                    backgroundColor={state.activeTab==='profil' ? mainColor : '#fff'}
+                ></View>
+            </View>
+            <View
+                flex={1}
+                justifyContent='center'
+                backgroundColor={state.activeTab==='profil' ? mainColor : '#fff'}
+            >
                 <Icon
-                name={'person'+(state.focusedTab===2 ? '' : '-outline')}
+                name='person'
                 type='material-icons'
-                size={state.focusedTab===2 ? 36 : 30}
-                color={state.focusedTab===2 ? mainColor : '#666'}
+                size={state.activeTab==='profil' ? 36 : 30}
+                color={state.activeTab==='profil' ? '#fff' : '#666'}
                 containerStyle={{
-                    marginLeft: state.focusedTab===2 ? -6 : 0,
-                    //marginRight: 20,
+
                 }}
                 onPress={()=>{
-                    changeTab(2);
+                    changeTab('profil');
                     onPressRight();
                 }}
                 />
             </View>
+            <View
+                height={64}
+                width={64}
+                borderRadius={32}
+                position='absolute'
+                left={149}
+                backgroundColor={state.activeTab==='chat' ? mainColor : '#fff'}
+                elevation={5}
+                shadowOffset= {{ height: -1 }}
+                shadowColor= 'black'
+                shadowOpacity= {0.3}
+            >
+                <Icon
+                    name='robot'
+                    type='material-community'
+                    color={state.activeTab==='chat' ? '#fff' : '#666'}
+                    size={state.activeTab==='chat' ? 36 : 30}
+                    onPress={()=>{
+                        changeTab('chat');
+                        onPress();
+                    }}
+                    containerStyle={{
+                        marginTop: 10,
+                    }}
+                />
             </View>
+            </View>
+            
         );
     }
 

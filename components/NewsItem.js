@@ -21,18 +21,20 @@ const MyComponent = ({ index, height, width, image, title, subtitle, onPress, ch
         changeNews(index);
         onPress();
       }}
+      style={{
+        flex: 1,
+      }}
     >
     <View
       style={{
-        height: height,
-        width: width,
-        marginTop: 10,
+        flex: 1,
         borderRadius: 5,
-        marginBottom: 20,
         elevation: 5,
         shadowOffset: { height: 2, width: 2 },
         shadowColor: 'black',
         shadowOpacity: 0.3,
+        marginTop: 5,
+        marginBottom: 25,
       }}
     >
       <ImageBackground
@@ -47,10 +49,11 @@ const MyComponent = ({ index, height, width, image, title, subtitle, onPress, ch
         }}
       >
         <View
-          backgroundColor='#333333aa'
-          //height={100}
-          borderBottomLeftRadius={5}
-          borderBottomRightRadius={5}
+          style={{
+            backgroundColor: '#333333aa',
+            borderBottomLeftRadius: 5,
+            borderBottomRightRadius: 5,
+          }}
         >
           <Text
             style={{

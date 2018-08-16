@@ -17,42 +17,41 @@ const mapDispatchToProps = dispatch => ({
 })
 
 
-const MyComponent = ({ name, type, text, changeHint, addMessage, getReply }) => {
+const MyComponent = ({ name, type, text, changeHint, addMessage, getReply, onPress }) => {
 
   return (
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: '#fff',
+        marginTop: 5,
+        marginBottom: 5,
+      }}
+    >
     <TouchableOpacity
       onPress={()=>{
-        //onPress();
+        onPress===undefined ? null : onPress();
         addMessage(text, true);
         getReply(text);
         if (text==='Pulsa') changeHint();
       }}
-    >
-    <View
-      style={{
-        width: 80,
-        backgroundColor: '#fff',
-        borderRadius: 25,
-        marginTop: 10,
-        marginLeft: 5,
-        marginRight: 5,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
+      flex={1}
     >
       <Icon
         name={name}
         type={type}
         size={40}
         color={mainColor}
-        componentstyle={{
+        iconStyle={{
+          //textShadowOffset:{width: 1, height: 1},
+          //shadowColor:'#000',
+          //shadowOpacity:0.3
+        }}
+        containerStyle={{
 
         }}
         
         />
-      <View
-        height={50}
-      >
       <Text
         style={{
           fontFamily: 'Lato-Regular',
@@ -63,10 +62,8 @@ const MyComponent = ({ name, type, text, changeHint, addMessage, getReply }) => 
           textAlignVertical: 'top',
         }}
       >{text}</Text>
-      </View>
-    </View>
     </TouchableOpacity>
-
+    </View>
   );
 }
 

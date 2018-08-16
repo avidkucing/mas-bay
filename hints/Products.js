@@ -14,99 +14,80 @@ const mapDispatchToProps = dispatch => ({
     
 })
 
-const MyComponent = () => {
+const MyComponent = ({ onPress }) => {
     return (
-        <View 
-            style={{
-                height: 200,
-            }}
-        >
         <ScrollView
-            contentcomponentstyle={{
-                backgroundColor: '#fff',
-                width: Platform.OS==='ios' ? 370 : 360,
-                borderRadius: 25,
-            }}
             >
             <View
-                flexDirection='row'
-                justifyContent='flex-start'
+                style={{
+                    flex: 1,
+                    flexDirection: 'row',
+                }}
             >
                 <ProductIcon
                 name='perm-phone-msg'
                 type='material-icons'
                 text='Pulsa'
-                //onPress={}
+                onPress={onPress}
                 />
                 <ProductIcon
                 name='cellphone-wireless'
                 type='material-community'
                 text='Kuota Internet'
-                //onPress={}
+                onPress={onPress}
 
                 />
                 <ProductIcon
                 name='thunder-cloud'
                 type='entypo'
                 text='Token Listrik'
-                //onPress={}
+                onPress={onPress}
 
                 />
                 <ProductIcon
                 name='water'
                 type='material-community'
                 text='PDAM'
-                //onPress={}
+                onPress={onPress}
 
                 />
             </View>
             <View
-                flexDirection='row'
-                justifyContent='flex-start'
+                style={{
+                    flex: 1,
+                    flexDirection: 'row',
+                }}
             >
                 <ProductIcon
                 name='cart-plus'
                 type='material-community'
                 text='BPJS'
-                //onPress={}
+                onPress={onPress}
 
                 />
                 <ProductIcon
                 name='google-play'
                 type='material-community'
-                text='Voucer GPlay'
-                //onPress={}
+                text='Voucher GPlay'
+                onPress={onPress}
 
                 />
                 <ProductIcon
                 name='nature-people'
                 type='material-community'
                 text='Paket Travel'
-                //onPress={}
+                onPress={onPress}
 
                 />
                 <ProductIcon
                 name='airplane-takeoff'
                 type='material-community'
                 text='Umroh'
-                //onPress={}
-
-                />
-            </View>
-            <View
-                flexDirection='row'
-                justifyContent='flex-start'
-            >
-                <ProductIcon
-                name='plus-circle'
-                type='material-community'
-                text='Coming Soon'
-                //onPress={}
+                onPress={onPress}
 
                 />
             </View>
         </ScrollView>
-        </View>
     )
 }
 

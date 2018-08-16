@@ -71,37 +71,60 @@ const MenuStack = createStackNavigator(
 )
 
 class Menu extends Component {
-  onBackButtonPressAndroid = () => {
-    return true;
-  };
 
   render() {
     return (
-      <AndroidBackHandler onBackPress={this.onBackButtonPressAndroid}>
-        <MenuStack ref={navigatorRef => {
-          NavigationService.setTopLevelNavigator(navigatorRef);
-        }}/>
+      <View
+        style={{
+          flex: 1,
+        }}
+      >
+        <MenuStack />
         <BottomTab 
           onPressLeft={()=>NavigationService.navigate('Home')}
           onPress={()=>this.props.navigation.navigate('Chat')}
           onPressRight={()=>NavigationService.navigate('Profil')}
         />
-      </AndroidBackHandler>
+      </View>
     )
   }
 }
 
 const RootStack = createStackNavigator(
   {
-    Menu: {
-      screen: Menu,
-    },
     Chat: {
       screen: Chat,
     },
+    Home: {
+      screen: Home,
+    },
+    Profil: { 
+      screen: Profil, 
+    },
+    News: { 
+      screen: News,
+    },
+    Notif: {
+      screen: Notif,
+    },
+    Riwayat: {
+      screen: Riwayat,
+    },
+    Setting: {
+      screen: Setting,
+    },
+    Login: {
+      screen: Login,
+    },
+    Daftar: {
+      screen: Daftar,
+    },
+    Welcome: {
+      screen: Welcome,
+    },
   },
   {
-    initialRouteName: 'Menu',
+    initialRouteName: 'Home',
     headerMode: 'none',
     cardStyle: {
       backgroundColor: '#fff',
@@ -128,7 +151,14 @@ export default class App extends Component {
           backgroundColor={mainColor}
           barStyle='dark-content'
         />
-        <RootStack />
+        <RootStack ref={navigatorRef => {
+          NavigationService.setTopLevelNavigator(navigatorRef);
+        }}/>
+        <BottomTab 
+          onPressLeft={()=>NavigationService.navigate('Home')}
+          onPress={()=>NavigationService.navigate('Chat')}
+          onPressRight={()=>NavigationService.navigate('Profil')}
+        />
         <LoadingIndicator />
         </ImageBackground>
       </Provider>

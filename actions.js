@@ -54,10 +54,10 @@ export const clearMessage = () => {
     }
 }
 
-export const changeTab = (number) => {
+export const changeTab = (text) => {
     return {
         type: CHANGE_TAB,
-        number
+        text
     }
 }
 

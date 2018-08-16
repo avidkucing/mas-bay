@@ -11,8 +11,6 @@ export const fontSize = 14;
 export const styles = StyleSheet.create({
     rootContainer: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: '#fff',
     },
     chatWindow: { 

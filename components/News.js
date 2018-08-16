@@ -42,76 +42,66 @@ class News extends Component {
   }
   
   render() {
+    width= Platform.OS==='ios' ? 350 : 340;
 
     return (
+
       <View
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          marginLeft: Platform.OS==='ios' ? 8 : 0,
-          marginRight: Platform.OS==='ios' ? 8 : 0,
-          //opacity: 0,
-        }}
+        //width={Platform.OS==='ios' ? 370 : 360}
+        //height={Platform.OS==='ios' ? 310 : 280}
+        flex={1}
       >
-        <View
-          width={Platform.OS==='ios' ? 370 : 360}
-          height={Platform.OS==='ios' ? 310 : 280}
+        <Pages
+          indicatorColor='#333'
+          ref={news => this.news = news}
+          flex={1}
         >
-          <Pages
-            indicatorColor='#000'
-            ref={news => this.news = news}
-          >
-          <View 
-            style={{ 
-              flex: 1,
-              alignItems: 'center',
-            }}
-          >
-            <NewsItem
-              index={1}
-              height={Platform.OS==='ios' ? 270 : 240}
-              width={Platform.OS==='ios' ? 340 : 320}
-              image={require('../assets/news1.jpeg')}
-              title= 'Mas Bay Release Event'
-              subtitle= 'Join now to get all the fun and our interesting offers!'
-              onPress={this.props.onPressNews}
-            />
-          </View>
-          <View 
-            style={{ 
-              flex: 1,
-              alignItems: 'center',
-            }}
-          >
-            <NewsItem
-              index={2}
-              height={Platform.OS==='ios' ? 270 : 240}
-              width={Platform.OS==='ios' ? 340 : 320}
-              image={require('../assets/news2.jpg')}
-              title= 'Daftar Harga Pulsa'
-              subtitle= 'Update 08 Agustus 2018'
-              onPress={this.props.onPressNews}
-            />
-          </View>
-          <View 
-            style={{ 
-              flex: 1,
-              alignItems: 'center',
-            }}
-          >
-            <NewsItem
-              index={3}
-              height={Platform.OS==='ios' ? 270 : 240}
-              width={Platform.OS==='ios' ? 340 : 320}
-              image={require('../assets/news3.jpg')}
-              title= 'Feature Survey'
-              subtitle= 'Fitur apa yang kamu inginkan?'
-              onPress={this.props.onPressNews}
-            />
-          </View>
-          </Pages>
-          
+        <View 
+          style={{ 
+            flex: 1,
+            alignItems: 'center',
+          }}
+        >
+          <NewsItem
+            index={1}
+            image={require('../assets/news1.jpeg')}
+            width={width}
+            title= 'Mas Bay Release Event'
+            subtitle= 'Join now to get all the fun and our interesting offers!'
+            onPress={this.props.onPressNews}
+          />
         </View>
+        <View 
+          style={{ 
+            flex: 1,
+            alignItems: 'center',
+          }}
+        >
+          <NewsItem
+            index={2}
+            image={require('../assets/news2.jpg')}
+            width={width}
+            title= 'Daftar Harga Pulsa'
+            subtitle= 'Update 08 Agustus 2018'
+            onPress={this.props.onPressNews}
+          />
+        </View>
+        <View 
+          style={{ 
+            flex: 1,
+            alignItems: 'center',
+          }}
+        >
+          <NewsItem
+            index={3}
+            image={require('../assets/news3.jpg')}
+            width={width}
+            title= 'Feature Survey'
+            subtitle= 'Fitur apa yang kamu inginkan?'
+            onPress={this.props.onPressNews}
+          />
+        </View>
+        </Pages>
       </View>
     );
   }

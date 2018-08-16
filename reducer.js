@@ -40,7 +40,7 @@ const initialState = {
     isRecognizing: false,
     riwayat: [],
     isLoading: false,
-    focusedTab: 1,
+    activeTab: 'home',
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -58,7 +58,7 @@ const rootReducer = (state = initialState, action) => {
         case CHANGE_TAB:
             return {
                 ...state,
-                focusedTab: action.number,
+                activeTab: action.text,
             }
         case CLEAR_MESSAGE:
             return {

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Platform } from 'react-native';
-import {  } from 'react-native-elements';
+import { Text } from 'react-native-elements';
 import { connect } from 'react-redux';
 //our import
-import { styles } from '../styles';
+import { styles, mainColor } from '../styles';
 import BottomTab from '../components/BottomTab';
 import News from '../components/News';
 import Profil from './Profil';
 import { addMessage, getReply, changeTab } from '../actions';
+import Products from '../hints/Products';
 
 
 const mapStateToProps = state => ({
@@ -34,15 +35,97 @@ class MyComponent extends Component {
 
     return (
       <View style={styles.rootContainer}>
+        <View
+          style={{
+            justifyContent: 'center',
+            flex: 1,
+            //backgroundColor: 'red'
+          }}
+        >
+          <Text
+            style={{
+              //marginTop: Platform.OS==='ios' ? 10 : 0,
+
+            }}
+          >Beranda</Text>
+        </View>
+        <View
+          style={{
+            flex: 6,
+            //backgroundColor: 'blue'
+          }}
+        >
           <View
             style={{
-              marginTop: Platform.OS==='ios' ? 20 : 10,
+              flexDirection: 'row',
+              alignItems: 'center',
+              flex: 1,
+            }}
+          >
+            <View
+              style={{
+                flex: 1,
+                alignItems: 'flex-start',
+              }}
+            >
+              <Text
+                style={{
+                  marginLeft: 10,
+                  fontFamily: 'Lato-Bold',
+                  fontSize: 20,
+                  color: '#333',
+                }}
+              >Berita dan Promo</Text>
+            </View>
+            <Text
+              style={{
+                marginTop: 5,
+                marginRight: 10,
+                fontFamily: 'Lato-Regular',
+                color: '#333',
+              }}
+            >LIHAT SEMUA</Text>
+          </View>
+          <View
+            style={{
+              flex: 5,
             }}
           >
             <News 
-              onPressNews={()=>this.props.navigation.navigate('News')} 
+              onPressNews={()=>this.props.navigation.navigate('News')}
             />
           </View>
+        </View>
+        <View
+          style={{
+            flex: 5,
+            //backgroundColor: 'red'
+          }}
+        >
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Text
+              style={{
+                fontFamily: 'Lato-Bold',
+                fontSize: 20,
+                marginLeft: 10,
+                color: '#333',
+              }}
+            >Info Produk</Text>
+          </View>
+          <View
+            style={{
+              flex: 4,
+            }}
+          >
+            <Products onPress={()=>this.props.navigation.navigate('Chat')}/>
+          </View>
+        </View>
       </View>
     );
   }

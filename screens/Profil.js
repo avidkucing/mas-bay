@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Platform, TouchableOpacity } from 'react-native';
 import { Avatar, Text, List, ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
+import { AndroidBackHandler } from 'react-navigation-backhandler';
 //our import
 import { styles, mainColor } from '../styles';
 import { addMessage, getReply } from '../actions';
@@ -17,6 +18,9 @@ const mapDispatchToProps = dispatch => ({
 })
 
 class MyComponent extends Component {
+  onBackButtonPressAndroid = () => {
+    return true;
+  };
 
   render() {
     const list = [
@@ -41,8 +45,9 @@ class MyComponent extends Component {
         onPress: ()=>this.props.navigation.navigate('Daftar')
       },
     ]
-
+    
     return (
+      <AndroidBackHandler onBackPress={this.onBackButtonPressAndroid}>
       <View style={styles.rootContainer}>    
         <View
           style={{
@@ -118,6 +123,7 @@ class MyComponent extends Component {
           </List>
         </View>
       </View>
+      </AndroidBackHandler>
     );
   }
 }
