@@ -27,7 +27,6 @@ const MyComponent = ({ state, changeTab, onPress, onPressLeft, onPressRight }) =
                 shadowColor= 'black'
                 shadowOpacity= {0.3}
                 backgroundColor='#fff'
-                //alignItems='center'
             >
             <View
                 flex={1}
@@ -35,17 +34,18 @@ const MyComponent = ({ state, changeTab, onPress, onPressLeft, onPressRight }) =
                 backgroundColor={state.activeTab==='home' ? mainColor : '#fff'}
             >
                 <Icon
-                name='home'
-                type='material-community'
-                size={30}
-                color={state.activeTab==='home' ? '#fff' : '#666'}
-                containerStyle={{
+                    name='home'
+                    type='material-community'
+                    size={30}
+                    color={state.activeTab==='home' ? '#fff' : '#666'}
+                    underlayColor='transparent'
+                    containerStyle={{
 
-                }}
-                onPress={()=>{
-                    changeTab('home');
-                    onPressLeft();
-                }}
+                    }}
+                    onPress={()=>{
+                        changeTab('home');
+                        onPressLeft();
+                    }}
                 />
             </View>
             <View
@@ -58,6 +58,7 @@ const MyComponent = ({ state, changeTab, onPress, onPressLeft, onPressRight }) =
                     width={32}
                     backgroundColor={state.activeTab==='home' ? mainColor : '#fff'}
                 ></View>
+                
                 <View
                     height={64}
                     width={32}
@@ -70,45 +71,47 @@ const MyComponent = ({ state, changeTab, onPress, onPressLeft, onPressRight }) =
                 backgroundColor={state.activeTab==='profil' ? mainColor : '#fff'}
             >
                 <Icon
-                name='person'
-                type='material-icons'
-                size={state.activeTab==='profil' ? 36 : 30}
-                color={state.activeTab==='profil' ? '#fff' : '#666'}
-                containerStyle={{
+                    name='person'
+                    type='material-icons'
+                    size={state.activeTab==='profil' ? 36 : 30}
+                    color={state.activeTab==='profil' ? '#fff' : '#666'}
+                    underlayColor='transparent'
+                    containerStyle={{
 
-                }}
-                onPress={()=>{
-                    changeTab('profil');
-                    onPressRight();
-                }}
+                    }}
+                    onPress={()=>{
+                        changeTab('profil');
+                        onPressRight();
+                    }}
                 />
             </View>
             <View
-                height={64}
-                width={64}
-                borderRadius={32}
-                position='absolute'
-                left={149}
-                backgroundColor={state.activeTab==='chat' ? mainColor : '#fff'}
-                elevation={5}
-                shadowOffset= {{ height: -1 }}
-                shadowColor= 'black'
-                shadowOpacity= {0.3}
-            >
-                <Icon
-                    name='robot'
-                    type='material-community'
-                    color={state.activeTab==='chat' ? '#fff' : '#666'}
-                    size={state.activeTab==='chat' ? 36 : 30}
-                    onPress={()=>{
-                        changeTab('chat');
-                        onPress();
-                    }}
-                    containerStyle={{
-                        marginTop: 10,
-                    }}
-                />
-            </View>
+                    height={64}
+                    width={64}
+                    borderRadius={32}
+                    position='absolute'
+                    left={149}
+                    backgroundColor={state.activeTab==='chat' ? mainColor : '#fff'}
+                    elevation={5}
+                    shadowOffset= {{ height: -1 }}
+                    shadowColor= 'black'
+                    shadowOpacity= {0.3}
+                >
+                    <Icon
+                        name='robot'
+                        type='material-community'
+                        color={state.activeTab==='chat' ? '#fff' : '#666'}
+                        size={state.activeTab==='chat' ? 36 : 30}
+                        underlayColor='transparent'
+                        onPress={()=>{
+                            changeTab('chat');
+                            onPress();
+                        }}
+                        containerStyle={{
+                            marginTop: 10,
+                        }}
+                    />
+                </View>
             </View>
             
         );

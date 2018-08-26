@@ -58,6 +58,7 @@ const MyInput = ({ onPress, state, showHint, hideHint, setInputValue, addMessage
             shadowOpacity= {0.3}
             backgroundColor='#fff'
         >
+            <RecordButton />
             <TextInput
                 flex={1}
                 ref={input => this.input = input}
@@ -89,8 +90,23 @@ const MyInput = ({ onPress, state, showHint, hideHint, setInputValue, addMessage
                     borderRadius: 15,
                 }}
             />
-            {sendButton}
-            <RecordButton />
+            <Icon
+                name='send'
+                type='material-icons'
+                size={24}
+                color='#666'
+                containerStyle={{
+                    marginRight: 20,
+                }}
+                onPress={() => {
+                    Keyboard.dismiss();
+                    if (state.inputValue!=='') {
+                        addMessage(state.inputValue, true);
+                        setInputValue('');
+                        getReply(state.inputValue);
+                    }                    
+                }}
+            />
         </View>
         </View>
     );

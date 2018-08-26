@@ -9,6 +9,7 @@ import News from '../components/News';
 import Profil from './Profil';
 import { addMessage, getReply, changeTab } from '../actions';
 import Products from '../hints/Products';
+import TitleBar from '../components/TitleBar';
 
 
 const mapStateToProps = state => ({
@@ -37,17 +38,10 @@ class MyComponent extends Component {
       <View style={styles.rootContainer}>
         <View
           style={{
-            justifyContent: 'center',
             flex: 1,
-            //backgroundColor: 'red'
           }}
         >
-          <Text
-            style={{
-              //marginTop: Platform.OS==='ios' ? 10 : 0,
-
-            }}
-          >Beranda</Text>
+          <TitleBar title='Beranda' /> 
         </View>
         <View
           style={{
@@ -106,21 +100,14 @@ class MyComponent extends Component {
             style={{
               flex: 1,
               justifyContent: 'center',
-              alignItems: 'center',
+              alignItems: 'flex-start',
             }}
           >
-            <Text
-              style={{
-                fontFamily: 'Lato-Bold',
-                fontSize: 20,
-                marginLeft: 10,
-                color: '#333',
-              }}
-            >Info Produk</Text>
+            
           </View>
           <View
             style={{
-              flex: 4,
+              flex: 9,
             }}
           >
             <Products onPress={()=>this.props.navigation.navigate('Chat')}/>

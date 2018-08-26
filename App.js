@@ -148,7 +148,7 @@ export default class App extends Component {
           }}
         >
         <StatusBar
-          backgroundColor={mainColor}
+          backgroundColor='#fff'
           barStyle='dark-content'
         />
         <RootStack ref={navigatorRef => {
