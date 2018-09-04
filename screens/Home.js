@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Platform } from 'react-native';
-import { Text } from 'react-native-elements';
+import { View, ScrollView, Platform, TouchableHighlight } from 'react-native';
+import { Text, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 //our import
 import { styles, mainColor } from '../styles';
-import BottomTab from '../components/BottomTab';
 import News from '../components/News';
-import Profil from './Profil';
-import { addMessage, getReply, changeTab } from '../actions';
 import Products from '../hints/Products';
-import TitleBar from '../components/TitleBar';
+import { addMessage, getReply, changeTab } from '../actions';
 
 
 const mapStateToProps = state => ({
@@ -25,28 +22,48 @@ const mapDispatchToProps = dispatch => ({
 
 class MyComponent extends Component {
 
-  componentDidMount() {
-    if(this.props.state.welcome) {
-      //this.props.addMessage('Hai! Aku Mas Bay. Aku bisa beliin kamu macem-macem lho. Bisa pulsa, kuota internet, token listrik, dll.', false);
-      //this.props.getReply('reset');
-    }
-  }
-
   render() {
 
     return (
-      <View style={styles.rootContainer}>
+      <View 
+        style={{
+          flex: 1,
+          backgroundColor: '#fff',
+        }}
+      >
         <View
           style={{
-            flex: 1,
+            height: 48,
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: '#fff',
+            elevation: 1,
+            shadowOffset: { height: -2 },
+            shadowColor: 'black',
+            shadowOpacity: 0.3,
           }}
         >
-          <TitleBar title='Beranda' /> 
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              marginLeft: 10,
+            }}
+          >
+            <Text
+              style={{
+                fontFamily: 'Lato-Bold',
+                fontSize: 24,
+                color: '#333',
+              }}
+            >What's New</Text>
+          </View>
         </View>
         <View
           style={{
             flex: 6,
-            //backgroundColor: 'blue'
+            
           }}
         >
           <View
@@ -96,23 +113,83 @@ class MyComponent extends Component {
             //backgroundColor: 'red'
           }}
         >
-          <View
+         <View
             style={{
+              flexDirection: 'row',
+              alignItems: 'center',
               flex: 1,
-              justifyContent: 'center',
-              alignItems: 'flex-start',
             }}
           >
-            
+            <View
+              style={{
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Text
+                style={{
+                  fontFamily: 'Lato-Bold',
+                  fontSize: 20,
+                  color: '#333',
+                }}
+              >Info Produk</Text>
+            </View>
           </View>
           <View
             style={{
-              flex: 9,
+              flex: 4,
             }}
           >
-            <Products onPress={()=>this.props.navigation.navigate('Chat')}/>
+            <Products onPress={()=>{}}/>
           </View>
         </View>
+        <TouchableHighlight
+          underlayColor='#eee'
+          style={{
+            flex: 1,
+            borderBottomLeftRadius: 5,
+            borderBottomRightRadius: 5,
+          }}
+          onPress={()=>{
+            this.props.navigation.navigate('Chat');
+          }}
+        >
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#fff',
+            borderBottomLeftRadius: 5,
+            borderBottomRightRadius: 5,
+          }}
+        >
+          <Icon
+              name='close'
+              type='material-community'
+              size={30}
+              color='#333'
+              underlayColor='transparent'
+              containerStyle={{
+                marginRight: 10,
+                marginBottom: 10,
+              }}
+              onPress={()=>{
+                  
+              }}
+          />
+          <Text
+            style={{
+              fontFamily: 'Lato-Bold',
+              fontSize: 20,
+              marginBottom: 10,
+              color: '#333',
+            }}
+          >KEMBALI</Text>
+        </View>
+        </TouchableHighlight>
       </View>
     );
   }

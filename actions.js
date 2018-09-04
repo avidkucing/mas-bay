@@ -5,6 +5,8 @@ import DeviceInfo from 'react-native-device-info';
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const SHOW_HINT = 'SHOW_HINT';
 export const HIDE_HINT = 'HIDE_HINT';
+export const SHOW_MENU = 'SHOW_MENU';
+export const HIDE_MENU = 'HIDE_MENU';
 export const SET_INPUT_VALUE = 'SET_INPUT_VALUE';
 export const SET_PASSWORD_VALUE = 'SET_PASSWORD_VALUE';
 export const SET_EMAIL_VALUE = 'SET_EMAIL_VALUE';
@@ -24,6 +26,7 @@ export const CHANGE_NEWS = 'CHANGE_NEWS';
 export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
 export const CHANGE_HINT = 'CHANGE_HINT';
 
+const baseURL = 'https://afternoon-peak-29908.herokuapp.com';
 
 let nextId = 0;
 let nextHint = 1;
@@ -36,6 +39,8 @@ export const changeNews = (number) => {
 }
 
 export const changeHint = () => {
+    if (nextHint>4) nextHint = 0;
+
     return {
         type: CHANGE_HINT,
         number: nextHint++,
@@ -116,7 +121,6 @@ export const addMessage = (text, isUser) => {
     }
 }
 
-
 export const showHint = () => {
     return {
         type: SHOW_HINT,
@@ -126,6 +130,18 @@ export const showHint = () => {
 export const hideHint = () => {
     return {
         type: HIDE_HINT,
+    }
+}
+
+export const showMenu = () => {
+    return {
+        type: SHOW_MENU,
+    }
+}
+
+export const hideMenu = () => {
+    return {
+        type: HIDE_MENU,
     }
 }
 
@@ -174,7 +190,7 @@ export const addPartialResult = (result) => {
 
 //redux-thunk actions
 export const getReply = (text, isHideHint = true) => dispatch => {
-    const url = 'https://intense-inlet-67504.herokuapp.com/chat';
+    const url = baseURL+'/chat';
     const uniqueId = DeviceInfo.getUniqueID();
     const data = {
         deviceId: uniqueId,
@@ -196,7 +212,7 @@ export const getReply = (text, isHideHint = true) => dispatch => {
 }
 
 export const getSaldo = (text) => dispatch => {
-    const url = 'https://intense-inlet-67504.herokuapp.com/ceksaldo';
+    const url = baseURL+'/ceksaldo';
     const data = {
         session: text,
     };
@@ -211,7 +227,7 @@ export const getSaldo = (text) => dispatch => {
 }
 
 export const getRiwayat = (session, date) => dispatch => {
-    const url = 'https://intense-inlet-67504.herokuapp.com/riwayattransaksi';
+    const url = baseURL+'/riwayattransaksi';
     const uniqueId = DeviceInfo.getUniqueID();
     const data = {
         session: session || '',
@@ -229,7 +245,7 @@ export const getRiwayat = (session, date) => dispatch => {
 }
 
 export const getLoginStatus = (userId, password, session) => dispatch => {
-    const url = 'https://intense-inlet-67504.herokuapp.com/login';
+    const url = baseURL+'/login';
     const data = {
         userId: userId,
         password: password,

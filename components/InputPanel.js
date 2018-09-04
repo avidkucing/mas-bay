@@ -7,7 +7,7 @@ import { inputComponents, mainColor } from '../styles';
 import RecordButton from './RecordButton';
 
 import { addMessage, showHint, hideHint, 
-    setInputValue, getReply, toggleTitle } from '../actions';
+    setInputValue, getReply, toggleTitle, showMenu, hideMenu } from '../actions';
 
 const mapStateToProps = state => ({
     state: state,
@@ -17,97 +17,105 @@ const mapDispatchToProps = dispatch => ({
     addMessage: (text, isUser) => dispatch(addMessage(text, isUser)),
     showHint: () => dispatch(showHint()),
     hideHint: () => dispatch(hideHint()),
+    showMenu: () => dispatch(showMenu()),
+    hideMenu: () => dispatch(hideMenu()),
     setInputValue: (text) => dispatch(setInputValue(text)),
     getReply: (text) => dispatch(getReply(text)),
     toggleTitle: () => dispatch(toggleTitle()),
 })
 
-const MyInput = ({ onPress, state, showHint, hideHint, setInputValue, addMessage, getReply }) => {
-    const renderSendButton = ()=> {if (!state.isRecognizing) return (<Icon
-        name='send'
-        type='material-icons'
-        size={24}
-        color='#666'
-        containerStyle={{
-            marginRight: 20,
-        }}
-        onPress={() => {
-            Keyboard.dismiss();
-            if (state.inputValue!=='') {
-                addMessage(state.inputValue, true);
-                setInputValue('');
-                getReply(state.inputValue);
-            }                    
-        }}
-    />)}
-
-    const sendButton = renderSendButton();
+const MyInput = ({ onPress, state, showHint, hideHint, 
+    setInputValue, addMessage, getReply, showMenu, hideMenu }) => {
 
     return (
         <View
-            flexDirection='row'
-            height={64}
+            style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                backgroundColor: '#fff',
+                height: 64,
+                borderTopWidth: 1,
+                borderBottomWidth: 1,
+                borderColor: '#eee',
+            }}
         >
-        <View
-            flex= {1}
-            alignItems= 'center'
-            flexDirection='row'
-            elevation={10}
-            shadowOffset= {{ height: -1 }}
-            shadowColor= 'black'
-            shadowOpacity= {0.3}
-            backgroundColor='#fff'
-        >
-            <RecordButton />
-            <TextInput
-                flex={1}
-                ref={input => this.input = input}
-                value={state.inputValue}
-                onFocus={()=>{
-                    hideHint();
-                }}
-                onChangeText={(text) => {
-                    setInputValue(text);
-                }}
-                onSubmitEditing={() => {
-                    addMessage(state.inputValue, true);
-                    setInputValue('');
-                    getReply(state.inputValue);
-                }}
-                onEndEditing={()=>{
-                    //setTimeout(()=>showHint(), 1000);
-                }}
-                placeholder={state.isRecognizing ? 'Mendengarkan...' : 'Ketik disini...'}
-                placeholderTextColor='#666'
-                paddingLeft={10}
-                underlineColorAndroid='transparent'
-                returnKeyLabel='send'
+            <View
                 style={{
-                    //marginLeft: 10,
-                    marginRight: 20,
+                    flex: 1,
+                }}
+            >
+                <Icon
+                    name={state.showMenu ? 'close-circle' : 'menu'}
+                    type={state.showMenu ? 'material-community' : 'entypo'}
+                    size={36}
+                    color='#666'
+                    containerStyle={{
+                        
+                    }}
+                    onPress={() => {
+                        state.showMenu ? hideMenu() : showMenu(); 
+                    }}
+                />
+            </View>
+            <View
+                style={{
+                    flex: 4,
                     backgroundColor: '#eee',
                     height: 48,
                     borderRadius: 15,
                 }}
-            />
-            <Icon
-                name='send'
-                type='material-icons'
-                size={24}
-                color='#666'
-                containerStyle={{
-                    marginRight: 20,
-                }}
-                onPress={() => {
-                    Keyboard.dismiss();
-                    if (state.inputValue!=='') {
+            >
+                <TextInput
+                    flex={1}
+                    ref={input => this.input = input}
+                    value={state.inputValue}
+                    onFocus={()=>{
+                        hideHint();
+                    }}
+                    onChangeText={(text) => {
+                        setInputValue(text);
+                    }}
+                    onSubmitEditing={() => {
                         addMessage(state.inputValue, true);
                         setInputValue('');
                         getReply(state.inputValue);
-                    }                    
+                    }}
+                    onEndEditing={()=>{
+                        //setTimeout(()=>showHint(), 1000);
+                    }}
+                    placeholder={state.isRecognizing ? 'Mendengarkan...' : 'Ketik disini...'}
+                    placeholderTextColor='#666'
+                    paddingLeft={10}
+                    underlineColorAndroid='transparent'
+                    returnKeyLabel='send'
+                    style={{
+                        
+                    }}
+                />
+            </View>
+            <View
+                style={{
+                    flex: 1,
                 }}
-            />
-        </View>
+            >
+                <Icon
+                    name='send'
+                    type='material-icons'
+                    size={28}
+                    color='#666'
+                    containerStyle={{
+                        
+                    }}
+                    onPress={() => {
+                        Keyboard.dismiss();
+                        if (state.inputValue!=='') {
+                            addMessage(state.inputValue, true);
+                            setInputValue('');
+                            getReply(state.inputValue);
+                        }                    
+                    }}
+                />
+            </View>
         </View>
     );
 }

@@ -4,6 +4,8 @@ import {
     SET_INPUT_VALUE, 
     SHOW_HINT, 
     HIDE_HINT, 
+    SHOW_MENU, 
+    HIDE_MENU,
     START_RECOGNIZING,
     ADD_PARTIAL_RESULT,
     SET_EMAIL_VALUE,
@@ -24,7 +26,7 @@ import {
 
 const initialState = {
     currentNewsIndex: 1,
-    baseURL: 'https://intense-inlet-67504.herokuapp.com',
+    baseURL: 'https://afternoon-peak-29908.herokuapp.com',
     welcome: true,
     isLoggedIn: false,
     emailValue: '',
@@ -35,6 +37,7 @@ const initialState = {
     messages: [],
     intent: '',
     showHint: false,
+    showMenu: false,
     hint: 0,
     inputValue: '',
     isRecognizing: false,
@@ -126,6 +129,16 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 showHint: false,
+            }
+        case SHOW_MENU:
+            return {
+                ...state, 
+                showMenu: true,
+            }
+        case HIDE_MENU:
+            return {
+                ...state, 
+                showMenu: false,
             }
         case SET_INPUT_VALUE:
             return {

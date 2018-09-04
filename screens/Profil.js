@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { View, Platform, TouchableOpacity } from 'react-native';
-import { Avatar, Text, List, ListItem } from 'react-native-elements';
+import { View, ScrollView, Platform, TouchableHighlight } from 'react-native';
+import { Text, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { AndroidBackHandler } from 'react-navigation-backhandler';
 //our import
 import { styles, mainColor } from '../styles';
-import { addMessage, getReply } from '../actions';
+import News from '../components/News';
+import Products from '../hints/Products';
+import { addMessage, getReply, changeTab } from '../actions';
 
 
 const mapStateToProps = state => ({
@@ -14,116 +15,405 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   addMessage: (text, isUser) => dispatch(addMessage(text, isUser)),
-  getReply: (text) => dispatch(getReply(text)),  
+  getReply: (text) => dispatch(getReply(text)),
+  changeTab: (number) => dispatch(changeTab(number)),
 })
 
+
 class MyComponent extends Component {
-  onBackButtonPressAndroid = () => {
-    return true;
-  };
 
   render() {
-    const list = [
-      {
-        title: 'Notifikasi',
-        icon: 'notifications',
-        onPress: ()=>this.props.navigation.navigate('Notif')
-      },
-      {
-        title: 'Riwayat Pembelian',
-        icon: 'history',
-        onPress: ()=>this.props.navigation.navigate('Riwayat')
-      },
-      {
-        title: 'Pengaturan',
-        icon: 'settings',
-        onPress: ()=>this.props.navigation.navigate('Setting')
-      },
-      {
-        title: 'Logout',
-        icon: 'power-settings-new',
-        onPress: ()=>this.props.navigation.navigate('Daftar')
-      },
-    ]
-    
+
     return (
-      <AndroidBackHandler onBackPress={this.onBackButtonPressAndroid}>
-      <View style={styles.rootContainer}>    
+      <View 
+        style={{
+          flex: 1,
+          backgroundColor: '#fff',
+        }}
+      >
         <View
           style={{
-            flex: 1,
-            alignItems: 'center',
+            height: 48,
+            flexDirection: 'row',
             justifyContent: 'center',
-            width: 360,
+            alignItems: 'center',
+            backgroundColor: '#fff',
+            elevation: 1,
+            shadowOffset: { height: -2 },
+            shadowColor: 'black',
+            shadowOpacity: 0.3,
           }}
         >
-          <Text
+          <View
             style={{
-              marginTop: 20,
-              fontSize: 16,
-              color: '#333',
+              flex: 1,
+              alignItems: 'center',
+              marginLeft: 10,
             }}
-          >SALDO KAMU:</Text>
-          <Text
+          >
+            <Text
+              style={{
+                fontFamily: 'Lato-Bold',
+                fontSize: 24,
+                color: '#333',
+              }}
+            >Akun</Text>
+          </View>
+        </View>
+        <View
+          style={{
+            flex: 3,
+            alignItems: 'center',
+            justifyContent: 'center',
+            margin: 10,
+            borderRadius: 15,
+            borderWidth: 1,
+            borderColor: '#eee'
+            //backgroundColor: 'red',
+          }}
+        >
+          <View
             style={{
-              fontSize: 36,
-              fontWeight: 'bold',
-              color: '#333',
-            }}
-          >Rp 576,988</Text>
-          <TouchableOpacity
-            onPress={()=>{
-              this.props.navigation.navigate('Chat');
-              this.props.addMessage('Top up', true);
-              this.props.getReply('Top up');
+              flexDirection: 'row',
+              alignItems: 'center',
+              flex: 1,
             }}
           >
             <View
               style={{
-                height: 40,
-                width: 80,
-                backgroundColor: mainColor,
-                borderRadius: 10,
-                marginTop: 10,
-                justifyContent: 'center',
-                alignItems: 'center',
+                flex: 1,
+                alignItems: 'flex-start',
               }}
             >
               <Text
                 style={{
-                  fontSize: 16,
-                  fontWeight: 'bold',
-                  color: '#fff',
+                  marginLeft: 10,
+                  fontFamily: 'Lato-Bold',
+                  fontSize: 20,
+                  color: '#333',
                 }}
-              >TOP UP</Text>
+              >Info</Text>
             </View>
-          </TouchableOpacity>
+            <Text
+              style={{
+                marginTop: 5,
+                marginRight: 10,
+                fontFamily: 'Lato-Regular',
+                color: '#333',
+              }}
+            >EDIT</Text>
+            </View>
+          <View
+            style={{
+              flex: 3,
+              flexDirection: 'row',
+            }}
+          >
+            <Icon
+              name='account-circle'
+              type='material-community'
+              size={80}
+              color='#666'
+              underlayColor='transparent'
+              containerStyle={{
+                flex: 2,
+              }}
+              onPress={()=>{
+                
+              }}
+            />
+            <View
+              style={{
+                flex: 3,
+                justifyContent: 'center',
+              }}
+            >
+              <Text
+                style={{
+                  fontFamily: 'Lato-Bold',
+                  fontSize: 20,
+                  color: '#333',
+                  marginBottom: 5,
+                }}
+              >user92918283</Text>
+              <Text
+                style={{
+                  fontFamily: 'Lato-Regular',
+                  fontSize: 14,
+                  marginBottom: 5,
+                  color: '#666',
+                }}
+              >Belum ada email</Text>
+              <Text
+                style={{
+                  fontFamily: 'Lato-Regular',
+                  fontSize: 14,
+                  marginBottom: 5,
+                  color: '#666',
+                }}
+              >Belum ada nomor HP</Text>
+            </View>
+          </View>
         </View>
         <View
           style={{
-            flex: 1,
-            width: 360,
-            justifyContent: 'flex-end',
-            //marginBottom: 5,
+            flex: 3,
+            backgroundColor: mainColor,
+            margin: 10,
+            borderRadius: 15,
           }}
         >
-          <List>
-            {
-              list.map((item, i) => (
-                <ListItem
-                  key={i}
-                  title={item.title}
-                  leftIcon={{
-                    name: item.icon,
-                  }}
-                  onPress={()=>item.onPress()}
-                />
-              ))
-            }
-          </List>
+          <View
+            style={{
+              flex: 1,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Icon
+              name='wallet'
+              type='material-community'
+              size={40}
+              color='#fff'
+              underlayColor='transparent'
+              containerStyle={{
+                marginRight: 5,
+              }}
+              onPress={()=>{
+                  
+              }}
+            />
+            <Text
+              style={{
+                fontFamily: 'Lato-Bold',
+                fontSize: 28,
+                color: '#fff',
+              }}
+            >Rp 0</Text>
+          </View>
+          <View
+            style={{
+              flex: 1,
+              flexDirection: 'row',
+            }}
+          >
+            <View
+              style={{
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Icon
+                name='plus-box-outline'
+                type='material-community'
+                size={30}
+                color='#fff'
+                underlayColor='transparent'
+                containerStyle={{
+                  marginBottom: 10,
+                }}
+                onPress={()=>{}}
+              />
+              <Text
+                style={{
+                  fontFamily: 'Lato-Bold',
+                  textAlign: 'center',
+                  fontSize: 14,
+                  color: '#fff',
+                }}
+              >Top Up</Text>
+            </View> 
+            <View
+              style={{
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Icon
+                name='cube-send'
+                type='material-community'
+                size={30}
+                color='#fff'
+                underlayColor='transparent'
+                containerStyle={{
+                  marginBottom: 10,
+                }}
+                onPress={()=>{}}
+              />
+              <Text
+                style={{
+                  fontFamily: 'Lato-Bold',
+                  textAlign: 'center',
+                  fontSize: 14,
+                  color: '#fff',
+                }}
+              >Transfer</Text>
+            </View>
+            <View
+              style={{
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Icon
+                name='qrcode-scan'
+                type='material-community'
+                size={30}
+                color='#fff'
+                underlayColor='transparent'
+                containerStyle={{
+                  marginBottom: 10,
+                }}
+                onPress={()=>{}}
+              />
+              <Text
+                style={{
+                  fontFamily: 'Lato-Bold',
+                  textAlign: 'center',
+                  fontSize: 14,
+                  color: '#fff',
+                }}
+              >Scan</Text>
+            </View>
+            <View
+              style={{
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Icon
+                name='input'
+                type='material-icons'
+                size={30}
+                color='#fff'
+                underlayColor='transparent'
+                containerStyle={{
+                  marginBottom: 10,
+                }}
+                onPress={()=>{}}
+              />
+              <Text
+                style={{
+                  fontFamily: 'Lato-Bold',
+                  textAlign: 'center',
+                  fontSize: 14,
+                  color: '#fff',
+                }}
+              >Withdraw</Text>
+            </View> 
+          </View>        
         </View>
+        <View
+          style={{
+            flex: 2,
+          }}
+        >
+          <View
+            style={{
+              flex: 1,
+            }}
+          >
+          
+          </View>
+          <TouchableHighlight
+            underlayColor='#eee'
+            style={{
+              flex: 1,
+              borderBottomLeftRadius: 5,
+              borderBottomRightRadius: 5,
+            }}
+            onPress={()=>{
+              this.props.navigation.navigate('Chat');
+            }}
+          >
+          <View
+            style={{
+              flex: 1,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#fff',
+              borderBottomLeftRadius: 5,
+              borderBottomRightRadius: 5,
+            }}
+          >
+            <Icon
+                name='login'
+                type='material-community'
+                size={30}
+                color='#333'
+                underlayColor='transparent'
+                containerStyle={{
+                  marginRight: 10,
+                  marginBottom: 10,
+                }}
+                onPress={()=>{
+                    
+                }}
+            />
+            <Text
+              style={{
+                fontFamily: 'Lato-Bold',
+                fontSize: 20,
+                marginBottom: 10,
+                color: '#333',
+              }}
+            >LOGIN</Text>
+          </View>
+          </TouchableHighlight>
+        </View>
+        <TouchableHighlight
+          underlayColor='#eee'
+          style={{
+            flex: 1,
+            borderBottomLeftRadius: 5,
+            borderBottomRightRadius: 5,
+          }}
+          onPress={()=>{
+            this.props.navigation.navigate('Chat');
+          }}
+        >
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#fff',
+            borderBottomLeftRadius: 5,
+            borderBottomRightRadius: 5,
+          }}
+        >
+          <Icon
+              name='close'
+              type='material-community'
+              size={30}
+              color='#333'
+              underlayColor='transparent'
+              containerStyle={{
+                marginRight: 10,
+                marginBottom: 10,
+              }}
+              onPress={()=>{
+                  
+              }}
+          />
+          <Text
+            style={{
+              fontFamily: 'Lato-Bold',
+              fontSize: 20,
+              marginBottom: 10,
+              color: '#333',
+            }}
+          >KEMBALI</Text>
+        </View>
+        </TouchableHighlight>
       </View>
-      </AndroidBackHandler>
     );
   }
 }
@@ -133,5 +423,3 @@ const Profil = connect(
 )(MyComponent)
 
 export default Profil;
-
-

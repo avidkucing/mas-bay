@@ -3,7 +3,7 @@ import { View, Image, Platform } from 'react-native';
 import { Text } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
 //our import
-import { styles } from '../styles';
+import { styles, mainColor } from '../styles';
 
 
     
@@ -14,7 +14,6 @@ const Message = ({id, isShowImage, text, isUser}) => {
         return (<Image
             source= {require('../Man-05.png')}
             style={{
-                //marginTop: 10,
                 width: 60,
                 height: 60,
             }}
@@ -31,7 +30,7 @@ const Message = ({id, isShowImage, text, isUser}) => {
                     style={{
                         flexDirection: 'row',
                         alignItems: 'flex-start',
-                        marginTop: Platform.OS === 'ios' ? 10 : 0,
+                        marginTop: 10,
 
                     }}
                 >
@@ -39,17 +38,34 @@ const Message = ({id, isShowImage, text, isUser}) => {
                         style={isUser ? styles.messageContainerUser : {
                             width: 360,
                             justifyContent: 'flex-start',
-                            //alignItems: 'center',
                             flexDirection: 'row',
-                            marginTop: id === '0' ? Platform.OS === 'ios' ? 30 : 10 : 0,
                         }}
                     >
                     {image}                    
                         <View
-                        style={isUser ? styles.messageBubbleUser : styles.messageBubbleBot}
+                        style={isUser ? {
+                            backgroundColor: mainColor,
+                            borderRadius: 15,
+                            marginTop: 10,
+                            marginBottom: 10,
+                            marginLeft: 15,
+                            marginRight: 15,
+                            maxWidth: 280,
+                            elevation: 3,
+                            shadowOffset: { height: 1, width: 1 },
+                            shadowColor: 'black',
+                            shadowOpacity: 0.3,
+                        } : styles.messageBubbleBot}
                         >
                             <Text
-                                style={{
+                                style={isUser ? {
+                                    margin: 10,
+                                    marginRight: 20,
+                                    marginLeft: 20,
+                                    color: '#fff',
+                                    fontSize: 14,
+                                    fontFamily: 'Lato-Regular',
+                                } : {
                                     margin: 10,
                                     marginRight: 20,
                                     marginLeft: 20,

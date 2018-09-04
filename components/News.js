@@ -4,7 +4,6 @@ import { Icon } from 'react-native-elements';
 import { Pages } from 'react-native-pages';
 //our import
 import NewsItem from '../components/NewsItem';
-import ProductIcon from '../components/ProductIcon';
 import { mainColor } from '../styles';
 import PulsaNominal from '../hints/PulsaNominal';
 
@@ -68,21 +67,6 @@ class News extends Component {
             width={width}
             title= 'Mas Bay Release Event'
             subtitle= 'Join now to get all the fun and our interesting offers!'
-            onPress={this.props.onPressNews}
-          />
-        </View>
-        <View 
-          style={{ 
-            flex: 1,
-            alignItems: 'center',
-          }}
-        >
-          <NewsItem
-            index={2}
-            image={require('../assets/news2.jpg')}
-            width={width}
-            title= 'Daftar Harga Pulsa'
-            subtitle= 'Update 08 Agustus 2018'
             onPress={this.props.onPressNews}
           />
         </View>

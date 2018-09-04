@@ -28,68 +28,6 @@ import NavigationService from './NavigationService';
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
-const MenuStack = createStackNavigator(
-  {
-    Home: {
-      screen: Home,
-    },
-    Profil: { 
-      screen: Profil, 
-    },
-    News: { 
-      screen: News,
-    },
-    Notif: {
-      screen: Notif,
-    },
-    Riwayat: {
-      screen: Riwayat,
-    },
-    Setting: {
-      screen: Setting,
-    },
-    Login: {
-      screen: Login,
-    },
-    Daftar: {
-      screen: Daftar,
-    },
-    Welcome: {
-      screen: Welcome,
-    },
-  },
-  {
-    initialRouteName: 'Home',
-    headerMode: 'none',
-    cardStyle: {
-      backgroundColor: 'transparent',
-    },
-    navigationOptions: {
-
-    }
-  }
-)
-
-class Menu extends Component {
-
-  render() {
-    return (
-      <View
-        style={{
-          flex: 1,
-        }}
-      >
-        <MenuStack />
-        <BottomTab 
-          onPressLeft={()=>NavigationService.navigate('Home')}
-          onPress={()=>this.props.navigation.navigate('Chat')}
-          onPressRight={()=>NavigationService.navigate('Profil')}
-        />
-      </View>
-    )
-  }
-}
-
 const RootStack = createStackNavigator(
   {
     Chat: {
@@ -124,10 +62,11 @@ const RootStack = createStackNavigator(
     },
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Chat',
     headerMode: 'none',
     cardStyle: {
-      backgroundColor: '#fff',
+      backgroundColor: 'transparent',
+      opacity: 1,
     },
     navigationOptions: {
 
@@ -154,11 +93,6 @@ export default class App extends Component {
         <RootStack ref={navigatorRef => {
           NavigationService.setTopLevelNavigator(navigatorRef);
         }}/>
-        <BottomTab 
-          onPressLeft={()=>NavigationService.navigate('Home')}
-          onPress={()=>NavigationService.navigate('Chat')}
-          onPressRight={()=>NavigationService.navigate('Profil')}
-        />
         <LoadingIndicator />
         </ImageBackground>
       </Provider>

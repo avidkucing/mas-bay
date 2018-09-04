@@ -18,6 +18,9 @@ const mapDispatchToProps = dispatch => ({
     changeHint: () => dispatch(changeHint()),
 })
 
+const nominal = ['5000', '10000', '20000']
+const nominal2 = ['25000', '50000', '100000']
+
 const MyComponent = ({ addMessage, getReply, changeHint }) => {
     return (
         <View
@@ -34,17 +37,19 @@ const MyComponent = ({ addMessage, getReply, changeHint }) => {
                     marginBottom: 10,
                 }}
             >
+            {nominal.map((nominal)=>
                 <TouchableOpacity
+                    key={nominal}
                     onPress={()=>{
-                        addMessage('5.000', true);
-                        getReply('5000');
+                        addMessage(nominal, true);
+                        getReply(nominal);
                         changeHint();
                     }}
                     style={{
                         height: 48,
-                        width: 100,
+                        width: 80,
                         borderRadius: 5,
-                        backgroundColor: '#fff',
+                        backgroundColor: mainColor,
                         justifyContent: 'center',
                         alignItems: 'center',
                         elevation: 5,
@@ -57,84 +62,32 @@ const MyComponent = ({ addMessage, getReply, changeHint }) => {
                     <Text
                         style={{
                             fontFamily: 'Lato-Bold',
-                            fontSize: 20,
-                            color: '#666',
+                            fontSize: 16,
+                            color: '#fff',
                         }}
-                    >5.000</Text>
+                    >{nominal}</Text>
                 </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={()=>{
-                        addMessage('10.000', true);
-                        getReply('10000')
-                        changeHint();
-                    }}
-                    style={{
-                        height: 48,
-                        width: 100,
-                        borderRadius: 5,
-                        backgroundColor: '#fff',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        elevation: 5,
-                        shadowOffset: { height: 2, width: 2 },
-                        shadowColor: 'black',
-                        shadowOpacity: 0.3,
-                        marginRight: 10,
-                    }}
-                >
-                    <Text
-                        style={{
-                            fontFamily: 'Lato-Bold',
-                            fontSize: 20,
-                            color: '#666',
-                        }}
-                    >10.000</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={()=>{
-                        addMessage('20.000', true);
-                        getReply('20000');
-                        changeHint();
-                    }}
-                    style={{
-                        height: 48,
-                        width: 100,
-                        borderRadius: 5,
-                        backgroundColor: '#fff',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        elevation: 5,
-                        shadowOffset: { height: 2, width: 2 },
-                        shadowColor: 'black',
-                        shadowOpacity: 0.3,
-                        marginRight: 10,
-                    }}
-                >
-                    <Text
-                        style={{
-                            fontFamily: 'Lato-Bold',
-                            fontSize: 20,
-                            color: '#666',
-                        }}
-                    >20.000</Text>
-                </TouchableOpacity>
+            )}
             </View>
             <View
                 style={{
                     flexDirection: 'row',
+                    marginBottom: 10,
                 }}
             >
+            {nominal2.map((nominal)=>
                 <TouchableOpacity
+                    key={nominal}
                     onPress={()=>{
-                        addMessage('25.000', true);
-                        getReply('25000');
+                        addMessage(nominal, true);
+                        getReply(nominal);
                         changeHint();
                     }}
                     style={{
                         height: 48,
-                        width: 100,
+                        width: 80,
                         borderRadius: 5,
-                        backgroundColor: '#fff',
+                        backgroundColor: mainColor,
                         justifyContent: 'center',
                         alignItems: 'center',
                         elevation: 5,
@@ -147,67 +100,12 @@ const MyComponent = ({ addMessage, getReply, changeHint }) => {
                     <Text
                         style={{
                             fontFamily: 'Lato-Bold',
-                            fontSize: 20,
-                            color: '#666',
+                            fontSize: 16,
+                            color: '#fff',
                         }}
-                    >25.000</Text>
+                    >{nominal}</Text>
                 </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={()=>{
-                        addMessage('50.000', true);
-                        getReply('50000');
-                        changeHint();
-                    }}
-                    style={{
-                        height: 48,
-                        width: 100,
-                        borderRadius: 5,
-                        backgroundColor: '#fff',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        elevation: 5,
-                        shadowOffset: { height: 2, width: 2 },
-                        shadowColor: 'black',
-                        shadowOpacity: 0.3,
-                        marginRight: 10,
-                    }}
-                >
-                    <Text
-                        style={{
-                            fontFamily: 'Lato-Bold',
-                            fontSize: 20,
-                            color: '#666',
-                        }}
-                    >50.000</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={()=>{
-                        addMessage('100.000', true);
-                        getReply('100000');
-                        changeHint();
-                    }}
-                    style={{
-                        height: 48,
-                        width: 100,
-                        borderRadius: 5,
-                        backgroundColor: '#fff',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        elevation: 5,
-                        shadowOffset: { height: 2, width: 2 },
-                        shadowColor: 'black',
-                        shadowOpacity: 0.3,
-                        marginRight: 10,
-                    }}
-                >
-                    <Text
-                        style={{
-                            fontFamily: 'Lato-Bold',
-                            fontSize: 20,
-                            color: '#666',
-                        }}
-                    >100.000</Text>
-                </TouchableOpacity>
+            )}
             </View>
         </View>
     )

@@ -9,6 +9,8 @@ import { addMessage, getReply } from '../actions';
 import Products from '../hints/Products';
 import PulsaNumber from '../hints/PulsaNumber';
 import PulsaNominal from '../hints/PulsaNominal';
+import Pembayaran from '../hints/Pembayaran';
+import Konfirmasi from '../hints/Konfirmasi';
 
 const mapStateToProps = state => ({
   state: state,
@@ -20,13 +22,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 class MyComponent extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            //hint: 'product',
-        }
-    }
 
     render() {
 
@@ -40,6 +35,8 @@ class MyComponent extends Component {
         {this.props.state.hint===0 ? <Products /> : 
         this.props.state.hint===1 ? <PulsaNumber /> :
         this.props.state.hint===2 ? <PulsaNominal /> :
+        this.props.state.hint===3 ? <Pembayaran /> :
+        this.props.state.hint===4 ? <Konfirmasi /> :
         null}
     </Animatable.View>
   );
