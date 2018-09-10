@@ -133,6 +133,7 @@ const rootReducer = (state = initialState, action) => {
         case SHOW_MENU:
             return {
                 ...state, 
+                showHint: false,
                 showMenu: true,
             }
         case HIDE_MENU:

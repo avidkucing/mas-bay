@@ -151,7 +151,7 @@ class MyComponent extends Component {
             />
           </View>
         </TouchableOpacity>
-        <InputPanel onPress={()=>this.props.navigation.goBack()}/>
+        <InputPanel />
         {this.props.state.showMenu ? 
           <Menu /> : null}
       </AndroidBackHandler>

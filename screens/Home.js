@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 //our import
 import { styles, mainColor } from '../styles';
 import News from '../components/News';
-import Products from '../hints/Products';
+import Products from '../components/Products';
 import { addMessage, getReply, changeTab } from '../actions';
 
 
@@ -110,39 +110,12 @@ class MyComponent extends Component {
         <View
           style={{
             flex: 5,
+            marginTop: 10,
+            //alignItems: 'center',
             //backgroundColor: 'red'
           }}
         >
-         <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              flex: 1,
-            }}
-          >
-            <View
-              style={{
-                flex: 1,
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <Text
-                style={{
-                  fontFamily: 'Lato-Bold',
-                  fontSize: 20,
-                  color: '#333',
-                }}
-              >Info Produk</Text>
-            </View>
-          </View>
-          <View
-            style={{
-              flex: 4,
-            }}
-          >
             <Products onPress={()=>{}}/>
-          </View>
         </View>
         <TouchableHighlight
           underlayColor='#eee'

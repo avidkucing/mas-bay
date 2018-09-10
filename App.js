@@ -10,6 +10,7 @@ import { AndroidBackHandler } from 'react-navigation-backhandler';
 import rootReducer from './reducer';
 import LoadingIndicator from './components/LoadingIndicator';
 import Home from './screens/Home';
+import ProductInfo from './screens/ProductInfo';
 import Chat from './screens/Chat';
 import Profil from './screens/Profil';
 import News from './screens/News';
@@ -35,6 +36,9 @@ const RootStack = createStackNavigator(
     },
     Home: {
       screen: Home,
+    },
+    ProductInfo: {
+      screen: ProductInfo,
     },
     Profil: { 
       screen: Profil, 
@@ -62,7 +66,7 @@ const RootStack = createStackNavigator(
     },
   },
   {
-    initialRouteName: 'Chat',
+    initialRouteName: 'Home',
     headerMode: 'none',
     cardStyle: {
       backgroundColor: 'transparent',

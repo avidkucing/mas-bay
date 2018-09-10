@@ -82,7 +82,10 @@ class MyComponent extends Component {
     const text = renderText();
 
     return (
-      <View style={styles.rootContainer}>
+      <View style={{
+        flex: 1,
+        backgroundColor: '#fff',
+      }}>
         <ScrollView
             contentContainerStyle={{
                 width: Platform.OS==='ios' ? 380 : 360,
