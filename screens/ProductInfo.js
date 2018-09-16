@@ -7,7 +7,7 @@ import { styles, mainColor } from '../styles';
 import News from '../components/News';
 import Products from '../hints/Products';
 import { addMessage, getReply, changeTab } from '../actions';
-import ProductIcon from './ProductIcon';
+import ProductIcon from '../components/ProductIcon';
 
 
 const mapStateToProps = state => ({

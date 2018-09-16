@@ -66,7 +66,7 @@ const RootStack = createStackNavigator(
     },
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Chat',
     headerMode: 'none',
     cardStyle: {
       backgroundColor: 'transparent',
