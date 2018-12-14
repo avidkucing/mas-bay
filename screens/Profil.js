@@ -328,7 +328,7 @@ class MyComponent extends Component {
               borderBottomRightRadius: 5,
             }}
             onPress={()=>{
-              this.props.navigation.navigate('Chat');
+              this.props.navigation.navigate('Daftar');
             }}
           >
           <View

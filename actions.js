@@ -26,7 +26,7 @@ export const CHANGE_NEWS = 'CHANGE_NEWS';
 export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
 export const CHANGE_HINT = 'CHANGE_HINT';
 
-const baseURL = 'https://afternoon-peak-29908.herokuapp.com';
+const baseURL = 'https://intense-inlet-67504.herokuapp.com';//'https://afternoon-peak-29908.herokuapp.com';
 
 let nextId = 0;
 let nextHint = 1;

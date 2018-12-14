@@ -7,7 +7,7 @@ import { inputComponents, mainColor } from '../styles';
 import RecordButton from './RecordButton';
 
 import { addMessage, showHint, hideHint, 
-    setInputValue, getReply, toggleTitle, showMenu, hideMenu } from '../actions';
+    setInputValue, getReply, toggleTitle, showMenu, hideMenu, changeHint } from '../actions';
 
 const mapStateToProps = state => ({
     state: state,
@@ -19,6 +19,7 @@ const mapDispatchToProps = dispatch => ({
     hideHint: () => dispatch(hideHint()),
     showMenu: () => dispatch(showMenu()),
     hideMenu: () => dispatch(hideMenu()),
+    changeHint: () => dispatch(changeHint()),
     setInputValue: (text) => dispatch(setInputValue(text)),
     getReply: (text) => dispatch(getReply(text)),
     toggleTitle: () => dispatch(toggleTitle()),
@@ -76,6 +77,7 @@ const MyInput = ({ onPress, state, showHint, hideHint,
                         setInputValue(text);
                     }}
                     onSubmitEditing={() => {
+                        changeHint();
                         addMessage(state.inputValue, true);
                         setInputValue('');
                         getReply(state.inputValue);
